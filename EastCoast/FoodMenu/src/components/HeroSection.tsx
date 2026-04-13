@@ -43,7 +43,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden">
       {/*
         All images are always mounted with a continuous infinite Ken Burns animation.
         Each is staggered via negative animation-delay so they're at different zoom phases.
