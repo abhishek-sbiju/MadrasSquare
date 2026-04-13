@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Deep navy / midnight blue base — distinctly "bar lounge" */
+    --background: 220 30% 7%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 25% 11%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 25% 11%;
+    --popover-foreground: 210 20% 92%;
+
+    /* Amber/Copper accent — warm but clearly different from the gold in Sample */
+    --primary: 28 70% 55%;
+    --primary-foreground: 220 30% 7%;
+
+    --secondary: 220 22% 15%;
+    --secondary-foreground: 210 20% 88%;
+
+    --muted: 220 18% 17%;
+    --muted-foreground: 215 14% 50%;
+
+    --accent: 28 70% 55%;
+    --accent-foreground: 220 30% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 28 70% 55%;
+
+    --radius: 0.25rem;
+
+    /* Deep indigo tint for alternating sections — NOT green like Sample */
+    --section-alt: 225 25% 12%;
+    --section-dark: 220 30% 7%;
+
+    /* Amber/copper spectrum */
+    --amber: 28 70% 55%;
+    --amber-light: 32 55% 72%;
+    --amber-dark: 25 75% 40%;
+
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    --sidebar-background: 220 30% 7%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 28 70% 55%;
+    --sidebar-primary-foreground: 220 30% 7%;
+    --sidebar-accent: 220 22% 15%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 28 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Mobile viewport: ensure URL bar hides on scroll ── */
+body {
+  min-height: 100.1vh;
+  min-height: 100.1svh;
+}
+
+/* ── Safe full-height for mobile (accounts for browser UI) ── */
+.h-screen-safe {
+  height: 100vh;
+  height: 100svh;
+}
+
+/* Custom scrollbar — amber tinted */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--amber) / 0.3);
+  border-radius: 3px;
+}
+
+/* Menu category scrollbar */
+.menu-categories::-webkit-scrollbar {
+  height: 2px;
+}
+
+.menu-categories::-webkit-scrollbar-thumb {
+  background: hsl(var(--amber) / 0.5);
+}
+
+/* Hero Ken Burns Effect (smooth zoom + slight motion) */
+.hero-kenburns {
+  animation: kenburns 20s ease-in-out infinite alternate;
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0px, 0px);
+  }
+
+  100% {
+    transform: scale(1.08) translate(-10px, -10px);
+  }
+}

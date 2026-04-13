@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Warm parchment base (from PDF cream background) ── */
+    --background: 30 30% 93%;
+    --foreground: 20 25% 18%;
+
+    --card: 30 28% 90%;
+    --card-foreground: 20 25% 18%;
+
+    --popover: 30 28% 90%;
+    --popover-foreground: 20 25% 18%;
+
+    /* ── Deep crimson primary (from PDF headings) ── */
+    --primary: 340 65% 32%;
+    --primary-foreground: 30 30% 95%;
+
+    --secondary: 30 18% 86%;
+    --secondary-foreground: 20 25% 18%;
+
+    --muted: 30 15% 88%;
+    --muted-foreground: 20 12% 42%;
+
+    --accent: 340 65% 32%;
+    --accent-foreground: 30 30% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 25 18% 80%;
+    --input: 25 18% 80%;
+    --ring: 340 65% 32%;
+
+    --radius: 0.25rem;
+
+    /* ── Section alternating tones ── */
+    --section-green: 30 22% 90%;
+    --section-dark: 30 30% 93%;
+
+    /* ── Crimson accent system (from PDF watercolor accents) ── */
+    --gold: 340 65% 32%;
+    --gold-light: 340 45% 55%;
+    --gold-dark: 340 70% 24%;
+
+    /* ── Cream accent for soft highlights ── */
+    --cream: 30 35% 95%;
+
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    --sidebar-background: 30 30% 93%;
+    --sidebar-foreground: 20 25% 18%;
+    --sidebar-primary: 340 65% 32%;
+    --sidebar-primary-foreground: 30 30% 95%;
+    --sidebar-accent: 30 18% 86%;
+    --sidebar-accent-foreground: 20 25% 18%;
+    --sidebar-border: 25 18% 80%;
+    --sidebar-ring: 340 65% 32%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* ── Smooth scroll ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Mobile viewport: ensure URL bar hides on scroll ── */
+body {
+  min-height: 100.1vh;
+  min-height: 100.1svh;
+}
+
+/* ── Safe full-height for mobile (accounts for browser UI) ── */
+.h-screen-safe {
+  height: 100vh;
+  height: 100svh;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold) / 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold) / 0.45);
+}
+
+/* ── Menu category scrollbar ── */
+.menu-categories::-webkit-scrollbar {
+  height: 2px;
+}
+.menu-categories::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold) / 0.5);
+}
+
+/* ── Ken Burns continuous zoom for hero carousel ── */
+@keyframes kenburns {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.hero-kenburns {
+  animation: kenburns 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Subtle glow effect for headings ── */
+.heading-glow {
+  text-shadow: 0 0 60px hsl(var(--gold) / 0.15), 0 0 120px hsl(var(--gold) / 0.05);
+}
