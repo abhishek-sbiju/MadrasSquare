@@ -142,3 +142,11 @@ body {
 .heading-glow {
   text-shadow: 0 0 60px hsl(var(--gold) / 0.15), 0 0 120px hsl(var(--gold) / 0.05);
 }
+
+/* ── Section Vignette Backgrounds ── */
+.bg-section-even {
+  background: radial-gradient(ellipse at center, hsl(var(--section-green)) 0%, hsl(var(--section-dark)) 100%);
+}
+.bg-section-odd {
+  background: radial-gradient(ellipse at center, hsl(var(--background)) 0%, hsl(var(--section-dark)) 100%);
+}

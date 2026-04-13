@@ -104,16 +104,14 @@ const SectionDivider = () => (
 
 const MenuSection = ({ category, index }: MenuSectionProps) => {
   const isEven = index % 2 === 0;
-  const bgClass = isEven ? "bg-[hsl(var(--section-green))]" : "bg-background";
+  const bgClass = isEven ? "bg-section-even" : "bg-section-odd";
 
   return (
-    <>
-      <div className={bgClass}>
-        <SectionDivider />
-      </div>
+    <div className={bgClass}>
+      <SectionDivider />
       <section
         id={category.id}
-        className={`px-6 md:px-14 lg:px-24 py-12 md:py-20 ${bgClass}`}
+        className={`px-6 md:px-14 lg:px-24 pb-12 md:pb-20 pt-4 md:pt-8`}
         style={{ scrollMarginTop: "110px" }}
       >
         <div className="max-w-5xl mx-auto w-full">
@@ -155,7 +153,7 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
