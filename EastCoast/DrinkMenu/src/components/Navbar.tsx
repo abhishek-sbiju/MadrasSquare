@@ -10,9 +10,15 @@ const Navbar = () => {
           <span className="hidden sm:inline">+1 999-999-9999</span>
         </a>
         
-        <h1 className="font-heading text-base md:text-2xl font-semibold tracking-[0.16em] md:tracking-[0.2em] text-foreground">
-          EAST COAST
-        </h1>
+        {/* Two-line branded header */}
+        <div className="text-center">
+          <p className="font-body text-[6px] md:text-[8px] tracking-[0.35em] md:tracking-[0.4em] text-muted-foreground/60 uppercase leading-none mb-0.5">
+            Madras Square
+          </p>
+          <h1 className="font-heading text-base md:text-2xl font-bold tracking-[0.18em] md:tracking-[0.22em] text-foreground leading-none">
+            EAST COAST
+          </h1>
+        </div>
         
         <div className="flex items-center gap-2 md:gap-4">
           <a
