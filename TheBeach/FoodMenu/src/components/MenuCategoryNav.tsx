@@ -27,18 +27,18 @@ const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories, isVegOnl
   }, [activeCategory]);
 
   return (
-    <div id="menu-nav" className="sticky top-12 md:top-[57px] z-40 bg-background/95 backdrop-blur-md border-b border-black/[0.08] shadow-md shadow-black/5">
+    <div id="menu-nav" className="sticky top-12 md:top-[57px] z-40 bg-background/85 backdrop-blur-xl border-b border-white/[0.04] shadow-[0_4px_25px_rgba(0,0,0,0.4)]">
       <div className="flex items-center justify-between px-1.5 md:px-6">
-        <div ref={scrollContainerRef} className="menu-categories flex overflow-x-auto gap-1 py-2.5 md:py-3.5 flex-1 min-w-0 scroll-smooth">
+        <div ref={scrollContainerRef} className="menu-categories flex overflow-x-auto gap-1 py-3 md:py-4 flex-1 min-w-0 scroll-smooth">
           {categories.map((item) => (
             <button
               key={item.id}
               data-category-id={item.id}
               onClick={() => onCategoryClick(item.id)}
-              className={`whitespace-nowrap px-2.5 py-1.5 text-[10px] md:px-4 md:py-2 md:text-[13px] tracking-[0.08em] md:tracking-[0.12em] font-body font-medium transition-all duration-300 flex-shrink-0 rounded-sm
+              className={`whitespace-nowrap px-3 py-1.5 text-[10px] md:px-5 md:py-2 md:text-[13px] tracking-[0.08em] md:tracking-[0.12em] font-body font-medium transition-all duration-300 flex-shrink-0 rounded-sm outline-none
                 ${activeCategory === item.id
-                  ? "bg-gold text-primary-foreground shadow-sm shadow-gold/20"
-                  : "text-muted-foreground hover:text-foreground hover:bg-black/[0.04]"
+                  ? "bg-gold/90 text-primary-foreground shadow-sm shadow-gold/20 ring-1 ring-gold ring-offset-2 ring-offset-background"
+                  : "text-muted-foreground hover:text-foreground hover:bg-white/[0.03]"
                 }`}
             >
               {item.label}
