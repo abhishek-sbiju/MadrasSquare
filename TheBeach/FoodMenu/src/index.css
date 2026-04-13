@@ -6,61 +6,61 @@
 
 @layer base {
   :root {
-    /* ── Clean Minimal Base ── */
-    --background: 0 0% 100%;
-    --foreground: 240 10% 10%;
+    /* ── Cinematic Sunset Lounge Base ── */
+    --background: 220 20% 10%; /* Deep navy/charcoal */
+    --foreground: 40 30% 90%; /* Soft warm off-white */
 
-    --card: 0 0% 98%;
-    --card-foreground: 240 10% 10%;
+    --card: 220 25% 8%; /* Slightly darker core */
+    --card-foreground: 40 30% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover: 220 25% 8%;
+    --popover-foreground: 40 30% 90%;
 
-    /* ── Premium Charcoal Primary ── */
-    --primary: 240 10% 15%;
-    --primary-foreground: 0 0% 100%;
+    /* ── Darker Element Backgrounds ── */
+    --primary: 35 90% 55%; /* Warm amber/gold primary */
+    --primary-foreground: 220 30% 8%;
 
-    --secondary: 0 0% 95%;
-    --secondary-foreground: 240 10% 15%;
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 40 30% 90%;
 
-    --muted: 0 0% 95%;
-    --muted-foreground: 240 5% 40%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 40 10% 65%; /* Muted warm gray */
 
-    --accent: 240 5% 15%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 35 90% 55%;
+    --accent-foreground: 220 30% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 240 10% 15%;
+    --border: 220 15% 15%;
+    --input: 220 15% 15%;
+    --ring: 35 90% 55%;
 
     --radius: 0.25rem;
 
     /* ── Section alternating tones ── */
-    --section-green: 0 0% 97%;
-    --section-dark: 0 0% 100%;
+    --section-green: 220 15% 12%; 
+    --section-dark: 220 25% 8%;
 
-    /* ── Premium Dark Accent System ── */
-    --gold: 240 5% 20%;
-    --gold-light: 240 5% 45%;
-    --gold-dark: 240 10% 10%;
+    /* ── Warm Amber / Sunset Gold System ── */
+    --gold: 35 90% 55%;
+    --gold-light: 40 85% 70%;
+    --gold-dark: 25 80% 40%;
 
     /* ── Soft highlights ── */
-    --cream: 0 0% 98%;
+    --cream: 40 30% 85%;
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 240 10% 10%;
-    --sidebar-primary: 240 10% 15%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 95%;
-    --sidebar-accent-foreground: 240 10% 15%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 240 10% 15%;
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 40 30% 90%;
+    --sidebar-primary: 35 90% 55%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 40 30% 90%;
+    --sidebar-border: 220 15% 15%;
+    --sidebar-ring: 35 90% 55%;
   }
 }
 
