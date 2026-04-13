@@ -1,4 +1,7 @@
-export type DietType = "veg" | "non-veg" | "both";
+import json
+
+def to_ts():
+    content = """export type DietType = "veg" | "non-veg" | "both";
 
 export interface MenuItem {
   name: string;
@@ -365,3 +368,9 @@ export const categoryNavItems = menuCategories.map((cat) => ({
   id: cat.id,
   label: cat.title,
 }));
+"""
+    with open("c:\\Users\\abhis\\Downloads\\PROJECTS\\Webs\\MadrasSquare\\TheBeach\\FoodMenu\\src\\data\\menuData.ts", "w", encoding="utf-8") as f:
+        f.write(content)
+
+to_ts()
+print("Successfully written to menuData.ts")
