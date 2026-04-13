@@ -68,9 +68,9 @@ const HeroSection = () => {
         </div>
       ))}
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background/95" />
+      {/* Overlays — slightly darker for readability */}
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/95" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">

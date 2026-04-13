@@ -53,50 +53,52 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
   const emoji = getBeverageEmoji(categoryId, subCategoryName, item.name);
 
   return (
-  <div className="py-3 md:py-4 border-b border-white/[0.06] last:border-0 hover:bg-white/[0.02] transition-colors duration-200 md:px-3 rounded-md">
-    <div className="flex items-start md:items-baseline justify-between gap-2 md:gap-3">
-      <div className="flex items-start md:items-baseline gap-2 md:gap-3 flex-1 min-w-0">
-        <div className="mt-1 md:mt-0 pt-[2px] md:pt-0">
+  <div className="py-4 md:py-5 border-b border-white/[0.05] last:border-0">
+    <div className="flex items-start justify-between gap-4 md:gap-6">
+      {/* Left side: indicator + name + description */}
+      <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
+        <div className="mt-1.5 md:mt-[7px]">
           {emoji ? (
-            <span className="text-xs md:text-sm flex-shrink-0 opacity-90 block leading-none">{emoji}</span>
+            <span className="text-xs md:text-sm flex-shrink-0 opacity-85 block leading-none">{emoji}</span>
           ) : (
-            <div className="mt-[2px] md:mt-0"><span className={getDietClasses(item)} style={{ display: 'block' }} /></div>
+            <span className={getDietClasses(item)} style={{ display: 'block' }} />
           )}
         </div>
-        <div className="flex-1 min-w-0 flex flex-wrap items-baseline">
-          <h4 className="font-heading text-sm md:text-lg font-semibold text-foreground tracking-[0.08em] md:tracking-[0.12em] uppercase leading-tight md:leading-normal">
-            {item.name}
-          </h4>
-          {item.variants && (
-            <span className="text-muted-foreground text-[10px] md:text-xs font-body whitespace-nowrap ml-2">{item.variants}</span>
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-wrap items-baseline gap-x-2">
+            <h4 className="font-heading text-[13px] md:text-base font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
+              {item.name}
+            </h4>
+            {item.variants && (
+              <span className="text-muted-foreground/50 text-[9px] md:text-[11px] font-body font-normal tracking-normal">{item.variants}</span>
+            )}
+            {item.tags?.map((tag) => (
+              <span
+                key={tag}
+                className="text-[7px] md:text-[8px] tracking-[0.1em] font-body font-semibold px-1.5 py-[2px] border border-gold/30 text-gold/70 rounded-sm uppercase"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          {item.description && (
+            <p className="text-muted-foreground/50 text-[10px] md:text-xs font-body mt-1.5 leading-relaxed">{item.description}</p>
           )}
-          {item.tags?.map((tag) => (
-            <span
-              key={tag}
-              className="text-[8px] md:text-[9px] tracking-wider font-body font-semibold px-1.5 py-0.5 border border-gold/40 text-gold rounded-sm uppercase whitespace-nowrap ml-2"
-            >
-              {tag}
-            </span>
-          ))}
-          <span className="hidden md:inline-flex flex-1 border-b border-dotted border-white/[0.08] mx-3 min-w-[20px]" />
         </div>
       </div>
-      <span className="font-body text-sm md:text-base font-medium text-gold whitespace-nowrap mt-0.5 md:mt-0">
+
+      {/* Right side: price — always right-aligned */}
+      <span className="font-body text-sm md:text-base font-medium text-gold whitespace-nowrap tabular-nums shrink-0 mt-0.5">
         {item.price}
       </span>
     </div>
-    {item.description && (
-      <p className="text-muted-foreground/70 text-[10px] md:text-xs font-body mt-1 md:mt-1.5 ml-4 md:ml-8 leading-relaxed max-w-[90%] md:max-w-none">{item.description}</p>
-    )}
   </div>
   );
 };
 
-const DiamondDivider = () => (
-  <div className="flex items-center justify-center py-10">
-    <div className="w-20 h-px bg-gradient-to-r from-transparent to-gold/25" />
-    <div className="w-2.5 h-2.5 rotate-45 border border-gold/30 mx-4 flex-shrink-0" />
-    <div className="w-20 h-px bg-gradient-to-l from-transparent to-gold/25" />
+const SectionDivider = () => (
+  <div className="flex items-center justify-center py-8 md:py-12">
+    <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
   </div>
 );
 
@@ -107,51 +109,50 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
   return (
     <>
       <div className={bgClass}>
-        <DiamondDivider />
+        <SectionDivider />
       </div>
       <section
         id={category.id}
-        className={`px-6 md:px-12 lg:px-20 py-14 md:py-24 ${bgClass}`}
+        className={`px-6 md:px-14 lg:px-24 py-12 md:py-20 ${bgClass}`}
         style={{ scrollMarginTop: "110px" }}
       >
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="flex flex-col gap-10 md:gap-16 w-full">
-            <div className="w-full min-w-0">
-              <FadeIn delay={100}>
-                <h2 className="font-heading text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2 tracking-wide uppercase">
-                  {category.title}
-                </h2>
-                <div className="w-10 md:w-12 h-[2px] bg-gold mb-4 md:mb-6" />
-                
-                {category.description && (
-                  <p className="text-muted-foreground/70 text-xs md:text-sm font-body mb-6 md:mb-8 max-w-xl italic leading-relaxed">
-                    {category.description}
-                  </p>
-                )}
-              </FadeIn>
-
-              {category.subCategories ? (
-                category.subCategories.map((sub, subIdx) => (
-                  <div key={sub.name} className="mb-6 md:mb-10">
-                    <FadeIn delay={150 + (subIdx * 50)}>
-                      <h3 className="font-heading text-lg md:text-2xl font-semibold text-gold mb-2 md:mb-4 tracking-[0.08em] md:tracking-[0.1em] uppercase">
-                        {sub.name}
-                      </h3>
-                      {sub.items.map((item, i) => (
-                        <MenuItemRow key={`${item.name}-${i}`} item={item} categoryId={category.id} subCategoryName={sub.name} />
-                      ))}
-                    </FadeIn>
-                  </div>
-                ))
-              ) : (
-                <FadeIn delay={150}>
-                  {category.items?.map((item, i) => (
-                    <MenuItemRow key={`${item.name}-${i}`} item={item} categoryId={category.id} />
-                  ))}
-                </FadeIn>
+        <div className="max-w-5xl mx-auto w-full">
+          {/* Category header */}
+          <FadeIn delay={100}>
+            <div className="mb-8 md:mb-12">
+              <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
+                {category.title}
+              </h2>
+              <div className="w-8 md:w-10 h-[2px] bg-gold/70" />
+              {category.description && (
+                <p className="text-muted-foreground/50 text-xs md:text-sm font-body mt-4 max-w-xl italic leading-relaxed">
+                  {category.description}
+                </p>
               )}
             </div>
-          </div>
+          </FadeIn>
+
+          {/* Items */}
+          {category.subCategories ? (
+            category.subCategories.map((sub, subIdx) => (
+              <div key={sub.name} className="mb-10 md:mb-14">
+                <FadeIn delay={150 + (subIdx * 50)}>
+                  <h3 className="font-heading text-base md:text-xl font-semibold text-gold/80 mb-4 md:mb-5 tracking-[0.1em] md:tracking-[0.14em] uppercase">
+                    {sub.name}
+                  </h3>
+                  {sub.items.map((item, i) => (
+                    <MenuItemRow key={`${item.name}-${i}`} item={item} categoryId={category.id} subCategoryName={sub.name} />
+                  ))}
+                </FadeIn>
+              </div>
+            ))
+          ) : (
+            <FadeIn delay={150}>
+              {category.items?.map((item, i) => (
+                <MenuItemRow key={`${item.name}-${i}`} item={item} categoryId={category.id} />
+              ))}
+            </FadeIn>
+          )}
         </div>
       </section>
     </>
