@@ -27,7 +27,7 @@ const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories, isVegOnl
   }, [activeCategory]);
 
   return (
-    <div id="menu-nav" className="sticky top-12 md:top-14 z-40 bg-background/95 backdrop-blur-md border-b border-white/[0.05] shadow-lg shadow-black/20">
+    <div id="menu-nav" className="sticky top-12 md:top-[57px] z-40 bg-background/95 backdrop-blur-md border-b border-white/[0.05] shadow-lg shadow-black/20">
       <div className="flex items-center justify-between px-1.5 md:px-6">
         <div ref={scrollContainerRef} className="menu-categories flex overflow-x-auto gap-1 py-2.5 md:py-3.5 flex-1 min-w-0 scroll-smooth">
           {categories.map((item) => (

@@ -109,14 +109,16 @@ html {
   background: hsl(var(--gold) / 0.5);
 }
 
-/* ── Hero parallax-style subtle zoom on load ── */
-@keyframes hero-zoom {
-  from { transform: scale(1.08); }
-  to { transform: scale(1.0); }
+/* ── Ken Burns continuous zoom for hero carousel ── */
+@keyframes kenburns {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
-.hero-bg-animate {
-  animation: hero-zoom 8s ease-out forwards;
+.hero-kenburns {
+  animation: kenburns 24s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* ── Subtle glow effect for headings ── */
