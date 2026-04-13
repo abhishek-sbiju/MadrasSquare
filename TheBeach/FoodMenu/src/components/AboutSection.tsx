@@ -12,7 +12,7 @@ const AboutSection = () => {
           <span className="w-12 h-px bg-gradient-to-l from-transparent to-gold/30" />
         </div>
         <p className="text-muted-foreground/70 font-body text-sm leading-[1.9] mb-16">
-          Set in the heart of Madras Square, East Coast brings together the finest cuisine,
+          Set in the heart of Madras Square, The Beach brings together the finest cuisine,
           expertly crafted dishes, and an ambiance that speaks to those who appreciate
           the art of great food. From comforting Indian favorites to innovative global plates,
           every dish tells a story of quality and craft.
@@ -36,7 +36,7 @@ const AboutSection = () => {
             flavors together — from familiar comfort dishes to more playful, global plates.
           </p>
           <p>
-            Today, East Coast stands as more than just a restaurant. It's a destination where great conversations
+            Today, The Beach stands as more than just a restaurant. It's a destination where great conversations
             flow as freely as the food, and where every visit feels like coming home.
           </p>
         </div>

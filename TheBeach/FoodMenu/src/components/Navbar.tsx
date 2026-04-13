@@ -16,7 +16,7 @@ const Navbar = () => {
             Madras Square
           </p>
           <h1 className="font-heading text-base md:text-2xl font-bold tracking-[0.18em] md:tracking-[0.22em] text-foreground leading-none">
-            EAST COAST
+            THE BEACH
           </h1>
         </div>
         

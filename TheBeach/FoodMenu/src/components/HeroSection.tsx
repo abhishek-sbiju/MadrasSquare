@@ -43,7 +43,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
       {/*
         All images are always mounted with a continuous infinite Ken Burns animation.
         Each is staggered via negative animation-delay so they're at different zoom phases.
@@ -69,8 +69,8 @@ const HeroSection = () => {
       ))}
 
       {/* Overlays — slightly darker for readability */}
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/95" />
+      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
@@ -79,10 +79,10 @@ const HeroSection = () => {
         </p>
 
         <h1
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-foreground mb-4 heading-glow animate-fade-in"
+          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-white mb-4 heading-glow animate-fade-in"
           style={{ animationDelay: "0.15s" }}
         >
-          EAST COAST
+          THE BEACH
         </h1>
 
         <div className="flex items-center justify-center gap-4 mb-4 animate-fade-in" style={{ animationDelay: "0.25s" }}>

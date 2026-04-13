@@ -1,4 +1,7 @@
-export type DietType = "veg" | "non-veg" | "both";
+import json
+
+def generate_flat_menu():
+    content = """export type DietType = "veg" | "non-veg" | "both";
 
 export interface MenuItem {
   name: string;
@@ -262,3 +265,9 @@ export const categoryNavItems = menuCategories.map((cat) => ({
   id: cat.id,
   label: cat.title,
 }));
+"""
+    with open("c:\\Users\\abhis\\Downloads\\PROJECTS\\Webs\\MadrasSquare\\TheBeach\\FoodMenu\\src\\data\\menuData.ts", "w", encoding="utf-8") as f:
+        f.write(content)
+
+generate_flat_menu()
+print("Written menuData.ts")

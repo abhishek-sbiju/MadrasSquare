@@ -6,61 +6,61 @@
 
 @layer base {
   :root {
-    /* ── Warm parchment base (from PDF cream background) ── */
-    --background: 30 30% 93%;
-    --foreground: 20 25% 18%;
+    /* ── Clean Minimal Base ── */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 10%;
 
-    --card: 30 28% 90%;
-    --card-foreground: 20 25% 18%;
+    --card: 0 0% 98%;
+    --card-foreground: 240 10% 10%;
 
-    --popover: 30 28% 90%;
-    --popover-foreground: 20 25% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
 
-    /* ── Deep crimson primary (from PDF headings) ── */
-    --primary: 340 65% 32%;
-    --primary-foreground: 30 30% 95%;
+    /* ── Premium Charcoal Primary ── */
+    --primary: 240 10% 15%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 18% 86%;
-    --secondary-foreground: 20 25% 18%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 240 10% 15%;
 
-    --muted: 30 15% 88%;
-    --muted-foreground: 20 12% 42%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 240 5% 40%;
 
-    --accent: 340 65% 32%;
-    --accent-foreground: 30 30% 95%;
+    --accent: 240 5% 15%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 25 18% 80%;
-    --input: 25 18% 80%;
-    --ring: 340 65% 32%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 240 10% 15%;
 
     --radius: 0.25rem;
 
     /* ── Section alternating tones ── */
-    --section-green: 30 22% 90%;
-    --section-dark: 30 30% 93%;
+    --section-green: 0 0% 97%;
+    --section-dark: 0 0% 100%;
 
-    /* ── Crimson accent system (from PDF watercolor accents) ── */
-    --gold: 340 65% 32%;
-    --gold-light: 340 45% 55%;
-    --gold-dark: 340 70% 24%;
+    /* ── Premium Dark Accent System ── */
+    --gold: 240 5% 20%;
+    --gold-light: 240 5% 45%;
+    --gold-dark: 240 10% 10%;
 
-    /* ── Cream accent for soft highlights ── */
-    --cream: 30 35% 95%;
+    /* ── Soft highlights ── */
+    --cream: 0 0% 98%;
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 30 30% 93%;
-    --sidebar-foreground: 20 25% 18%;
-    --sidebar-primary: 340 65% 32%;
-    --sidebar-primary-foreground: 30 30% 95%;
-    --sidebar-accent: 30 18% 86%;
-    --sidebar-accent-foreground: 20 25% 18%;
-    --sidebar-border: 25 18% 80%;
-    --sidebar-ring: 340 65% 32%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 10%;
+    --sidebar-primary: 240 10% 15%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 240 10% 15%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 240 10% 15%;
   }
 }
 

@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-14">
         {/* Brand */}
         <div className="flex flex-col items-center md:items-start">
-          <h2 className="font-heading text-2xl font-bold tracking-[0.16em] text-foreground mb-4">EAST COAST</h2>
+          <h2 className="font-heading text-2xl font-bold tracking-[0.16em] text-foreground mb-4">THE BEACH</h2>
           <p className="text-muted-foreground font-body text-sm max-w-sm mb-6 leading-relaxed">
             Elevating your dining experience with premium cuisine, artisanal plates, and an ambiance that speaks luxury.
           </p>
@@ -51,7 +51,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-black/[0.08] flex flex-col md:flex-row items-center justify-between gap-4 font-body text-[11px] text-muted-foreground/70 tracking-wide">
-        <p>© {new Date().getFullYear()} East Coast. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} The Beach. All rights reserved.</p>
         <div className="flex gap-6">
           <a href="#" className="hover:text-gold/80 transition-colors duration-200">Privacy Policy</a>
           <a href="#" className="hover:text-gold/80 transition-colors duration-200">Terms of Service</a>
