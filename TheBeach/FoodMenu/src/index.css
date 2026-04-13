@@ -47,6 +47,11 @@
     --gold-light: 40 85% 70%;
     --gold-dark: 25 80% 40%;
 
+    /* ── Subtle Green Accents for Badges ── */
+    --green-olive: 131 21% 29%;
+    --green-forest: 150 20% 25%;
+    --green-sage: 118 19% 42%;
+
     /* ── Soft highlights ── */
     --cream: 40 30% 85%;
 

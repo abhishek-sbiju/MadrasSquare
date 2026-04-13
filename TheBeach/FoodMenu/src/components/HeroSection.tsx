@@ -69,7 +69,9 @@ const HeroSection = () => {
       ))}
 
       {/* Overlays — deeper for cinematic sunset look */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
+      {/* Vignette effect */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.6)_100%)]" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
