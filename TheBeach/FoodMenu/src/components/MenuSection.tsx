@@ -42,7 +42,7 @@ const getBeverageEmoji = (categoryId: string, subCategoryName: string = '', item
   if (sub.includes('frappe') || name.includes('frappe')) {
     return '🧊';
   }
-  if (name.includes('water')) {
+  if (name === 'water' || name.includes('mineral water') || name.includes('tonic water') || name.includes('soda')) {
     return '💧';
   }
   // Default for cold beverages and mocktails

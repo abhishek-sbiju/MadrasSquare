@@ -6,12 +6,12 @@ let html = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>East Coast - Food Menu</title>
+    <title>The Beach - Food Menu</title>
     <link rel="stylesheet" href="demo-menu.css">
 </head>
 <body>
     <header class="header">
-        <h1>EAST COAST</h1>
+        <h1>THE BEACH</h1>
         <p>Premium Digital Menu</p>
     </header>
     <main class="menu-container">
@@ -63,7 +63,7 @@ menuCategories.forEach(category => {
 html += `
     </main>
     <footer class="footer">
-        <p>&copy; ${new Date().getFullYear()} East Coast. All rights reserved.</p>
+        <p>&copy; ${new Date().getFullYear()} The Beach. All rights reserved.</p>
     </footer>
 </body>
 </html>`;
