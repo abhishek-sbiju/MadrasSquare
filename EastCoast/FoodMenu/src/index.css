@@ -100,17 +100,12 @@ body {
 
 /* ── Custom scrollbar ── */
 ::-webkit-scrollbar {
-  width: 5px;
+  display: none;
 }
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
-}
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--gold) / 0.3);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--gold) / 0.55);
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* ── Menu category scrollbar ── */

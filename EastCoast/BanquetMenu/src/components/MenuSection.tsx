@@ -45,10 +45,11 @@ const getBeverageEmoji = (categoryId: string, subCategoryName: string = '', item
 
 const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, categoryId: string, subCategoryName?: string }) => {
   const emoji = getBeverageEmoji(categoryId, subCategoryName, item.name);
+  const hasPrice = !!item.price;
 
   return (
-  <div className="py-5 md:py-6 border-b border-foreground/[0.07] last:border-0">
-    <div className="flex items-start justify-between gap-4 md:gap-6">
+  <div className="py-4 md:py-5 border-b border-foreground/[0.07] last:border-0">
+    <div className={`flex items-start ${hasPrice ? 'justify-between gap-4 md:gap-6' : 'gap-2.5 md:gap-3'}`}>
       {/* Left side: indicator + name + description */}
       <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
         <div className="mt-1.5 md:mt-[7px]">
@@ -60,7 +61,7 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <h4 className="font-heading text-[15px] md:text-xl font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
+            <h4 className="font-heading text-[15px] md:text-lg font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
               {item.name}
             </h4>
             {item.tags?.map((tag) => (
@@ -81,8 +82,8 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
         </div>
       </div>
 
-      {/* Right side: price — always right-aligned */}
-      {item.price && (
+      {/* Right side: price — only when present */}
+      {hasPrice && (
         <span className="font-body text-base md:text-lg font-semibold text-gold whitespace-nowrap tabular-nums shrink-0 mt-0.5">
           {item.price}
         </span>
@@ -114,7 +115,7 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
         className={`px-6 md:px-14 lg:px-24 pb-14 md:pb-24 pt-6 md:pt-10`}
         style={{ scrollMarginTop: "110px" }}
       >
-        <div className="max-w-5xl mx-auto w-full">
+        <div className={`${category.id === 'bottle-prices' ? 'max-w-5xl' : 'max-w-3xl'} mx-auto w-full`}>
           {/* Category header */}
           <FadeIn delay={100}>
             {category.id === "rams-signature" ? (
