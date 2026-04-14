@@ -1,15 +1,13 @@
-import { Switch } from "@/components/ui/switch";
+
 import { useEffect, useRef } from "react";
 
 interface MenuCategoryNavProps {
   activeCategory: string;
   onCategoryClick: (id: string) => void;
   categories: { id: string; label: string }[];
-  isVegOnly: boolean;
-  setIsVegOnly: (val: boolean) => void;
 }
 
-const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories, isVegOnly, setIsVegOnly }: MenuCategoryNavProps) => {
+const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories }: MenuCategoryNavProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,18 +42,6 @@ const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories, isVegOnl
               {item.label}
             </button>
           ))}
-        </div>
-        
-        <div className="flex items-center gap-1 md:gap-2 pl-2.5 md:pl-4 py-2 md:py-3.5 border-l border-border ml-1.5 md:ml-2">
-          <label htmlFor="veg-toggle" className="text-[9px] md:text-xs font-bold tracking-[0.14em] md:tracking-widest font-heading text-green-600 uppercase whitespace-nowrap cursor-pointer">
-            Veg Only
-          </label>
-          <Switch 
-            id="veg-toggle" 
-            checked={isVegOnly} 
-            onCheckedChange={setIsVegOnly} 
-            className="data-[state=checked]:bg-green-500 scale-[0.72] md:scale-100 origin-right"
-          />
         </div>
       </div>
     </div>
