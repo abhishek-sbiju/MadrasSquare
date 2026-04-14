@@ -6,58 +6,58 @@
 
 @layer base {
   :root {
-    /* Deep navy / midnight blue base — distinctly "bar lounge" */
-    --background: 220 30% 7%;
-    --foreground: 210 20% 92%;
+    /* ── Refined Light Bar Lounge Theme ── */
+    --background: 35 25% 95%; /* Warm soft beige, slightly richer than food menu */
+    --foreground: 220 20% 15%;
 
-    --card: 220 25% 11%;
-    --card-foreground: 210 20% 92%;
+    --card: 35 30% 93%;
+    --card-foreground: 220 20% 15%;
 
-    --popover: 220 25% 11%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 35 25% 95%;
+    --popover-foreground: 220 20% 15%;
 
-    /* Amber/Copper accent — warm but clearly different from the gold in Sample */
-    --primary: 28 70% 55%;
-    --primary-foreground: 220 30% 7%;
+    /* Deep Amber/Copper accent */
+    --primary: 28 80% 42%;
+    --primary-foreground: 35 25% 95%; /* Ensure contrast on amber */
 
-    --secondary: 220 22% 15%;
-    --secondary-foreground: 210 20% 88%;
+    --secondary: 35 20% 88%;
+    --secondary-foreground: 220 20% 15%;
 
-    --muted: 220 18% 17%;
-    --muted-foreground: 215 14% 50%;
+    --muted: 35 20% 88%;
+    --muted-foreground: 220 15% 35%; /* High contrast dark text for descriptions */
 
-    --accent: 28 70% 55%;
-    --accent-foreground: 220 30% 7%;
+    --accent: 28 80% 42%;
+    --accent-foreground: 35 25% 95%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 35 25% 95%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 28 70% 55%;
+    --border: 35 15% 82%;
+    --input: 35 15% 82%;
+    --ring: 28 80% 42%;
 
     --radius: 0.25rem;
 
-    /* Deep indigo tint for alternating sections — NOT green like Sample */
-    --section-alt: 225 25% 12%;
-    --section-dark: 220 30% 7%;
+    /* Slightly richer alt section for drinks */
+    --section-alt: 35 30% 92%;
+    --section-dark: 35 25% 95%;
 
-    /* Amber/copper spectrum */
-    --amber: 28 70% 55%;
-    --amber-light: 32 55% 72%;
-    --amber-dark: 25 75% 40%;
+    /* Amber spectrum */
+    --amber: 28 80% 42%;       /* Deep rich amber */
+    --amber-light: 30 65% 55%;
+    --amber-dark: 25 85% 35%;
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 220 30% 7%;
-    --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 28 70% 55%;
-    --sidebar-primary-foreground: 220 30% 7%;
-    --sidebar-accent: 220 22% 15%;
-    --sidebar-accent-foreground: 210 20% 92%;
-    --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 28 70% 55%;
+    --sidebar-background: 35 25% 95%;
+    --sidebar-foreground: 220 20% 15%;
+    --sidebar-primary: 28 80% 42%;
+    --sidebar-primary-foreground: 35 25% 95%;
+    --sidebar-accent: 35 20% 88%;
+    --sidebar-accent-foreground: 220 20% 15%;
+    --sidebar-border: 35 15% 82%;
+    --sidebar-ring: 28 80% 42%;
   }
 }
 

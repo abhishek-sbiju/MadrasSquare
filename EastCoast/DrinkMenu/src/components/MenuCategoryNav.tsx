@@ -35,7 +35,7 @@ const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories }: MenuCa
               className={`whitespace-nowrap px-2.5 py-1.5 text-[11px] md:px-4 md:py-2.5 md:text-base tracking-[0.06em] md:tracking-[0.1em] font-body font-medium transition-all flex-shrink-0 rounded-sm
                 ${activeCategory === item.id
                   ? "bg-amber text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-white/[0.02]"
+                  : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.03]"
                 }`}
             >
               {item.label}

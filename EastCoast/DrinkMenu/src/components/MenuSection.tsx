@@ -42,18 +42,18 @@ const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [
 };
 
 const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHeaders?: [string, string] }) => (
-  <div className="py-2.5 md:py-4 border-b border-amber/8 last:border-0 hover:bg-white/[0.02] transition-colors md:px-2 rounded-md group">
+  <div className="py-3 md:py-5 border-b border-border/60 last:border-0 hover:bg-foreground/[0.03] transition-colors md:px-2 rounded-md group">
     <div className="flex items-start md:items-baseline justify-between gap-2 md:gap-3">
       <div className="flex-1 min-w-0 flex flex-wrap items-baseline">
         <h4 className="font-heading text-sm md:text-lg font-semibold text-foreground tracking-[0.08em] md:tracking-[0.12em] uppercase leading-tight md:leading-normal group-hover:text-amber transition-colors duration-300">
           {item.name}
         </h4>
-        <span className="hidden md:inline-flex flex-1 border-b border-dotted border-amber/12 mx-2 min-w-[20px]" />
+        <span className="hidden md:inline-flex flex-1 border-b border-dotted border-border/80 mx-2 min-w-[20px]" />
       </div>
       <PriceDisplay item={item} priceHeaders={priceHeaders} />
     </div>
     {item.description && (
-      <p className="text-muted-foreground/70 text-[10px] md:text-xs font-body mt-1 md:mt-1.5 leading-relaxed max-w-[90%] md:max-w-none">
+      <p className="text-muted-foreground text-[11px] md:text-sm font-body mt-1 md:mt-1.5 leading-relaxed max-w-[90%] md:max-w-none">
         {item.description}
       </p>
     )}
@@ -63,9 +63,9 @@ const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHe
 {/* Line + dot divider — different from the diamond style used in Sample/food menu */}
 const SectionDivider = () => (
   <div className="flex items-center justify-center py-8">
-    <div className="w-20 h-px bg-gradient-to-r from-transparent to-amber/30" />
-    <div className="w-2 h-2 rounded-full bg-amber/40 mx-4 flex-shrink-0" />
-    <div className="w-20 h-px bg-gradient-to-l from-transparent to-amber/30" />
+    <div className="w-20 h-px bg-gradient-to-r from-transparent to-amber/60" />
+    <div className="w-2 h-2 rounded-full bg-amber/80 mx-4 flex-shrink-0" />
+    <div className="w-20 h-px bg-gradient-to-l from-transparent to-amber/60" />
   </div>
 );
 

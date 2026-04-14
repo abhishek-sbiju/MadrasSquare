@@ -2,7 +2,7 @@ import { Instagram, MapPin, Phone, Clock } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black/40 border-t border-border mt-12 pt-16 pb-8 px-6 md:px-12 lg:px-20 text-center md:text-left">
+    <footer className="bg-card border-t border-border mt-12 pt-16 pb-8 px-6 md:px-12 lg:px-20 text-center md:text-left">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
         {/* Brand */}
         <div className="flex flex-col items-center md:items-start">
@@ -11,7 +11,7 @@ const Footer = () => {
             Elevating your evening with premium spirits, craft cocktails, and an ambiance that speaks luxury.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full border border-amber/30 flex items-center justify-center text-amber hover:bg-amber hover:text-black transition-colors" aria-label="Instagram">
+            <a href="#" className="w-10 h-10 rounded-full border border-amber/40 flex items-center justify-center text-amber hover:bg-amber hover:text-white transition-colors" aria-label="Instagram">
               <Instagram size={18} />
             </a>
           </div>
@@ -48,14 +48,14 @@ const Footer = () => {
             </li>
           </ul>
           <div className="mt-6">
-            <p className="font-body text-[10px] text-muted-foreground/60 leading-relaxed">
+            <p className="font-body text-[10px] text-muted-foreground leading-relaxed">
               Prices are inclusive of 14.5% tax for liquor and 58% tax for wine
             </p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 font-body text-xs text-muted-foreground/60">
+      <div className="max-w-7xl mx-auto pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 font-body text-xs text-muted-foreground">
         <p>© {new Date().getFullYear()} East Coast. All rights reserved.</p>
         <div className="flex gap-6">
           <a href="#" className="hover:text-amber transition-colors">Privacy Policy</a>
