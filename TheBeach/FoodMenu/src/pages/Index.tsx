@@ -11,28 +11,8 @@ import { getDietType } from "@/lib/diet";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
-  const [isVegOnly, setIsVegOnly] = useState(false);
 
-  // Filter categories and items if veg only
-  const filteredCategories = menuCategories.map(category => {
-    if (!isVegOnly) return category;
-    
-    const newCat = { ...category };
-    
-    if (newCat.subCategories) {
-      newCat.subCategories = newCat.subCategories.map(sub => ({
-        ...sub,
-        items: sub.items.filter(item => getDietType(item) !== 'non-veg')
-      })).filter(sub => sub.items.length > 0);
-      
-      if (newCat.subCategories.length === 0) return null;
-    } else if (newCat.items) {
-      newCat.items = newCat.items.filter(item => getDietType(item) !== 'non-veg');
-      if (newCat.items.length === 0) return null;
-    }
-    
-    return newCat;
-  }).filter(Boolean) as typeof menuCategories;
+  const filteredCategories = menuCategories;
 
   const handleCategoryClick = (id: string) => {
     setActiveCategory(id);
@@ -75,8 +55,6 @@ const Index = () => {
         activeCategory={activeCategory} 
         onCategoryClick={handleCategoryClick} 
         categories={filteredCategories.map(c => ({ id: c.id, label: c.title }))}
-        isVegOnly={isVegOnly}
-        setIsVegOnly={setIsVegOnly}
       />
       
       {filteredCategories.map((category, index) => (

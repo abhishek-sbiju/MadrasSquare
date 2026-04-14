@@ -79,7 +79,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        <p className="font-body text-xs tracking-[0.4em] uppercase text-gold-light/80 mb-4 animate-fade-in">
+        <p className="font-body text-xs tracking-[0.4em] uppercase text-white/80 mb-4 animate-fade-in">
           Madras Square
         </p>
 
@@ -103,7 +103,7 @@ const HeroSection = () => {
         </div>
 
         <p
-          className="font-heading text-xl md:text-2xl italic text-gold-light tracking-widest mb-10 animate-fade-in"
+          className="font-heading text-xl md:text-2xl italic text-white/80 tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
           Food Menu
@@ -122,7 +122,7 @@ const HeroSection = () => {
 
           <a
             href="tel:+19999999999"
-            className="px-8 py-3 border border-gold/40 text-gold-light text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/10 transition-all duration-300"
+            className="px-8 py-3 border border-gold/60 text-white/90 text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/20 transition-all duration-300"
           >
             BOOK A TABLE
           </a>

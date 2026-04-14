@@ -59,36 +59,36 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
       <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
         <div className="mt-1.5 md:mt-[7px]">
           {emoji ? (
-            <span className="text-xs md:text-sm flex-shrink-0 opacity-85 block leading-none">{emoji}</span>
+            <span className="text-xs md:text-sm flex-shrink-0 block leading-none saturate-150">{emoji}</span>
           ) : (
             <span className={getDietClasses(item)} style={{ display: 'block' }} />
           )}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <h4 className="font-heading text-[13px] md:text-base font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
+            <h4 className="font-heading text-[15px] md:text-lg font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
               {item.name}
             </h4>
             {item.variants && (
-              <span className="text-muted-foreground/50 text-[9px] md:text-[11px] font-body font-normal tracking-normal">{item.variants}</span>
+              <span className="text-muted-foreground text-[10px] md:text-xs font-body font-normal tracking-normal">{item.variants}</span>
             )}
             {item.tags?.map((tag) => (
               <span
                 key={tag}
-                className="text-[7px] md:text-[8px] tracking-[0.1em] font-body font-semibold px-1.5 py-[2px] border border-gold/30 text-gold/70 rounded-sm uppercase"
+                className="text-[8px] md:text-[9px] tracking-[0.1em] font-body font-semibold px-1.5 py-[2px] border border-gold/40 text-gold rounded-sm uppercase"
               >
                 {tag}
               </span>
             ))}
           </div>
           {item.description && (
-            <p className="text-muted-foreground/50 text-[10px] md:text-xs font-body mt-1.5 leading-relaxed">{item.description}</p>
+            <p className="text-muted-foreground text-[13px] md:text-[15px] font-body mt-1.5 leading-relaxed">{item.description}</p>
           )}
         </div>
       </div>
 
       {/* Right side: price — always right-aligned */}
-      <span className="font-body text-sm md:text-base font-medium text-gold whitespace-nowrap tabular-nums shrink-0 mt-0.5">
+      <span className="font-body text-[15px] md:text-lg font-medium text-gold whitespace-nowrap tabular-nums shrink-0 mt-0.5">
         {item.price}
       </span>
     </div>
@@ -98,7 +98,7 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
 
 const SectionDivider = () => (
   <div className="flex items-center justify-center py-8 md:py-12">
-    <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
+    <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
   </div>
 );
 
@@ -121,9 +121,9 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
               <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
                 {category.title}
               </h2>
-              <div className="w-8 md:w-10 h-[2px] bg-gold/70" />
+              <div className="w-8 md:w-10 h-[2px] bg-gold" />
               {category.description && (
-                <p className="text-muted-foreground/50 text-xs md:text-sm font-body mt-4 max-w-xl italic leading-relaxed">
+                <p className="text-muted-foreground text-xs md:text-sm font-body mt-4 max-w-xl italic leading-relaxed">
                   {category.description}
                 </p>
               )}
@@ -135,7 +135,7 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
             category.subCategories.map((sub, subIdx) => (
               <div key={sub.name} className="mb-10 md:mb-14">
                 <FadeIn delay={150 + (subIdx * 50)}>
-                  <h3 className="font-heading text-base md:text-xl font-semibold text-gold/80 mb-4 md:mb-5 tracking-[0.1em] md:tracking-[0.14em] uppercase">
+                  <h3 className="font-heading text-lg md:text-2xl font-semibold text-gold mb-4 md:mb-5 tracking-[0.1em] md:tracking-[0.14em] uppercase">
                     {sub.name}
                   </h3>
                   {sub.items.map((item, i) => (

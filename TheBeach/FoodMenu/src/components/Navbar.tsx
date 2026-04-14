@@ -3,7 +3,7 @@ import MenuSearch from "./MenuSearch";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
       <div className="flex h-12 md:h-[57px] items-center justify-between px-3 md:px-8">
         <a href="tel:+19999999999" className="flex items-center gap-1.5 md:gap-2 text-muted-foreground hover:text-foreground transition-colors text-xs md:text-sm font-body">
           <Phone className="h-[13px] w-[13px] md:h-[14px] md:w-[14px]" />
@@ -12,7 +12,7 @@ const Navbar = () => {
         
         {/* Two-line branded header */}
         <div className="text-center">
-          <p className="font-body text-[6px] md:text-[8px] tracking-[0.35em] md:tracking-[0.4em] text-muted-foreground/60 uppercase leading-none mb-0.5">
+          <p className="font-body text-[6px] md:text-[8px] tracking-[0.35em] md:tracking-[0.4em] text-muted-foreground uppercase leading-none mb-0.5">
             Madras Square
           </p>
           <h1 className="font-heading text-base md:text-2xl font-bold tracking-[0.18em] md:tracking-[0.22em] text-foreground leading-none">

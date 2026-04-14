@@ -6,66 +6,64 @@
 
 @layer base {
   :root {
-    /* ── Cinematic Sunset Lounge Base ── */
-    --background: 220 20% 10%; /* Deep navy/charcoal */
-    --foreground: 40 30% 90%; /* Soft warm off-white */
+    /* ── The Beach Printed Menu Base (Warm Cream) ── */
+    --background: 52 45% 90%; /* #f1eeda */
+    --foreground: 0 0% 17%; /* #2b2b2b */
 
-    --card: 220 25% 8%; /* Slightly darker core */
-    --card-foreground: 40 30% 90%;
+    --card: 51 45% 87%; /* Slightly darker cream for cards */
+    --card-foreground: 0 0% 17%;
 
-    --popover: 220 25% 8%;
-    --popover-foreground: 40 30% 90%;
+    --popover: 52 45% 90%;
+    --popover-foreground: 0 0% 17%;
 
-    /* ── Darker Element Backgrounds ── */
-    --primary: 35 90% 55%; /* Warm amber/gold primary */
-    --primary-foreground: 220 30% 8%;
+    /* ── Maroon Accent (#a9445b) ── */
+    --primary: 346 43% 46%;
+    --primary-foreground: 52 45% 90%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 40 30% 90%;
+    --secondary: 96 23% 67%; /* Soft green (#a8c098) */
+    --secondary-foreground: 0 0% 17%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 40 10% 65%; /* Muted warm gray */
+    --muted: 51 30% 82%;
+    --muted-foreground: 0 0% 35%; /* Readable dark gray for descriptions */
 
-    --accent: 35 90% 55%;
-    --accent-foreground: 220 30% 8%;
+    --accent: 346 43% 46%; /* Maroon */
+    --accent-foreground: 52 45% 90%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 15%;
-    --input: 220 15% 15%;
-    --ring: 35 90% 55%;
+    --border: 51 20% 75%;
+    --input: 51 20% 75%;
+    --ring: 346 43% 46%;
 
     --radius: 0.25rem;
 
-    /* ── Section alternating tones ── */
-    --section-green: 220 15% 12%; 
-    --section-dark: 220 25% 8%;
+    /* ── Section backgrounds ── */
+    --section-green: 96 23% 67%; /* Soft green (#a8c098) */
+    --section-dark: 52 45% 90%; /* Back to cream bg for alternation */
 
-    /* ── Warm Amber / Sunset Gold System ── */
-    --gold: 35 90% 55%;
-    --gold-light: 40 85% 70%;
-    --gold-dark: 25 80% 40%;
+    /* ── Maroon / Red System ── */
+    --gold: 346 43% 46%; /* Replacing gold variable with maroon for layout compatibility */
+    --gold-light: 346 40% 55%;
+    --gold-dark: 346 50% 35%;
 
-    /* ── Subtle Green Accents for Badges ── */
-    --green-olive: 131 21% 29%;
-    --green-forest: 150 20% 25%;
-    --green-sage: 118 19% 42%;
-
-    /* ── Soft highlights ── */
-    --cream: 40 30% 85%;
+    /* ── Subtle Accents ── */
+    --green-olive: 96 23% 67%;
+    --green-forest: 96 23% 67%;
+    --green-sage: 96 23% 67%;
+    --cream: 52 45% 90%;
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 220 25% 8%;
-    --sidebar-foreground: 40 30% 90%;
-    --sidebar-primary: 35 90% 55%;
-    --sidebar-primary-foreground: 220 30% 8%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 40 30% 90%;
-    --sidebar-border: 220 15% 15%;
-    --sidebar-ring: 35 90% 55%;
+    --sidebar-background: 52 45% 90%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 346 43% 46%;
+    --sidebar-primary-foreground: 52 45% 90%;
+    --sidebar-accent: 96 23% 67%;
+    --sidebar-accent-foreground: 0 0% 17%;
+    --sidebar-border: 51 20% 75%;
+    --sidebar-ring: 346 43% 46%;
   }
 }
 
@@ -143,10 +141,10 @@ body {
   text-shadow: 0 0 60px hsl(var(--gold) / 0.15), 0 0 120px hsl(var(--gold) / 0.05);
 }
 
-/* ── Section Vignette Backgrounds ── */
+/* ── Section Backgrounds ── */
 .bg-section-even {
-  background: radial-gradient(ellipse at center, hsl(var(--section-green)) 0%, hsl(var(--section-dark)) 100%);
+  background: hsl(var(--section-green));
 }
 .bg-section-odd {
-  background: radial-gradient(ellipse at center, hsl(var(--background)) 0%, hsl(var(--section-dark)) 100%);
+  background: hsl(var(--background));
 }
