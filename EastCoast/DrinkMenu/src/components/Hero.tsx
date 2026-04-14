@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 
-import heroBg1 from "@/assets/hero-bg.jpg";
+import heroBg1 from "@/assets/hero-bg.png";
 import heroBg2 from "@/assets/hero-bg-2.png";
 import heroBg3 from "@/assets/hero-bg-3.png";
 import heroBg4 from "@/assets/hero-bg-4.png";
@@ -72,12 +72,12 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        <p className="font-body text-xs tracking-[0.4em] uppercase text-amber-light mb-4 animate-fade-in">
+        <p className="font-body text-sm tracking-[0.4em] uppercase text-amber-light mb-4 animate-fade-in">
           Madras Square
         </p>
 
         <h1
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
+          className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
           style={{
             animationDelay: "0.15s",
             textShadow: "0 2px 20px rgba(0,0,0,0.6)",
@@ -96,7 +96,7 @@ const Hero = () => {
         </div>
 
         <p
-          className="font-heading text-xl md:text-2xl italic text-amber-light tracking-widest mb-10 animate-fade-in"
+          className="font-heading text-2xl md:text-3xl italic text-amber-light tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
           Drinks Menu
@@ -129,8 +129,8 @@ const Hero = () => {
             key={i}
             onClick={() => setCurrentIndex(i)}
             className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
-                ? "w-6 bg-amber/80"
-                : "w-2 bg-white/25 hover:bg-white/40"
+              ? "w-6 bg-amber/80"
+              : "w-2 bg-white/25 hover:bg-white/40"
               }`}
           />
         ))}
