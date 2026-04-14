@@ -11,7 +11,7 @@ const AboutSection = () => {
           <span className="w-[5px] h-[5px] rounded-full bg-gold/40" />
           <span className="w-12 h-px bg-gradient-to-l from-transparent to-gold/40" />
         </div>
-        <p className="text-muted-foreground font-body text-sm md:text-base leading-[1.9] mb-16">
+        <p className="text-muted-foreground font-body text-[15px] md:text-lg leading-[2] mb-16">
           Set in the heart of Madras Square, East Coast brings together the finest cuisine,
           expertly crafted dishes, and an ambiance that speaks to those who appreciate
           the art of great food. From comforting Indian favorites to innovative global plates,
@@ -22,7 +22,7 @@ const AboutSection = () => {
         <h2 className="font-heading text-2xl md:text-4xl font-bold text-foreground mb-8 leading-tight tracking-wide">
           Our Story
         </h2>
-        <div className="text-muted-foreground font-body text-sm md:text-base leading-[1.9] space-y-6 text-left md:text-center">
+        <div className="text-muted-foreground font-body text-[15px] md:text-lg leading-[2] space-y-6 text-left md:text-center">
           <p>
             What began during a difficult season started with something very simple: cooking fresh food and showing
             up for people who needed care, comfort, and consistency.

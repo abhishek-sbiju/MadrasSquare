@@ -53,7 +53,7 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
   const emoji = getBeverageEmoji(categoryId, subCategoryName, item.name);
 
   return (
-  <div className="py-4 md:py-5 border-b border-foreground/[0.08] last:border-0">
+  <div className="py-5 md:py-6 border-b border-foreground/[0.07] last:border-0">
     <div className="flex items-start justify-between gap-4 md:gap-6">
       {/* Left side: indicator + name + description */}
       <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
@@ -66,23 +66,23 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <h4 className="font-heading text-sm md:text-lg font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
+            <h4 className="font-heading text-[15px] md:text-xl font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
               {item.name}
             </h4>
             {item.variants && (
-              <span className="text-muted-foreground text-[10px] md:text-xs font-body font-normal tracking-normal">{item.variants}</span>
+              <span className="text-muted-foreground text-[11px] md:text-sm font-body font-normal tracking-normal">{item.variants}</span>
             )}
             {item.tags?.map((tag) => (
               <span
                 key={tag}
-                className="text-[7px] md:text-[8px] tracking-[0.1em] font-body font-semibold px-1.5 py-[2px] border border-gold/30 text-gold/70 rounded-sm uppercase"
+                className="text-[8px] md:text-[9px] tracking-[0.1em] font-body font-semibold px-1.5 py-[2px] border border-gold/40 text-gold rounded-sm uppercase"
               >
                 {tag}
               </span>
             ))}
           </div>
           {item.description && (
-            <p className="text-muted-foreground text-xs md:text-sm font-body mt-1.5 leading-relaxed">{item.description}</p>
+            <p className="text-muted-foreground text-[13px] md:text-[15px] font-body mt-2 leading-loose">{item.description}</p>
           )}
         </div>
       </div>
@@ -97,7 +97,7 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
 };
 
 const SectionDivider = () => (
-  <div className="flex items-center justify-center py-8 md:py-12">
+  <div className="flex items-center justify-center py-10 md:py-14">
     <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
   </div>
 );
@@ -111,19 +111,19 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
       <SectionDivider />
       <section
         id={category.id}
-        className={`px-6 md:px-14 lg:px-24 pb-12 md:pb-20 pt-4 md:pt-8`}
+        className={`px-6 md:px-14 lg:px-24 pb-14 md:pb-24 pt-6 md:pt-10`}
         style={{ scrollMarginTop: "110px" }}
       >
         <div className="max-w-5xl mx-auto w-full">
           {/* Category header */}
           <FadeIn delay={100}>
-            <div className="mb-8 md:mb-12">
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
+            <div className="mb-10 md:mb-14">
+              <h2 className="font-heading text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
                 {category.title}
               </h2>
               <div className="w-8 md:w-10 h-[2px] bg-gold" />
               {category.description && (
-                <p className="text-muted-foreground text-sm md:text-base font-body mt-4 max-w-xl italic leading-relaxed">
+                <p className="text-muted-foreground text-sm md:text-base font-body mt-4 max-w-xl italic leading-loose">
                   {category.description}
                 </p>
               )}
@@ -133,9 +133,9 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
           {/* Items */}
           {category.subCategories ? (
             category.subCategories.map((sub, subIdx) => (
-              <div key={sub.name} className="mb-10 md:mb-14">
+              <div key={sub.name} className="mb-12 md:mb-16">
                 <FadeIn delay={150 + (subIdx * 50)}>
-                  <h3 className="font-heading text-lg md:text-2xl font-semibold text-gold mb-4 md:mb-5 tracking-[0.1em] md:tracking-[0.14em] uppercase">
+                  <h3 className="font-heading text-xl md:text-[1.65rem] font-semibold text-gold mb-5 md:mb-6 tracking-[0.1em] md:tracking-[0.14em] uppercase">
                     {sub.name}
                   </h3>
                   {sub.items.map((item, i) => (
