@@ -15,7 +15,6 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
 
-  // Preload images
   useEffect(() => {
     heroImages.forEach((src) => {
       const img = new Image();
@@ -37,9 +36,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
 
-      {/* Smooth background carousel (NO JERK) */}
+      {/* Background images */}
       {heroImages.map((src, i) => (
         <div
           key={i}
@@ -50,7 +49,7 @@ const Hero = () => {
           }}
         >
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns blur-[1px]"
             style={{
               backgroundImage: `url(${src})`,
               animationDelay: `${-i * 6}s`,
@@ -59,9 +58,17 @@ const Hero = () => {
         </div>
       ))}
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/95" />
+      {/* 🔥 Lighter cinematic gradient (East Coast style) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+
+      {/* 🔥 Subtle center lighting */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.4) 70%)",
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
@@ -70,13 +77,19 @@ const Hero = () => {
         </p>
 
         <h1
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-foreground mb-4 animate-fade-in"
-          style={{ animationDelay: "0.15s" }}
+          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
+          style={{
+            animationDelay: "0.15s",
+            textShadow: "0 2px 20px rgba(0,0,0,0.6)",
+          }}
         >
           EAST COAST
         </h1>
 
-        <div className="flex items-center justify-center gap-4 mb-4 animate-fade-in" style={{ animationDelay: "0.25s" }}>
+        <div
+          className="flex items-center justify-center gap-4 mb-4 animate-fade-in"
+          style={{ animationDelay: "0.25s" }}
+        >
           <span className="w-16 h-px bg-gradient-to-r from-transparent to-amber" />
           <span className="w-1.5 h-1.5 rounded-full bg-amber" />
           <span className="w-16 h-px bg-gradient-to-l from-transparent to-amber" />
@@ -89,7 +102,10 @@ const Hero = () => {
           Drinks Menu
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.45s" }}>
+        <div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in"
+          style={{ animationDelay: "0.45s" }}
+        >
           <button
             onClick={scrollToMenu}
             className="px-8 py-3 bg-amber/90 text-primary-foreground text-xs tracking-[0.2em] font-body font-semibold hover:bg-amber transition-all duration-300"
@@ -112,7 +128,6 @@ const Hero = () => {
           <button
             key={i}
             onClick={() => setCurrentIndex(i)}
-            aria-label={`Show image ${i + 1}`}
             className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
                 ? "w-6 bg-amber/80"
                 : "w-2 bg-white/25 hover:bg-white/40"
@@ -121,11 +136,10 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll */}
       <button
         onClick={scrollToMenu}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-amber transition-colors animate-bounce"
-        aria-label="Scroll down"
       >
         <ChevronDown size={28} />
       </button>

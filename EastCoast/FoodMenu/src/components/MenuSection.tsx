@@ -53,7 +53,7 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
   const emoji = getBeverageEmoji(categoryId, subCategoryName, item.name);
 
   return (
-  <div className="py-4 md:py-5 border-b border-white/[0.05] last:border-0">
+  <div className="py-4 md:py-5 border-b border-foreground/[0.08] last:border-0">
     <div className="flex items-start justify-between gap-4 md:gap-6">
       {/* Left side: indicator + name + description */}
       <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
@@ -66,11 +66,11 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <h4 className="font-heading text-[13px] md:text-base font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
+            <h4 className="font-heading text-sm md:text-lg font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
               {item.name}
             </h4>
             {item.variants && (
-              <span className="text-muted-foreground/50 text-[9px] md:text-[11px] font-body font-normal tracking-normal">{item.variants}</span>
+              <span className="text-muted-foreground text-[10px] md:text-xs font-body font-normal tracking-normal">{item.variants}</span>
             )}
             {item.tags?.map((tag) => (
               <span
@@ -82,13 +82,13 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
             ))}
           </div>
           {item.description && (
-            <p className="text-muted-foreground/50 text-[10px] md:text-xs font-body mt-1.5 leading-relaxed">{item.description}</p>
+            <p className="text-muted-foreground text-xs md:text-sm font-body mt-1.5 leading-relaxed">{item.description}</p>
           )}
         </div>
       </div>
 
       {/* Right side: price — always right-aligned */}
-      <span className="font-body text-sm md:text-base font-medium text-gold whitespace-nowrap tabular-nums shrink-0 mt-0.5">
+      <span className="font-body text-base md:text-lg font-semibold text-gold whitespace-nowrap tabular-nums shrink-0 mt-0.5">
         {item.price}
       </span>
     </div>
@@ -98,34 +98,32 @@ const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, ca
 
 const SectionDivider = () => (
   <div className="flex items-center justify-center py-8 md:py-12">
-    <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
+    <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
   </div>
 );
 
 const MenuSection = ({ category, index }: MenuSectionProps) => {
   const isEven = index % 2 === 0;
-  const bgClass = isEven ? "bg-[hsl(var(--section-green))]" : "bg-background";
+  const bgClass = isEven ? "bg-section-even" : "bg-section-odd";
 
   return (
-    <>
-      <div className={bgClass}>
-        <SectionDivider />
-      </div>
+    <div className={bgClass}>
+      <SectionDivider />
       <section
         id={category.id}
-        className={`px-6 md:px-14 lg:px-24 py-12 md:py-20 ${bgClass}`}
+        className={`px-6 md:px-14 lg:px-24 pb-12 md:pb-20 pt-4 md:pt-8`}
         style={{ scrollMarginTop: "110px" }}
       >
         <div className="max-w-5xl mx-auto w-full">
           {/* Category header */}
           <FadeIn delay={100}>
             <div className="mb-8 md:mb-12">
-              <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
+              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
                 {category.title}
               </h2>
-              <div className="w-8 md:w-10 h-[2px] bg-gold/70" />
+              <div className="w-8 md:w-10 h-[2px] bg-gold" />
               {category.description && (
-                <p className="text-muted-foreground/50 text-xs md:text-sm font-body mt-4 max-w-xl italic leading-relaxed">
+                <p className="text-muted-foreground text-sm md:text-base font-body mt-4 max-w-xl italic leading-relaxed">
                   {category.description}
                 </p>
               )}
@@ -137,7 +135,7 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
             category.subCategories.map((sub, subIdx) => (
               <div key={sub.name} className="mb-10 md:mb-14">
                 <FadeIn delay={150 + (subIdx * 50)}>
-                  <h3 className="font-heading text-base md:text-xl font-semibold text-gold/80 mb-4 md:mb-5 tracking-[0.1em] md:tracking-[0.14em] uppercase">
+                  <h3 className="font-heading text-lg md:text-2xl font-semibold text-gold mb-4 md:mb-5 tracking-[0.1em] md:tracking-[0.14em] uppercase">
                     {sub.name}
                   </h3>
                   {sub.items.map((item, i) => (
@@ -155,7 +153,7 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

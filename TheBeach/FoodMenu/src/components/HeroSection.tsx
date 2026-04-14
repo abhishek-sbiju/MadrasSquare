@@ -14,7 +14,7 @@ const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
 
-  // Preload all images on mount
+  // Preload images
   useEffect(() => {
     heroImages.forEach((src) => {
       const img = new Image();
@@ -44,11 +44,8 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
-      {/*
-        All images are always mounted with a continuous infinite Ken Burns animation.
-        Each is staggered via negative animation-delay so they're at different zoom phases.
-        Only opacity changes via CSS transition — no remounts, no scale resets, no jerk.
-      */}
+
+      {/* Background images with smooth crossfade + subtle blur */}
       {heroImages.map((src, i) => (
         <div
           key={i}
@@ -59,7 +56,7 @@ const HeroSection = () => {
           }}
         >
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns blur-[1px]"
             style={{
               backgroundImage: `url(${src})`,
               animationDelay: `${-i * 6}s`,
@@ -68,9 +65,17 @@ const HeroSection = () => {
         </div>
       ))}
 
-      {/* Overlays — natural sunset lighting with reduced harshness */}
-      <div className="absolute inset-0 backdrop-blur-[2px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/15 via-black/40 to-black/85" />
+      {/* 🔥 Cinematic gradient (depth) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
+
+      {/* 🔥 Center light + vignette */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.5) 70%)",
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
@@ -79,13 +84,19 @@ const HeroSection = () => {
         </p>
 
         <h1
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-white mb-4 heading-glow animate-fade-in"
-          style={{ animationDelay: "0.15s" }}
+          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
+          style={{
+            animationDelay: "0.15s",
+            textShadow: "0 2px 20px rgba(0,0,0,0.6)",
+          }}
         >
           THE BEACH
         </h1>
 
-        <div className="flex items-center justify-center gap-4 mb-4 animate-fade-in" style={{ animationDelay: "0.25s" }}>
+        <div
+          className="flex items-center justify-center gap-4 mb-4 animate-fade-in"
+          style={{ animationDelay: "0.25s" }}
+        >
           <span className="w-16 h-px bg-gradient-to-r from-transparent to-gold" />
           <span className="w-1.5 h-1.5 rounded-full bg-gold" />
           <span className="w-16 h-px bg-gradient-to-l from-transparent to-gold" />
@@ -98,13 +109,17 @@ const HeroSection = () => {
           Food Menu
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.45s" }}>
+        <div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in"
+          style={{ animationDelay: "0.45s" }}
+        >
           <button
             onClick={scrollToMenu}
             className="px-8 py-3 bg-gold/90 text-primary-foreground text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold transition-all duration-300"
           >
             VIEW MENU
           </button>
+
           <a
             href="tel:+19999999999"
             className="px-8 py-3 border border-gold/40 text-gold-light text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/10 transition-all duration-300"
@@ -114,23 +129,22 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Carousel indicators */}
+      {/* Indicators */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-2">
         {heroImages.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Show image ${i + 1}`}
-            className={`h-[3px] rounded-full transition-all duration-500 ${
-              i === currentIndex
+            className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
                 ? "w-6 bg-gold/80"
                 : "w-2 bg-white/25 hover:bg-white/40"
-            }`}
+              }`}
           />
         ))}
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll */}
       <button
         onClick={scrollToMenu}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-gold transition-colors animate-bounce"

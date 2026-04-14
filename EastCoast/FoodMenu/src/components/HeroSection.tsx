@@ -14,7 +14,6 @@ const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
 
-  // Preload all images on mount
   useEffect(() => {
     heroImages.forEach((src) => {
       const img = new Image();
@@ -43,12 +42,9 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden">
-      {/*
-        All images are always mounted with a continuous infinite Ken Burns animation.
-        Each is staggered via negative animation-delay so they're at different zoom phases.
-        Only opacity changes via CSS transition — no remounts, no scale resets, no jerk.
-      */}
+    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
+
+      {/* Background images */}
       {heroImages.map((src, i) => (
         <div
           key={i}
@@ -59,7 +55,7 @@ const HeroSection = () => {
           }}
         >
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns blur-[1px]"
             style={{
               backgroundImage: `url(${src})`,
               animationDelay: `${-i * 6}s`,
@@ -68,43 +64,61 @@ const HeroSection = () => {
         </div>
       ))}
 
-      {/* Overlays — slightly darker for readability */}
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/95" />
+      {/* 🔥 Clean coastal gradient (lighter than drink) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/70" />
+
+      {/* 🔥 Subtle center lighting */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.35) 70%)",
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        <p className="font-body text-xs tracking-[0.4em] uppercase text-gold-light/80 mb-4 animate-fade-in">
+        <p className="font-body text-sm tracking-[0.4em] uppercase text-gold-light mb-4 animate-fade-in">
           Madras Square
         </p>
 
         <h1
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-foreground mb-4 heading-glow animate-fade-in"
-          style={{ animationDelay: "0.15s" }}
+          className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
+          style={{
+            animationDelay: "0.15s",
+            textShadow: "0 2px 20px rgba(0,0,0,0.6)",
+          }}
         >
           EAST COAST
         </h1>
 
-        <div className="flex items-center justify-center gap-4 mb-4 animate-fade-in" style={{ animationDelay: "0.25s" }}>
+        <div
+          className="flex items-center justify-center gap-4 mb-4 animate-fade-in"
+          style={{ animationDelay: "0.25s" }}
+        >
           <span className="w-16 h-px bg-gradient-to-r from-transparent to-gold" />
           <span className="w-1.5 h-1.5 rounded-full bg-gold" />
           <span className="w-16 h-px bg-gradient-to-l from-transparent to-gold" />
         </div>
 
         <p
-          className="font-heading text-xl md:text-2xl italic text-gold-light tracking-widest mb-10 animate-fade-in"
+          className="font-heading text-2xl md:text-3xl italic text-gold-light tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
           Food Menu
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.45s" }}>
+        <div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in"
+          style={{ animationDelay: "0.45s" }}
+        >
           <button
             onClick={scrollToMenu}
-            className="px-8 py-3 bg-gold/90 text-primary-foreground text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold transition-all duration-300"
+            className="px-8 py-3 bg-gold/90 text-white text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold transition-all duration-300"
           >
             VIEW MENU
           </button>
+
           <a
             href="tel:+19999999999"
             className="px-8 py-3 border border-gold/40 text-gold-light text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/10 transition-all duration-300"
@@ -114,27 +128,24 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Carousel indicators */}
+      {/* Indicators */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-2">
         {heroImages.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            aria-label={`Show image ${i + 1}`}
-            className={`h-[3px] rounded-full transition-all duration-500 ${
-              i === currentIndex
+            className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
                 ? "w-6 bg-gold/80"
                 : "w-2 bg-white/25 hover:bg-white/40"
-            }`}
+              }`}
           />
         ))}
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll */}
       <button
         onClick={scrollToMenu}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-gold transition-colors animate-bounce"
-        aria-label="Scroll down"
       >
         <ChevronDown size={28} />
       </button>

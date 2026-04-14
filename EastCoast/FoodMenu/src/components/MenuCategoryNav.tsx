@@ -27,18 +27,18 @@ const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories, isVegOnl
   }, [activeCategory]);
 
   return (
-    <div id="menu-nav" className="sticky top-12 md:top-[57px] z-40 bg-background/95 backdrop-blur-md border-b border-white/[0.05] shadow-lg shadow-black/20">
+    <div id="menu-nav" className="sticky top-12 md:top-[57px] z-40 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="flex items-center justify-between px-1.5 md:px-6">
-        <div ref={scrollContainerRef} className="menu-categories flex overflow-x-auto gap-1 py-2.5 md:py-3.5 flex-1 min-w-0 scroll-smooth">
+        <div ref={scrollContainerRef} className="menu-categories flex overflow-x-auto gap-2 py-3 md:py-4 flex-1 min-w-0 scroll-smooth">
           {categories.map((item) => (
             <button
               key={item.id}
               data-category-id={item.id}
               onClick={() => onCategoryClick(item.id)}
-              className={`whitespace-nowrap px-2.5 py-1.5 text-[10px] md:px-4 md:py-2 md:text-[13px] tracking-[0.08em] md:tracking-[0.12em] font-body font-medium transition-all duration-300 flex-shrink-0 rounded-sm
+              className={`whitespace-nowrap px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm tracking-[0.08em] md:tracking-[0.12em] font-body font-semibold transition-all duration-300 flex-shrink-0 rounded-sm border
                 ${activeCategory === item.id
-                  ? "bg-gold text-primary-foreground shadow-sm shadow-gold/20"
-                  : "text-muted-foreground hover:text-foreground hover:bg-white/[0.04]"
+                  ? "bg-gold/10 text-gold border-gold/30"
+                  : "border-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/[0.03]"
                 }`}
             >
               {item.label}
@@ -46,8 +46,8 @@ const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories, isVegOnl
           ))}
         </div>
         
-        <div className="flex items-center gap-1 md:gap-2 pl-2.5 md:pl-4 py-2 md:py-3.5 border-l border-white/[0.06] ml-1.5 md:ml-2">
-          <label htmlFor="veg-toggle" className="text-[8px] md:text-[11px] font-bold tracking-[0.14em] md:tracking-widest font-heading text-green-500 uppercase whitespace-nowrap cursor-pointer">
+        <div className="flex items-center gap-1 md:gap-2 pl-2.5 md:pl-4 py-2 md:py-3.5 border-l border-border ml-1.5 md:ml-2">
+          <label htmlFor="veg-toggle" className="text-[9px] md:text-xs font-bold tracking-[0.14em] md:tracking-widest font-heading text-green-600 uppercase whitespace-nowrap cursor-pointer">
             Veg Only
           </label>
           <Switch 
