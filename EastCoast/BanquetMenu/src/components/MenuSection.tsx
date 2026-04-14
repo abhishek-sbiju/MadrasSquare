@@ -50,42 +50,43 @@ const MenuItemRow = ({ item, hasAnyPrices }: { item: MenuItem, hasAnyPrices: boo
 };
 
 const SectionDivider = () => (
-  <div className="flex items-center justify-center py-8 md:py-12">
+  <div className="flex items-center justify-center py-10 md:py-14">
     <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-transparent rounded-full" />
   </div>
 );
 
-/* ── Rams Signature description split into shorter paragraphs ── */
+/* ── Ram's Signature description split into shorter paragraphs ── */
 const RamsSignatureHeader = ({ category }: { category: MenuCategory }) => (
-  <div className="mb-12 md:mb-16">
+  <div className="mb-10 md:mb-14">
     {/* Label above heading */}
     <span className="inline-block font-body text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-gold/70 mb-3">
       Signature Selection
     </span>
     <div className="grid grid-cols-1 md:grid-cols-[1fr,200px] lg:grid-cols-[1fr,260px] gap-8 md:gap-12 items-start">
-      <div>
-        <h2 className="font-heading text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
+      {/* Left content with gold accent border */}
+      <div className="border-l-[3px] border-gold pl-6 md:pl-8">
+        <h2 className="font-heading text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
           {category.title}
         </h2>
-        <div className="w-8 md:w-10 h-[2px] bg-gold mb-5" />
+        <div className="w-14 md:w-20 h-[3px] bg-gold mb-6" />
 
         {/* Split description into digestible paragraphs */}
-        <div className="space-y-3">
-          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.85]">
+        <div className="space-y-4">
+          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.8]">
             Curated and perfected by Ram, the driving force behind Madras Square, this signature banquet menu reflects his love for bold flavours, generous spreads, and food that truly brings people together.
           </p>
-          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.85]">
+          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.8]">
             It's a lively mix of crowd favourites and chef-led creations—designed to keep conversations flowing, plates full, and guests smiling.
           </p>
-          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.85]">
+          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.8]">
             If you're looking for a banquet that feels warm, energetic, and unmistakably Madras Square, this is the one guests remember.
           </p>
         </div>
       </div>
 
-      {/* Image with subtle frame */}
+      {/* Image with polished frame */}
       <div className="flex justify-center md:justify-end">
-        <div className="border border-gold/15 rounded-lg p-2 shadow-sm bg-background/50">
+        <div className="rounded-lg p-3 bg-white border border-[#E6C79C]/60 shadow-[0_2px_12px_rgba(196,122,44,0.08)]">
           <img
             src="/ram-photo.png"
             alt="Ram — Madras Square"
@@ -109,25 +110,23 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
 
   // Check if this section has any prices (for bottle-prices)
   const hasAnyPrices = category.id === "bottle-prices";
-  // Use wider container for sections with prices, narrower for the rest
-  const containerWidth = hasAnyPrices ? "max-w-4xl" : "max-w-2xl";
 
   return (
     <div className={`${bgClass} ${isRamsSignature ? "mt-16 md:mt-24 border-l-[5px] border-gold" : ""}`}>
       <SectionDivider />
       <section
         id={category.id}
-        className={`px-6 md:px-10 lg:px-16 pb-14 md:pb-20 pt-2 ${isRamsSignature ? "py-8 md:py-12 pt-4" : ""}`}
+        className={`px-6 md:px-14 lg:px-24 pb-14 md:pb-24 pt-6 md:pt-10 ${isRamsSignature ? "py-8 md:py-12 pt-4" : ""}`}
         style={{ scrollMarginTop: "110px" }}
       >
-        <div className={`${containerWidth} mx-auto w-full`}>
+        <div className="max-w-5xl mx-auto w-full">
           {/* Category header */}
           <FadeIn delay={100}>
             {isRamsSignature ? (
               <RamsSignatureHeader category={category} />
             ) : (
-              <div className="mb-8 md:mb-12">
-                <h2 className="font-heading text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
+              <div className="mb-10 md:mb-14">
+                <h2 className="font-heading text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
                   {category.title}
                 </h2>
                 <div className="w-8 md:w-10 h-[2px] bg-primary/70" />
@@ -143,9 +142,9 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
           {/* Items */}
           {category.categories ? (
             category.categories.map((sub, subIdx) => (
-              <div key={sub.name} className="mb-10 md:mb-14">
+              <div key={sub.name} className="mb-12 md:mb-16">
                 <FadeIn delay={150 + (subIdx * 50)}>
-                  <h3 className="font-heading text-xl md:text-2xl font-semibold text-gold mb-4 md:mb-5 tracking-[0.1em] md:tracking-[0.14em] uppercase">
+                  <h3 className="font-heading text-xl md:text-[1.65rem] font-semibold text-gold mb-5 md:mb-6 tracking-[0.1em] md:tracking-[0.14em] uppercase">
                     {sub.name}
                   </h3>
                   {sub.items.map((item, i) => (

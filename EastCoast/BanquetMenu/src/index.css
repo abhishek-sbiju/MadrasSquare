@@ -104,20 +104,13 @@ body {
 
 /* ── Custom scrollbar ── */
 ::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
-}
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--gold) / 0.3);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--gold) / 0.55);
+  display: none;
 }
 
-/* ── Menu category scrollbar ── */
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 .menu-categories::-webkit-scrollbar {
   height: 2px;
 }

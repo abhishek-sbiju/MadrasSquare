@@ -73,6 +73,7 @@ const BanquetNav = () => {
         >
           {navItems.map((item) => {
             const isActive = activeId === item.id;
+            const isRamsSignature = item.id === "rams-signature";
             
             return (
               <button
@@ -80,16 +81,20 @@ const BanquetNav = () => {
                 ref={isActive ? activeRef : null}
                 onClick={() => handleClick(item.id)}
                 className={`
+                  flex items-center gap-1.5 md:gap-2
                   whitespace-nowrap px-3 md:px-4 py-1 md:py-1.5 text-[11px] md:text-[13px] 
                   tracking-[0.1em] md:tracking-[0.15em] font-body font-semibold uppercase 
                   transition-all duration-300 flex-shrink-0 border-b-2 outline-none
                   ${
                     isActive
-                      ? "text-primary border-primary"
-                      : "border-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/[0.03]"
+                      ? "text-gold border-gold"
+                      : isRamsSignature 
+                        ? "border-transparent text-gold/75 hover:text-gold hover:bg-gold/5"
+                        : "border-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/[0.03]"
                   }
                 `}
               >
+                {isRamsSignature && <span className="text-[10px] md:text-[11px] mb-0.5">✦</span>}
                 {item.label}
               </button>
             );
