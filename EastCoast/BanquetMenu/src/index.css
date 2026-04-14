@@ -6,61 +6,65 @@
 
 @layer base {
   :root {
-    /* ── Premium Light Coastal Base — warm off-white ── */
-    --background: 40 30% 97%;
-    --foreground: 220 15% 16%;
+    /* ── Soft Premium Light Theme — Sand and Olive ── */
+    --background: 42 39% 94%; /* #F5F1E8 soft sand */
+    --foreground: 0 0% 17%;   /* #2B2B2B dark neutral */
 
-    --card: 40 25% 94%;
-    --card-foreground: 220 15% 16%;
+    --card: 42 39% 94%;
+    --card-foreground: 0 0% 17%;
 
-    --popover: 40 30% 97%;
-    --popover-foreground: 220 15% 16%;
+    --popover: 42 39% 94%;
+    --popover-foreground: 0 0% 17%;
 
-    /* ── Muted Sand/Warm Neutral Primary ── */
-    --primary: 32 55% 48%;
-    --primary-foreground: 40 30% 97%;
+    /* ── Primary Accent: Light Olive Green (#A8C098) ── */
+    --primary: 96 24% 67%; 
+    --primary-foreground: 42 39% 94%;
 
-    --secondary: 40 18% 90%;
-    --secondary-foreground: 220 15% 16%;
+    /* ── Secondary Accent: Warm Amber (#C47A2C) ── */
+    --secondary: 31 63% 47%; 
+    --secondary-foreground: 42 39% 94%;
 
-    --muted: 40 14% 88%;
-    --muted-foreground: 220 10% 32%;
+    --muted: 42 10% 88%;
+    --muted-foreground: 0 0% 35%;
 
-    --accent: 32 55% 48%;
-    --accent-foreground: 40 30% 97%;
+    --accent: 96 24% 67%;
+    --accent-foreground: 0 0% 17%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 12% 85%;
-    --input: 40 12% 85%;
-    --ring: 32 55% 48%;
+    --border: 96 24% 67%; /* Olive green default borders */
+    --input: 96 24% 67%;
+    --ring: 96 24% 67%;
 
     --radius: 0.25rem;
 
-    /* ── Section alternating tones ── */
-    --section-green: 40 25% 94%;
-    --section-dark: 40 30% 97%;
+    /* ── Section alternating tones (soft olive tint for contrast) ── */
+    --section-green: 96 20% 89%; /* Soft pale olive */
+    --section-dark: 42 39% 94%;
 
-    /* ── Warm Gold Accent System ── */
-    --gold: 32 60% 44%;
-    --gold-light: 35 45% 55%;
-    --gold-dark: 30 50% 35%;
+    /* ── Warm Gold Accent System -> Mapped to Secondary Amber to preserve Rams Signature ── */
+    --gold: 31 63% 47%; /* #C47A2C warm amber */
+    --gold-light: 31 55% 55%;
+    --gold-dark: 31 70% 35%;
+
+    /* ── Exact Light Olive Green for direct usage ── */
+    --olive: 96 24% 67%;
 
     /* ── Cream accent for soft highlights ── */
-    --cream: 35 25% 92%;
+    --cream: 42 39% 96%;
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 40 30% 97%;
-    --sidebar-foreground: 220 15% 16%;
-    --sidebar-primary: 32 55% 48%;
-    --sidebar-primary-foreground: 40 30% 97%;
-    --sidebar-accent: 40 18% 90%;
-    --sidebar-accent-foreground: 220 15% 16%;
-    --sidebar-border: 40 12% 85%;
-    --sidebar-ring: 32 55% 48%;
+    --sidebar-background: 42 39% 94%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 96 24% 67%;
+    --sidebar-primary-foreground: 42 39% 94%;
+    --sidebar-accent: 96 20% 89%;
+    --sidebar-accent-foreground: 0 0% 17%;
+    --sidebar-border: 42 15% 85%;
+    --sidebar-ring: 96 24% 67%;
   }
 }
 

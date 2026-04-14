@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import BanquetNav from "@/components/BanquetNav";
 import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
@@ -7,7 +8,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { banquetMenuData, termsAndConditionsGroups } from "@/data/banquetMenuData";
 
 const highlightKeyInfo = (text: string) => {
-  // Split on times (e.g. 12:30 PM) and percentages (e.g. 75%)
   const parts = text.split(/(\d{1,2}:\d{2}\s?(?:AM|PM)|\d{1,3}%)/gi);
 
   return (
@@ -28,6 +28,9 @@ const Index = () => {
     <div className="min-h-screen bg-background overflow-x-clip w-full max-w-[100vw]">
       <Navbar />
       <HeroSection />
+
+      {/* Sticky scroll navigation */}
+      <BanquetNav />
 
       {banquetMenuData.map((category, index) => (
         <MenuSection key={category.id} category={category} index={index} />
