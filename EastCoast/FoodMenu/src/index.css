@@ -17,7 +17,7 @@
     --popover-foreground: 220 15% 16%;
 
     /* ── Muted Sand/Warm Neutral Primary ── */
-    --primary: 32 55% 48%;
+    --primary: 28 80% 42%;
     --primary-foreground: 40 30% 97%;
 
     --secondary: 40 18% 90%;
@@ -26,7 +26,7 @@
     --muted: 40 14% 88%;
     --muted-foreground: 220 10% 32%;
 
-    --accent: 32 55% 48%;
+    --accent: 28 80% 42%;
     --accent-foreground: 40 30% 97%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,7 +34,7 @@
 
     --border: 40 12% 85%;
     --input: 40 12% 85%;
-    --ring: 32 55% 48%;
+    --ring: 28 80% 42%;
 
     --radius: 0.25rem;
 
@@ -42,10 +42,10 @@
     --section-green: 40 25% 94%;
     --section-dark: 40 30% 97%;
 
-    /* ── Warm Gold Accent System ── */
-    --gold: 32 60% 44%;
-    --gold-light: 35 45% 55%;
-    --gold-dark: 30 50% 35%;
+    /* ── Warm Gold Accent System (Updated to Amber) ── */
+    --gold: 28 80% 42%;
+    --gold-light: 30 65% 55%;
+    --gold-dark: 25 85% 35%;
 
     /* ── Cream accent for soft highlights ── */
     --cream: 35 25% 92%;
@@ -55,12 +55,12 @@
 
     --sidebar-background: 40 30% 97%;
     --sidebar-foreground: 220 15% 16%;
-    --sidebar-primary: 32 55% 48%;
+    --sidebar-primary: 28 80% 42%;
     --sidebar-primary-foreground: 40 30% 97%;
     --sidebar-accent: 40 18% 90%;
     --sidebar-accent-foreground: 220 15% 16%;
     --sidebar-border: 40 12% 85%;
-    --sidebar-ring: 32 55% 48%;
+    --sidebar-ring: 28 80% 42%;
   }
 }
 

@@ -16,9 +16,9 @@
     --popover: 42 39% 94%;
     --popover-foreground: 0 0% 17%;
 
-    /* ── Primary Accent: Light Olive Green (#A8C098) ── */
-    --primary: 96 24% 67%; 
-    --primary-foreground: 42 39% 94%;
+    /* ── Muted Sand/Warm Neutral Primary ── */
+    --primary: 28 80% 42%;
+    --primary-foreground: 40 30% 97%;
 
     /* ── Secondary Accent: Warm Amber (#C47A2C) ── */
     --secondary: 31 63% 47%; 
@@ -27,15 +27,15 @@
     --muted: 42 10% 88%;
     --muted-foreground: 0 0% 35%;
 
-    --accent: 96 24% 67%;
-    --accent-foreground: 0 0% 17%;
+    --accent: 28 80% 42%;
+    --accent-foreground: 40 30% 97%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 96 24% 67%; /* Olive green default borders */
     --input: 96 24% 67%;
-    --ring: 96 24% 67%;
+    --ring: 28 80% 42%;
 
     --radius: 0.25rem;
 
@@ -43,10 +43,10 @@
     --section-green: 96 20% 89%; /* Soft pale olive */
     --section-dark: 42 39% 94%;
 
-    /* ── Warm Gold Accent System -> Mapped to Secondary Amber to preserve Rams Signature ── */
-    --gold: 31 63% 47%; /* #C47A2C warm amber */
-    --gold-light: 31 55% 55%;
-    --gold-dark: 31 70% 35%;
+    /* ── Warm Gold Accent System (Updated to Amber) ── */
+    --gold: 28 80% 42%;
+    --gold-light: 30 65% 55%;
+    --gold-dark: 25 85% 35%;
 
     /* ── Exact Light Olive Green for direct usage ── */
     --olive: 96 24% 67%;
@@ -59,12 +59,12 @@
 
     --sidebar-background: 42 39% 94%;
     --sidebar-foreground: 0 0% 17%;
-    --sidebar-primary: 96 24% 67%;
-    --sidebar-primary-foreground: 42 39% 94%;
-    --sidebar-accent: 96 20% 89%;
-    --sidebar-accent-foreground: 0 0% 17%;
-    --sidebar-border: 42 15% 85%;
-    --sidebar-ring: 96 24% 67%;
+    --sidebar-primary: 28 80% 42%;
+    --sidebar-primary-foreground: 40 30% 97%;
+    --sidebar-accent: 40 18% 90%;
+    --sidebar-accent-foreground: 220 15% 16%;
+    --sidebar-border: 40 12% 85%;
+    --sidebar-ring: 28 80% 42%;
   }
 }
 
