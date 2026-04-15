@@ -16,7 +16,7 @@ export interface MenuSection {
   subtitle?: string;
   priceHeaders?: [string, string];
   items: MenuItem[];
-  subsections?: { title: string; items: MenuItem[] }[];
+  subsections?: { title: string; items: MenuItem[]; priceHeaders?: [string, string] }[];
 }
 
 const rawMenuSections: MenuSection[] = [
@@ -366,6 +366,10 @@ const rawMenuSections: MenuSection[] = [
       subsections: [
         {
           title: "Single Malt Whiskey",
+          priceHeaders: [
+            "IMP",
+            "BOTTLE",
+          ],
           items: [
             {
               name: "Glenlivet 12 Yrs",
@@ -411,6 +415,10 @@ const rawMenuSections: MenuSection[] = [
         },
         {
           title: "Blended Scotch Whiskey",
+          priceHeaders: [
+            "IMP",
+            "BOTTLE",
+          ],
           items: [
             {
               name: "Chivas Regal 12 Yrs",
@@ -531,6 +539,10 @@ const rawMenuSections: MenuSection[] = [
         },
         {
           title: "Bourbon Whiskey",
+          priceHeaders: [
+            "IMP",
+            "BOTTLE",
+          ],
           items: [
             {
               name: "Jack Daniels",
@@ -550,6 +562,10 @@ const rawMenuSections: MenuSection[] = [
         },
         {
           title: "Domestic Whiskey",
+          priceHeaders: [
+            "DOM",
+            "BOTTLE",
+          ],
           items: [
             {
               name: "Signature",

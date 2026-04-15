@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 
-import heroBg1 from "@/assets/hero-bg.png";
+import heroBg1 from "@/assets/hero-bg-new.png";
 import heroBg2 from "@/assets/hero-bg-2.png";
 import heroBg3 from "@/assets/hero-bg-3.png";
 import heroBg4 from "@/assets/hero-bg-4.png";
 
 const heroImages = [heroBg1, heroBg2, heroBg3, heroBg4];
-
 const DISPLAY_MS = 7000;
 const FADE_MS = 2000;
 
@@ -44,8 +43,6 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
-
-      {/* Background images */}
       {heroImages.map((src, i) => (
         <div
           key={i}
@@ -65,10 +62,8 @@ const Hero = () => {
         </div>
       ))}
 
-      {/* 🔥 Cinematic gradient (depth) */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/70" />
 
-      {/* 🔥 Center light + vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -77,7 +72,6 @@ const Hero = () => {
         }}
       />
 
-      {/* Content */}
       <div className="relative z-10 text-center px-4">
         <p className="font-body text-sm tracking-[0.4em] uppercase text-gold-light mb-4 animate-fade-in">
           Madras Square
@@ -129,22 +123,18 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Indicators */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-2">
         {heroImages.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            aria-label={`Show image ${i + 1}`}
-            className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
-              ? "w-6 bg-gold/80"
-              : "w-2 bg-white/25 hover:bg-white/40"
-              }`}
+            className={`h-[3px] rounded-full transition-all duration-500 ${
+              i === currentIndex ? "w-6 bg-gold/80" : "w-2 bg-white/25 hover:bg-white/40"
+            }`}
           />
         ))}
       </div>
 
-      {/* Scroll */}
       <button
         onClick={scrollToMenu}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-gold transition-colors animate-bounce"

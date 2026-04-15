@@ -131,16 +131,26 @@ const MenuSection = ({ section, index }: Props) => {
               )}
 
               {section.subsections?.map((sub) => {
-                const subHasDualSize = sub.items.some(i => i.price300 || i.price650);
+                const subHasDualSize = sub.items.some((i) => i.price300 || i.price650);
                 return (
                   <div key={sub.title}>
-                    {subHasDualSize && (
+                    {sub.priceHeaders && (
+                      <div className="flex justify-end gap-4 mt-10 mb-2 font-body text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                        <span className="w-12 text-right">{sub.priceHeaders[0]}</span>
+                        <span className="w-12 text-right">{sub.priceHeaders[1]}</span>
+                      </div>
+                    )}
+                    {subHasDualSize && !sub.priceHeaders && (
                       <div className="flex justify-end gap-4 mt-10 mb-2 font-body text-xs tracking-[0.2em] uppercase text-muted-foreground">
                         <span className="w-10 text-right">330ml</span>
                         <span className="w-10 text-right">650ml</span>
                       </div>
                     )}
-                    <SubsectionBlock title={sub.title} items={sub.items} priceHeaders={section.priceHeaders} />
+                    <SubsectionBlock
+                      title={sub.title}
+                      items={sub.items}
+                      priceHeaders={sub.priceHeaders ?? section.priceHeaders}
+                    />
                   </div>
                 );
               })}
