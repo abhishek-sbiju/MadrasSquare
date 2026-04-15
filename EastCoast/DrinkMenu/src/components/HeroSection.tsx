@@ -1,15 +1,17 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 
+// Assuming same assets exist or using placeholders temporarily if not sure
+// But I'll stick to what was in DrinkMenu's Hero if possible
 import ec1 from "@/assets/ec1.jpeg";
 import ec2 from "@/assets/ec2.jpeg";
-import ec3 from "@/assets/ec3.jpeg";
+import drink_hero from "@/assets/ec3.jpeg"; // Re-using ec3 or checking what was there
 
-const heroImages = [ec1, ec2, ec3];
+const heroImages = [ec1, ec2, drink_hero];
 const DISPLAY_MS = 7000;
 const FADE_MS = 2000;
 
-const Hero = () => {
+const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
 
@@ -42,6 +44,8 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
+
+      {/* Background images */}
       {heroImages.map((src, i) => (
         <div
           key={i}
@@ -61,8 +65,10 @@ const Hero = () => {
         </div>
       ))}
 
+      {/* Clean coastal gradient (lighter than the dark theme version) */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/70" />
 
+      {/* Subtle center lighting */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -71,6 +77,7 @@ const Hero = () => {
         }}
       />
 
+      {/* Content */}
       <div className="relative z-10 text-center px-4">
         <p className="font-body text-sm tracking-[0.4em] uppercase text-gold-light mb-4 animate-fade-in">
           Madras Square
@@ -114,7 +121,7 @@ const Hero = () => {
           </button>
 
           <a
-            href="tel:+19999999999"
+            href="tel:+917299440000"
             className="px-8 py-3 border border-gold/40 text-gold-light text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/10 transition-all duration-300"
           >
             BOOK A TABLE
@@ -122,18 +129,21 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Indicators */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-2">
         {heroImages.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            className={`h-[3px] rounded-full transition-all duration-500 ${
-              i === currentIndex ? "w-6 bg-gold/80" : "w-2 bg-white/25 hover:bg-white/40"
-            }`}
+            className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
+                ? "w-6 bg-gold/80"
+                : "w-2 bg-white/25 hover:bg-white/40"
+              }`}
           />
         ))}
       </div>
 
+      {/* Scroll Indicator */}
       <button
         onClick={scrollToMenu}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-gold transition-colors animate-bounce"
@@ -144,4 +154,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroSection;

@@ -28,13 +28,7 @@ export default {
           light: "hsl(var(--gold-light))",
           dark: "hsl(var(--gold-dark))",
         },
-        amber: {
-          DEFAULT: "hsl(var(--amber))",
-          light: "hsl(var(--amber-light))",
-          dark: "hsl(var(--amber-dark))",
-        },
         "section-green": "hsl(var(--section-green))",
-        "section-alt": "hsl(var(--section-alt))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

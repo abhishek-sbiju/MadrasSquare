@@ -6,68 +6,61 @@
 
 @layer base {
   :root {
-    /* ═══ EAST COAST — PREMIUM FINE DINING ═══ */
-    /* Deep charcoal base, rich cream text, muted brass accents */
+    /* ── Premium Light Coastal Base — warm off-white ── */
+    --background: 40 30% 97%;
+    --foreground: 220 15% 16%;
 
-    --background: 220 10% 8%;          /* #131517 deep charcoal */
-    --foreground: 40 30% 90%;          /* #ECDFC8 rich cream */
+    --card: 40 25% 94%;
+    --card-foreground: 220 15% 16%;
 
-    --card: 220 8% 11%;               /* #1A1C1F slightly lighter charcoal */
-    --card-foreground: 40 30% 90%;
+    --popover: 40 30% 97%;
+    --popover-foreground: 220 15% 16%;
 
-    --popover: 220 10% 10%;
-    --popover-foreground: 40 30% 90%;
+    /* ── Muted Sand/Warm Neutral Primary ── */
+    --primary: 28 80% 42%;
+    --primary-foreground: 40 30% 97%;
 
-    /* ── Primary: Muted Brass Gold ── */
-    --primary: 38 50% 50%;            /* #BF9940 muted brass */
-    --primary-foreground: 220 10% 8%;
+    --secondary: 40 18% 90%;
+    --secondary-foreground: 220 15% 16%;
 
-    --secondary: 220 6% 15%;          /* Dark elevated surface */
-    --secondary-foreground: 40 20% 75%;
+    --muted: 40 14% 88%;
+    --muted-foreground: 220 10% 32%;
 
-    --muted: 220 6% 14%;
-    --muted-foreground: 40 10% 55%;    /* Warm dimmed cream */
+    --accent: 28 80% 42%;
+    --accent-foreground: 40 30% 97%;
 
-    --accent: 38 50% 50%;
-    --accent-foreground: 220 10% 8%;
-
-    --destructive: 0 72% 51%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 6% 18%;             /* Barely-visible charcoal border */
-    --input: 220 6% 18%;
-    --ring: 38 50% 50%;
+    --border: 40 12% 85%;
+    --input: 40 12% 85%;
+    --ring: 28 80% 42%;
 
     --radius: 0.25rem;
 
-    /* ── Section alternating (dark-on-dark) ── */
-    --section-green: 220 8% 11%;
-    --section-alt: 220 8% 11%;
-    --section-dark: 220 10% 8%;
+    /* ── Section alternating tones ── */
+    --section-green: 40 25% 94%;
+    --section-dark: 40 30% 97%;
 
-    /* ── Gold / Brass Accent System ── */
-    --gold: 38 50% 50%;               /* #BF9940 muted brass */
-    --gold-light: 38 45% 62%;         /* Lighter brass for hover */
-    --gold-dark: 38 55% 38%;          /* Deep brass */
+    /* ── Warm Gold Accent System (Updated to Amber) ── */
+    --gold: 28 80% 42%;
+    --gold-light: 30 65% 55%;
+    --gold-dark: 25 85% 35%;
 
-    /* Amber aliases for drink menu components */
-    --amber: 38 50% 50%;
-    --amber-light: 38 45% 62%;
-    --amber-dark: 38 55% 38%;
-
-    --cream: 40 30% 90%;
+    /* ── Cream accent for soft highlights ── */
+    --cream: 35 25% 92%;
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 220 10% 8%;
-    --sidebar-foreground: 40 30% 90%;
-    --sidebar-primary: 38 50% 50%;
-    --sidebar-primary-foreground: 220 10% 8%;
-    --sidebar-accent: 220 6% 15%;
-    --sidebar-accent-foreground: 40 20% 75%;
-    --sidebar-border: 220 6% 18%;
-    --sidebar-ring: 38 50% 50%;
+    --sidebar-background: 40 30% 97%;
+    --sidebar-foreground: 220 15% 16%;
+    --sidebar-primary: 28 80% 42%;
+    --sidebar-primary-foreground: 40 30% 97%;
+    --sidebar-accent: 40 18% 90%;
+    --sidebar-accent-foreground: 220 15% 16%;
+    --sidebar-border: 40 12% 85%;
+    --sidebar-ring: 28 80% 42%;
   }
 }
 
@@ -93,13 +86,13 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ── Mobile viewport ── */
+/* ── Mobile viewport: ensure URL bar hides on scroll ── */
 body {
   min-height: 100.1vh;
   min-height: 100.1svh;
 }
 
-/* ── Safe full-height for mobile ── */
+/* ── Safe full-height for mobile (accounts for browser UI) ── */
 .h-screen-safe {
   height: 100vh;
   height: 100svh;
@@ -135,12 +128,12 @@ body {
   will-change: transform;
 }
 
-/* ── Heading glow (warm brass glow on dark) ── */
+/* ── Subtle glow effect for headings — warm for light mode ── */
 .heading-glow {
-  text-shadow: 0 0 60px hsl(var(--gold) / 0.15), 0 0 120px hsl(var(--gold) / 0.05);
+  text-shadow: 0 0 40px hsl(var(--gold) / 0.08), 0 0 80px hsl(var(--gold) / 0.03);
 }
 
-/* ── Section backgrounds ── */
+/* ── Section backgrounds — clean subtle alternation ── */
 .bg-section-even {
   background: hsl(var(--section-green));
 }

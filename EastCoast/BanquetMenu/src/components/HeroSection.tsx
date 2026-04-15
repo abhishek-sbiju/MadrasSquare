@@ -101,11 +101,8 @@ const HeroSection = () => {
         </div>
 
         <p
-          className="font-heading text-2xl md:text-3xl italic text-gold-light tracking-widest mb-10 animate-fade-in font-medium"
-          style={{ 
-            animationDelay: "0.35s",
-            textShadow: "0 2px 10px rgba(0,0,0,0.6)"
-          }}
+          className="font-heading text-2xl md:text-3xl italic text-gold-light tracking-widest mb-10 animate-fade-in"
+          style={{ animationDelay: "0.35s" }}
         >
           Banquet Menu
         </p>
