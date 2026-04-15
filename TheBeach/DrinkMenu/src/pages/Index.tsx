@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import HeroSection from "@/components/HeroSection";
 import MenuCategoryNav from "@/components/MenuCategoryNav";
 import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
@@ -47,7 +47,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-clip w-full max-w-[100vw]">
       <Navbar />
-      <Hero />
+      <HeroSection />
       <MenuCategoryNav 
         activeCategory={activeCategory} 
         onCategoryClick={handleCategoryClick} 

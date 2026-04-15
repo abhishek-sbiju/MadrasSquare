@@ -108,7 +108,7 @@ const MenuSection = ({ section, index }: Props) => {
 
               {section.priceHeaders && (section.items.length > 0) && (
                 <div className="flex justify-end gap-4 mb-4 font-body text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                  {section.priceHeaders[0] === "Glass" ? (
+                  {["Glass", "Peg"].includes(section.priceHeaders[0]) ? (
                     <>
                       <span className="w-12 text-right">{section.priceHeaders[0]}</span>
                       <span className="w-12 text-right">{section.priceHeaders[1]}</span>
@@ -136,7 +136,7 @@ const MenuSection = ({ section, index }: Props) => {
                   <div key={sub.title}>
                     {subHasDualSize && (
                       <div className="flex justify-end gap-4 mt-10 mb-2 font-body text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                        <span className="w-10 text-right">300ml</span>
+                        <span className="w-10 text-right">330ml</span>
                         <span className="w-10 text-right">650ml</span>
                       </div>
                     )}

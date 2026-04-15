@@ -6,58 +6,65 @@
 
 @layer base {
   :root {
-    /* Deep navy / midnight blue base — distinctly "bar lounge" */
-    --background: 220 30% 7%;
-    --foreground: 210 20% 92%;
+    /* ── The Beach Printed Menu Base (Warm Cream) ── */
+    --background: 52 45% 90%; /* #f1eeda */
+    --foreground: 0 0% 17%; /* #2b2b2b */
 
-    --card: 220 25% 11%;
-    --card-foreground: 210 20% 92%;
+    --card: 51 45% 87%;
+    --card-foreground: 0 0% 17%;
 
-    --popover: 220 25% 11%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 52 45% 90%;
+    --popover-foreground: 0 0% 17%;
 
-    /* Amber/Copper accent — warm but clearly different from the gold in Sample */
-    --primary: 28 70% 55%;
-    --primary-foreground: 220 30% 7%;
+    /* ── Maroon Accent (#a9445b) ── */
+    --primary: 346 43% 46%;
+    --primary-foreground: 52 45% 90%;
 
-    --secondary: 220 22% 15%;
-    --secondary-foreground: 210 20% 88%;
+    --secondary: 96 23% 67%; /* Soft green (#a8c098) */
+    --secondary-foreground: 0 0% 17%;
 
-    --muted: 220 18% 17%;
-    --muted-foreground: 215 14% 50%;
+    --muted: 51 30% 82%;
+    --muted-foreground: 0 0% 35%;
 
-    --accent: 28 70% 55%;
-    --accent-foreground: 220 30% 7%;
+    --accent: 346 43% 46%;
+    --accent-foreground: 52 45% 90%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 28 70% 55%;
+    --border: 51 20% 75%;
+    --input: 51 20% 75%;
+    --ring: 346 43% 46%;
 
     --radius: 0.25rem;
 
-    /* Deep indigo tint for alternating sections — NOT green like Sample */
-    --section-alt: 225 25% 12%;
-    --section-dark: 220 30% 7%;
+    /* FoodMenu token */
+    --section-green: 96 23% 67%;
 
-    /* Amber/copper spectrum */
-    --amber: 28 70% 55%;
-    --amber-light: 32 55% 72%;
-    --amber-dark: 25 75% 40%;
+    /* DrinkMenu uses `bg-section-alt` → keep it aligned */
+    --section-alt: var(--section-green);
+
+    /* DrinkMenu components use `amber` color utilities — map to maroon */
+    --amber: 346 43% 46%;
+    --amber-light: 346 40% 55%;
+    --amber-dark: 346 50% 35%;
+
+    /* FoodMenu "gold" token (mapped to same maroon) */
+    --gold: var(--amber);
+    --gold-light: var(--amber-light);
+    --gold-dark: var(--amber-dark);
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 220 30% 7%;
-    --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 28 70% 55%;
-    --sidebar-primary-foreground: 220 30% 7%;
-    --sidebar-accent: 220 22% 15%;
-    --sidebar-accent-foreground: 210 20% 92%;
-    --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 28 70% 55%;
+    --sidebar-background: 52 45% 90%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 346 43% 46%;
+    --sidebar-primary-foreground: 52 45% 90%;
+    --sidebar-accent: 96 23% 67%;
+    --sidebar-accent-foreground: 0 0% 17%;
+    --sidebar-border: 51 20% 75%;
+    --sidebar-ring: 346 43% 46%;
   }
 }
 
@@ -73,18 +80,14 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+/* ── Smooth scroll ── */
+html {
+  scroll-behavior: smooth;
 }
 
 /* ── Mobile viewport: ensure URL bar hides on scroll ── */
@@ -99,21 +102,17 @@ body {
   height: 100svh;
 }
 
-/* Custom scrollbar — amber tinted */
+/* ── Custom scrollbar ── */
 ::-webkit-scrollbar {
-  width: 6px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--amber) / 0.3);
-  border-radius: 3px;
-}
-
-/* Menu category scrollbar */
+/* ── Menu category scrollbar ── */
 .menu-categories::-webkit-scrollbar {
   height: 2px;
 }
@@ -122,17 +121,19 @@ body {
   background: hsl(var(--amber) / 0.5);
 }
 
-/* Hero Ken Burns Effect (smooth zoom + slight motion) */
-.hero-kenburns {
-  animation: kenburns 20s ease-in-out infinite alternate;
+/* ── Ken Burns continuous zoom for hero carousel ── */
+@keyframes kenburns {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
-@keyframes kenburns {
-  0% {
-    transform: scale(1) translate(0px, 0px);
-  }
+.hero-kenburns {
+  animation: kenburns 24s ease-in-out infinite;
+  will-change: transform;
+}
 
-  100% {
-    transform: scale(1.08) translate(-10px, -10px);
-  }
+/* ── Subtle glow effect for headings ── */
+.heading-glow {
+  text-shadow: 0 0 60px hsl(var(--amber) / 0.15), 0 0 120px hsl(var(--amber) / 0.05);
 }

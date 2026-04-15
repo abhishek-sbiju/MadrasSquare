@@ -7,7 +7,7 @@
 @layer base {
   :root {
     /* ── Refined Light Bar Lounge Theme ── */
-    --background: 35 25% 95%; /* Warm soft beige, slightly richer than food menu */
+    --background: 35 25% 95%;
     --foreground: 220 20% 15%;
 
     --card: 35 30% 93%;
@@ -18,13 +18,13 @@
 
     /* Deep Amber/Copper accent */
     --primary: 28 80% 42%;
-    --primary-foreground: 35 25% 95%; /* Ensure contrast on amber */
+    --primary-foreground: 35 25% 95%;
 
     --secondary: 35 20% 88%;
     --secondary-foreground: 220 20% 15%;
 
     --muted: 35 20% 88%;
-    --muted-foreground: 220 15% 35%; /* High contrast dark text for descriptions */
+    --muted-foreground: 220 15% 35%;
 
     --accent: 28 80% 42%;
     --accent-foreground: 35 25% 95%;
@@ -43,7 +43,7 @@
     --section-dark: 35 25% 95%;
 
     /* Amber spectrum */
-    --amber: 28 80% 42%;       /* Deep rich amber */
+    --amber: 28 80% 42%;
     --amber-light: 30 65% 55%;
     --amber-dark: 25 85% 35%;
 
@@ -73,18 +73,14 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+/* ── Smooth scroll ── */
+html {
+  scroll-behavior: smooth;
 }
 
 /* ── Mobile viewport: ensure URL bar hides on scroll ── */
@@ -118,17 +114,14 @@ body {
   background: hsl(var(--amber) / 0.5);
 }
 
-/* Hero Ken Burns Effect (smooth zoom + slight motion) */
-.hero-kenburns {
-  animation: kenburns 20s ease-in-out infinite alternate;
+/* ── Ken Burns continuous zoom for hero carousel ── */
+@keyframes kenburns {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
-@keyframes kenburns {
-  0% {
-    transform: scale(1) translate(0px, 0px);
-  }
-
-  100% {
-    transform: scale(1.08) translate(-10px, -10px);
-  }
+.hero-kenburns {
+  animation: kenburns 24s ease-in-out infinite;
+  will-change: transform;
 }
