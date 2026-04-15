@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 
-import heroBg1 from "@/assets/hero-bg-new.png";
-import heroBg2 from "@/assets/hero-bg-2.png";
-import heroBg3 from "@/assets/hero-bg-3.png";
-import heroBg4 from "@/assets/hero-bg-4.png";
+import b1 from "@/assets/b1.jpeg";
+import b2 from "@/assets/b2.jpeg";
+import b3 from "@/assets/b3.jpeg";
 import { restaurantInfo } from "@/data/restaurantInfo";
 
-const heroImages = [heroBg1, heroBg2, heroBg3, heroBg4];
+const heroImages = [b1, b2, b3];
 const DISPLAY_MS = 7000;
 const FADE_MS = 2000;
 
