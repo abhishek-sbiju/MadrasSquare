@@ -5,6 +5,7 @@ import heroBg1 from "@/assets/hero-bg-new.png";
 import heroBg2 from "@/assets/hero-bg-2.png";
 import heroBg3 from "@/assets/hero-bg-3.png";
 import heroBg4 from "@/assets/hero-bg-4.png";
+import { restaurantInfo } from "@/data/restaurantInfo";
 
 const heroImages = [heroBg1, heroBg2, heroBg3, heroBg4];
 const DISPLAY_MS = 7000;
@@ -43,7 +44,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
+    <section id="hero" className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
 
       {/* Background images with smooth crossfade + subtle blur */}
       {heroImages.map((src, i) => (
@@ -80,7 +81,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4">
         <p className="font-body text-xs tracking-[0.4em] uppercase text-white/80 mb-4 animate-fade-in">
-          Madras Square
+          {restaurantInfo.parentBrand}
         </p>
 
         <h1
@@ -90,7 +91,7 @@ const HeroSection = () => {
             textShadow: "0 2px 20px rgba(0,0,0,0.6)",
           }}
         >
-          THE BEACH
+          {restaurantInfo.venue}
         </h1>
 
         <div
@@ -106,7 +107,7 @@ const HeroSection = () => {
           className="font-heading text-xl md:text-2xl italic text-white/80 tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
-          Food Menu
+          {restaurantInfo.menuLabel}
         </p>
 
         <div
@@ -121,10 +122,10 @@ const HeroSection = () => {
           </button>
 
           <a
-            href="tel:+19999999999"
+            href={restaurantInfo.phoneHref}
             className="px-8 py-3 border border-gold/60 text-white/90 text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/20 transition-all duration-300"
           >
-            BOOK A TABLE
+            CALL TO RESERVE
           </a>
         </div>
       </div>

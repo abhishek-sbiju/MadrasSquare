@@ -1,104 +1,77 @@
 import type { MenuCategory, MenuItem } from "@/data/menuData";
 import FadeIn from "./FadeIn";
-
+import { getDietType } from "@/lib/diet";
 
 interface MenuSectionProps {
   category: MenuCategory;
   index: number;
 }
 
-import { getDietType } from "@/lib/diet";
-
 const getDietClasses = (item: MenuItem) => {
   const type = getDietType(item);
-  const baseClasses = "w-2 h-2 md:w-2.5 md:h-2.5 rounded-full flex-shrink-0";
-  
-  if (type === 'both') {
-    return `${baseClasses} bg-[linear-gradient(to_right,#16a34a_50%,#dc2626_50%)] border-none`;
+  const baseClasses = "h-2 w-2 flex-shrink-0 rounded-full md:h-2.5 md:w-2.5";
+
+  if (type === "both") {
+    return `${baseClasses} bg-[linear-gradient(to_right,#16a34a_50%,#dc2626_50%)]`;
   }
-  if (type === 'non-veg') {
+
+  if (type === "non-veg") {
     return `${baseClasses} bg-red-600`;
   }
+
   return `${baseClasses} bg-green-600`;
 };
 
-const getBeverageEmoji = (categoryId: string, subCategoryName: string = '', itemName: string = '') => {
-  if (categoryId !== 'beverages') {
-    return null;
-  }
-
-  const sub = subCategoryName.toLowerCase();
-  const name = itemName.toLowerCase();
-
-  if (sub.includes('hot') || name.includes('espresso') || name.includes('cappuccino') || name.includes('latte') || name.includes('americano') || name.includes('macchiato') || name.includes('piccolo') || name.includes('hot chocolate')) {
-    return '☕';
-  }
-  if (name.includes('tea')) {
-    return '🍵';
-  }
-  if (sub.includes('shake') || name.includes('milkshake')) {
-    return '🧃';
-  }
-  if (sub.includes('frappe') || name.includes('frappe')) {
-    return '🧊';
-  }
-  if (name === 'water' || name.includes('mineral water') || name.includes('tonic water') || name.includes('soda')) {
-    return '💧';
-  }
-  // Default for cold beverages and mocktails
-  return '🍹';
-};
-
-const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, categoryId: string, subCategoryName?: string }) => {
-  const emoji = getBeverageEmoji(categoryId, subCategoryName, item.name);
-
+const MenuItemRow = ({ item }: { item: MenuItem }) => {
   return (
-  <div className="py-4 md:py-5 border-b border-black/[0.07] last:border-0">
-    <div className="flex items-start justify-between gap-4 md:gap-6">
-      {/* Left side: indicator + name + description */}
-      <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
-        <div className="mt-1.5 md:mt-[7px]">
-          {emoji ? (
-            <span className="text-xs md:text-sm flex-shrink-0 block leading-none saturate-150">{emoji}</span>
-          ) : (
-            <span className={getDietClasses(item)} style={{ display: 'block' }} />
-          )}
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex flex-wrap items-baseline gap-x-2">
-            <h4 className="font-heading text-[15px] md:text-lg font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
-              {item.name}
-            </h4>
-            {item.variants && (
-              <span className="text-muted-foreground text-[10px] md:text-xs font-body font-normal tracking-normal">{item.variants}</span>
-            )}
-            {item.tags?.map((tag) => (
-              <span
-                key={tag}
-                className="text-[8px] md:text-[9px] tracking-[0.1em] font-body font-semibold px-1.5 py-[2px] border border-gold/40 text-gold rounded-sm uppercase"
-              >
-                {tag}
-              </span>
-            ))}
+    <div className="border-b border-black/[0.07] py-4 last:border-0 md:py-5">
+      <div className="flex items-start justify-between gap-4 md:gap-6">
+        <div className="flex min-w-0 flex-1 items-start gap-2.5 md:gap-3">
+          <div className="mt-1.5 md:mt-[7px]">
+            <span className={getDietClasses(item)} style={{ display: "block" }} />
           </div>
-          {item.description && (
-            <p className="text-muted-foreground text-[13px] md:text-[15px] font-body mt-1.5 leading-relaxed">{item.description}</p>
-          )}
-        </div>
-      </div>
 
-      {/* Right side: price — always right-aligned */}
-      <span className="font-body text-[15px] md:text-lg font-medium text-gold whitespace-nowrap tabular-nums shrink-0 mt-0.5">
-        {item.price}
-      </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-baseline gap-x-2">
+              <h4 className="font-heading text-[15px] font-semibold uppercase leading-snug tracking-[0.06em] text-foreground md:text-lg md:tracking-[0.1em]">
+                {item.name}
+              </h4>
+
+              {item.variants && (
+                <span className="font-body text-[10px] text-muted-foreground md:text-xs">
+                  {item.variants}
+                </span>
+              )}
+
+              {item.tags?.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-sm border border-gold/40 px-1.5 py-[2px] font-body text-[8px] font-semibold uppercase tracking-[0.1em] text-gold md:text-[9px]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {item.description && (
+              <p className="mt-1.5 font-body text-[13px] leading-relaxed text-muted-foreground md:text-[15px]">
+                {item.description}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <span className="mt-0.5 shrink-0 whitespace-nowrap font-body text-[15px] font-medium tabular-nums text-gold md:text-lg">
+          {item.price}
+        </span>
+      </div>
     </div>
-  </div>
   );
 };
 
 const SectionDivider = () => (
   <div className="flex items-center justify-center py-8 md:py-12">
-    <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+    <div className="h-px w-16 bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
   </div>
 );
 
@@ -109,37 +82,38 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
   return (
     <div className={bgClass}>
       <SectionDivider />
+
       <section
         id={category.id}
-        className={`px-6 md:px-14 lg:px-24 pb-12 md:pb-20 pt-4 md:pt-8`}
-        style={{ scrollMarginTop: "110px" }}
+        className="px-6 pb-12 pt-4 md:px-14 md:pb-20 md:pt-8 lg:px-24"
+        style={{ scrollMarginTop: "160px" }}
       >
-        <div className="max-w-5xl mx-auto w-full">
-          {/* Category header */}
+        <div className="mx-auto w-full max-w-5xl">
           <FadeIn delay={100}>
             <div className="mb-8 md:mb-12">
-              <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
+              <h2 className="font-heading text-2xl font-bold uppercase tracking-[0.08em] text-foreground md:text-3xl md:tracking-[0.12em] lg:text-4xl">
                 {category.title}
               </h2>
-              <div className="w-8 md:w-10 h-[2px] bg-gold" />
+              <div className="mt-3 h-[2px] w-8 bg-gold md:w-10" />
+
               {category.description && (
-                <p className="text-muted-foreground text-xs md:text-sm font-body mt-4 max-w-xl italic leading-relaxed">
+                <p className="mt-4 max-w-3xl font-body text-xs italic leading-relaxed text-muted-foreground md:text-sm">
                   {category.description}
                 </p>
               )}
             </div>
           </FadeIn>
 
-          {/* Items */}
           {category.subCategories ? (
             category.subCategories.map((sub, subIdx) => (
               <div key={sub.name} className="mb-10 md:mb-14">
-                <FadeIn delay={150 + (subIdx * 50)}>
-                  <h3 className="font-heading text-lg md:text-2xl font-semibold text-gold mb-4 md:mb-5 tracking-[0.1em] md:tracking-[0.14em] uppercase">
+                <FadeIn delay={150 + subIdx * 50}>
+                  <h3 className="mb-4 font-heading text-lg font-semibold uppercase tracking-[0.1em] text-gold md:mb-5 md:text-2xl md:tracking-[0.14em]">
                     {sub.name}
                   </h3>
+
                   {sub.items.map((item, i) => (
-                    <MenuItemRow key={`${item.name}-${i}`} item={item} categoryId={category.id} subCategoryName={sub.name} />
+                    <MenuItemRow key={`${item.name}-${i}`} item={item} />
                   ))}
                 </FadeIn>
               </div>
@@ -147,7 +121,7 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
           ) : (
             <FadeIn delay={150}>
               {category.items?.map((item, i) => (
-                <MenuItemRow key={`${item.name}-${i}`} item={item} categoryId={category.id} />
+                <MenuItemRow key={`${item.name}-${i}`} item={item} />
               ))}
             </FadeIn>
           )}

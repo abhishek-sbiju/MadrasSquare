@@ -36,13 +36,13 @@ const MenuSearch = () => {
     <>
       <button 
         onClick={() => setOpen(true)}
-        className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" 
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-card/80 text-muted-foreground transition hover:border-gold/50 hover:text-gold" 
         aria-label="Search"
       >
         <Search className="h-[18px] w-[18px] md:h-5 md:w-5" />
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search the menu... (Cmd+K)" />
+        <CommandInput placeholder="Search dishes or sections... (Cmd+K)" />
         <CommandList>
           <CommandEmpty>No dish found.</CommandEmpty>
           {menuCategories.map((category) => {

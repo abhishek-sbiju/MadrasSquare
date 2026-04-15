@@ -9,7 +9,7 @@ interface Props {
 const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [string, string] }) => {
   if (item.priceDom || item.priceImp) {
     return (
-      <div className="flex gap-4 font-body text-sm text-amber tracking-wider shrink-0">
+      <div className="flex gap-4 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
         <span className="w-10 text-right">{item.priceDom || ""}</span>
         <span className="w-10 text-right">{item.priceImp || ""}</span>
       </div>
@@ -17,7 +17,7 @@ const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [
   }
   if (item.priceGlass || item.priceBottle) {
     return (
-      <div className="flex gap-4 font-body text-sm text-amber tracking-wider shrink-0">
+      <div className="flex gap-4 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
         <span className="w-12 text-right">{item.priceGlass || ""}</span>
         <span className="w-12 text-right">{item.priceBottle || ""}</span>
       </div>
@@ -25,7 +25,7 @@ const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [
   }
   if (item.price300 || item.price650) {
     return (
-      <div className="flex gap-4 font-body text-sm text-amber tracking-wider shrink-0">
+      <div className="flex gap-4 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
         <span className="w-10 text-right">{item.price300 || ""}</span>
         <span className="w-10 text-right">{item.price650 || ""}</span>
       </div>
@@ -33,7 +33,7 @@ const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [
   }
   if (item.price) {
     return (
-      <span className="font-body text-sm text-amber tracking-wider shrink-0">
+      <span className="font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5 whitespace-nowrap">
         {item.price}
       </span>
     );
@@ -45,7 +45,7 @@ const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHe
   <div className="py-2.5 md:py-4 border-b border-amber/8 last:border-0 hover:bg-white/[0.02] transition-colors md:px-2 rounded-md group">
     <div className="flex items-start md:items-baseline justify-between gap-2 md:gap-3">
       <div className="flex-1 min-w-0 flex flex-wrap items-baseline">
-        <h4 className="font-heading text-sm md:text-lg font-semibold text-foreground tracking-[0.08em] md:tracking-[0.12em] uppercase leading-tight md:leading-normal group-hover:text-amber transition-colors duration-300">
+        <h4 className="font-heading text-[15px] md:text-xl font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug group-hover:text-amber transition-colors duration-300 break-words">
           {item.name}
         </h4>
         <span className="hidden md:inline-flex flex-1 border-b border-dotted border-amber/12 mx-2 min-w-[20px]" />
@@ -53,7 +53,7 @@ const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHe
       <PriceDisplay item={item} priceHeaders={priceHeaders} />
     </div>
     {item.description && (
-      <p className="text-muted-foreground/70 text-[10px] md:text-xs font-body mt-1 md:mt-1.5 leading-relaxed max-w-[90%] md:max-w-none">
+      <p className="text-muted-foreground/70 text-[13px] md:text-[15px] font-body mt-2 leading-loose max-w-[90%] md:max-w-none">
         {item.description}
       </p>
     )}
@@ -72,7 +72,7 @@ const SectionDivider = () => (
 const SubsectionBlock = ({ title, items, priceHeaders }: { title: string; items: MenuItem[]; priceHeaders?: [string, string] }) => (
   <div className="mb-6 md:mb-10">
     <FadeIn delay={150}>
-      <h3 className="font-heading text-lg md:text-2xl font-semibold text-amber mb-2 md:mb-4 tracking-[0.08em] md:tracking-[0.1em] uppercase">
+      <h3 className="font-heading text-xl md:text-[1.65rem] font-semibold text-amber mb-2 md:mb-4 tracking-[0.1em] md:tracking-[0.14em] uppercase">
         {title}
       </h3>
       {items.map((item, i) => (
@@ -100,7 +100,7 @@ const MenuSection = ({ section, index }: Props) => {
           <div className="flex flex-col gap-10 md:gap-16 w-full">
             <div className="w-full min-w-0">
               <FadeIn delay={100}>
-                <h2 className="font-heading text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2 tracking-wide uppercase">
+                <h2 className="font-heading text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
                   {section.title}
                 </h2>
                 <div className="w-10 md:w-12 h-[2px] bg-amber mb-4 md:mb-6" />

@@ -7,7 +7,6 @@ import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { menuCategories } from "@/data/menuData";
-import { getDietType } from "@/lib/diet";
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
@@ -54,7 +53,7 @@ const Index = () => {
       <MenuCategoryNav 
         activeCategory={activeCategory} 
         onCategoryClick={handleCategoryClick} 
-        categories={filteredCategories.map(c => ({ id: c.id, label: c.title }))}
+        categories={filteredCategories.map((c) => ({ id: c.id, label: c.navLabel ?? c.title }))}
       />
       
       {filteredCategories.map((category, index) => (

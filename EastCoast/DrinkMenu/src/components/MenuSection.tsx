@@ -53,7 +53,7 @@ const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHe
       <PriceDisplay item={item} priceHeaders={priceHeaders} />
     </div>
     {item.description && (
-      <p className="text-muted-foreground text-[11px] md:text-sm font-body mt-1 md:mt-1.5 leading-relaxed max-w-[90%] md:max-w-none">
+      <p className="text-muted-foreground text-[13px] md:text-[15px] font-body mt-2 leading-loose max-w-[90%] md:max-w-none">
         {item.description}
       </p>
     )}
@@ -72,7 +72,7 @@ const SectionDivider = () => (
 const SubsectionBlock = ({ title, items, priceHeaders }: { title: string; items: MenuItem[]; priceHeaders?: [string, string] }) => (
   <div className="mb-6 md:mb-10">
     <FadeIn delay={150}>
-      <h3 className="font-heading text-lg md:text-2xl font-semibold text-amber mb-2 md:mb-4 tracking-[0.08em] md:tracking-[0.1em] uppercase">
+      <h3 className="font-heading text-xl md:text-[1.65rem] font-semibold text-amber mb-2 md:mb-4 tracking-[0.1em] md:tracking-[0.14em] uppercase">
         {title}
       </h3>
       {items.map((item, i) => (
