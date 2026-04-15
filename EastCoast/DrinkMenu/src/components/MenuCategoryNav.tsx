@@ -24,18 +24,18 @@ const MenuCategoryNav = ({ activeCategory, onCategoryClick, categories }: MenuCa
   }, [activeCategory]);
 
   return (
-    <div id="menu-nav" className="sticky top-12 md:top-[57px] z-40 bg-background border-b border-border shadow-sm">
-      <div className="flex items-center justify-center px-1.5 md:px-6">
-        <div ref={scrollContainerRef} className="menu-categories flex overflow-x-auto gap-1 py-2 md:py-3.5 min-w-0 scroll-smooth">
+    <div id="menu-nav" className="sticky top-12 md:top-[57px] z-40 bg-background/95 backdrop-blur-md border-b border-border">
+      <div className="flex items-center justify-between px-1.5 md:px-6">
+        <div ref={scrollContainerRef} className="menu-categories flex overflow-x-auto gap-2 py-3 md:py-4 flex-1 min-w-0 scroll-smooth">
           {categories.map((item) => (
             <button
               key={item.id}
               data-category-id={item.id}
               onClick={() => onCategoryClick(item.id)}
-              className={`whitespace-nowrap px-2.5 py-1.5 text-[11px] md:px-4 md:py-2.5 md:text-base tracking-[0.06em] md:tracking-[0.1em] font-body font-medium transition-all flex-shrink-0 rounded-sm
+              className={`whitespace-nowrap px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-sm tracking-[0.08em] md:tracking-[0.12em] font-body font-semibold transition-all duration-300 flex-shrink-0 rounded-sm border
                 ${activeCategory === item.id
-                  ? "bg-amber text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.03]"
+                  ? "bg-gold/10 text-gold border-gold/30"
+                  : "border-transparent text-muted-foreground hover:text-foreground hover:bg-foreground/[0.03]"
                 }`}
             >
               {item.label}

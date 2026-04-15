@@ -6,57 +6,65 @@
 
 @layer base {
   :root {
-    /* ── Refined Light Bar Lounge Theme ── */
-    --background: 35 25% 95%;
-    --foreground: 220 20% 15%;
+    /* Premium Light Coastal Base */
+    --background: 40 30% 97%;
+    --foreground: 220 15% 16%;
 
-    --card: 35 30% 93%;
-    --card-foreground: 220 20% 15%;
+    --card: 40 25% 94%;
+    --card-foreground: 220 15% 16%;
 
-    --popover: 35 25% 95%;
-    --popover-foreground: 220 20% 15%;
+    --popover: 40 30% 97%;
+    --popover-foreground: 220 15% 16%;
 
-    /* Deep Amber/Copper accent */
+    /* Muted Sand / Warm Neutral Primary */
     --primary: 28 80% 42%;
-    --primary-foreground: 35 25% 95%;
+    --primary-foreground: 40 30% 97%;
 
-    --secondary: 35 20% 88%;
-    --secondary-foreground: 220 20% 15%;
+    --secondary: 40 18% 90%;
+    --secondary-foreground: 220 15% 16%;
 
-    --muted: 35 20% 88%;
-    --muted-foreground: 220 15% 35%;
+    --muted: 40 14% 88%;
+    --muted-foreground: 220 10% 32%;
 
     --accent: 28 80% 42%;
-    --accent-foreground: 35 25% 95%;
+    --accent-foreground: 40 30% 97%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 35 25% 95%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 35 15% 82%;
-    --input: 35 15% 82%;
+    --border: 40 12% 85%;
+    --input: 40 12% 85%;
     --ring: 28 80% 42%;
 
     --radius: 0.25rem;
 
-    /* Slightly richer alt section for drinks */
-    --section-alt: 35 30% 92%;
-    --section-dark: 35 25% 95%;
+    /* Section alternating tones */
+    --section-green: 40 25% 94%;
+    --section-alt: 40 25% 94%;
+    --section-dark: 40 30% 97%;
 
-    /* Amber spectrum */
+    /* Warm Gold Accent System */
+    --gold: 28 80% 42%;
+    --gold-light: 30 65% 55%;
+    --gold-dark: 25 85% 35%;
+
+    /* Keep amber aliases so existing drink components still work */
     --amber: 28 80% 42%;
     --amber-light: 30 65% 55%;
     --amber-dark: 25 85% 35%;
 
+    --cream: 35 25% 92%;
+
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 35 25% 95%;
-    --sidebar-foreground: 220 20% 15%;
+    --sidebar-background: 40 30% 97%;
+    --sidebar-foreground: 220 15% 16%;
     --sidebar-primary: 28 80% 42%;
-    --sidebar-primary-foreground: 35 25% 95%;
-    --sidebar-accent: 35 20% 88%;
-    --sidebar-accent-foreground: 220 20% 15%;
-    --sidebar-border: 35 15% 82%;
+    --sidebar-primary-foreground: 40 30% 97%;
+    --sidebar-accent: 40 18% 90%;
+    --sidebar-accent-foreground: 220 15% 16%;
+    --sidebar-border: 40 12% 85%;
     --sidebar-ring: 28 80% 42%;
   }
 }
@@ -78,24 +86,20 @@
   }
 }
 
-/* ── Smooth scroll ── */
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Mobile viewport: ensure URL bar hides on scroll ── */
 body {
   min-height: 100.1vh;
   min-height: 100.1svh;
 }
 
-/* ── Safe full-height for mobile (accounts for browser UI) ── */
 .h-screen-safe {
   height: 100vh;
   height: 100svh;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   display: none;
 }
@@ -105,16 +109,14 @@ body {
   scrollbar-width: none;
 }
 
-/* Menu category scrollbar */
 .menu-categories::-webkit-scrollbar {
   height: 2px;
 }
 
 .menu-categories::-webkit-scrollbar-thumb {
-  background: hsl(var(--amber) / 0.5);
+  background: hsl(var(--gold) / 0.5);
 }
 
-/* ── Ken Burns continuous zoom for hero carousel ── */
 @keyframes kenburns {
   0%   { transform: scale(1); }
   50%  { transform: scale(1.08); }
@@ -124,4 +126,16 @@ body {
 .hero-kenburns {
   animation: kenburns 24s ease-in-out infinite;
   will-change: transform;
+}
+
+.heading-glow {
+  text-shadow: 0 0 40px hsl(var(--gold) / 0.08), 0 0 80px hsl(var(--gold) / 0.03);
+}
+
+.bg-section-even {
+  background: hsl(var(--section-green));
+}
+
+.bg-section-odd {
+  background: hsl(var(--background));
 }
