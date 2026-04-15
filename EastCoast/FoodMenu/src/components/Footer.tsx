@@ -11,7 +11,7 @@ const Footer = () => {
             Elevating your dining experience with premium cuisine, artisanal plates, and an ambiance that speaks luxury.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-white hover:border-gold transition-all duration-300" aria-label="Instagram">
+            <a href="https://www.instagram.com/madrassquare/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-white hover:border-gold transition-all duration-300" aria-label="Instagram">
               <Instagram size={17} />
             </a>
           </div>
@@ -23,13 +23,12 @@ const Footer = () => {
           <ul className="space-y-4 font-body text-sm text-muted-foreground flex flex-col items-center md:items-start">
             <li className="flex items-start gap-3 text-left">
               <MapPin size={17} className="text-gold shrink-0 mt-0.5" />
-              <span>Madras Square, South Goa,<br />India, 403001</span>
+              <span>East Coast at Madras Square , 2/520, Sundeep Ave,<br />Sakthimoorthiamman Nagar, Neelankarai, Chennai,<br />Tamil Nadu 600041</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={17} className="text-gold shrink-0" />
               <div className="flex flex-col text-left">
-                <a href="tel:+19999999999" className="hover:text-foreground transition-colors duration-200">+1 999 999 9999</a>
-                <a href="tel:+19999999999" className="hover:text-foreground transition-colors duration-200">+1 999 999 9999</a>
+                    <a href="tel:+917299440000" className="hover:text-foreground transition-colors duration-200">+91 72994 40000</a>
               </div>
             </li>
           </ul>
@@ -42,8 +41,9 @@ const Footer = () => {
             <li className="flex items-start gap-3 text-left">
               <Clock size={17} className="text-gold shrink-0 mt-0.5" />
               <div>
-                <p>Mon - Fri: 5:00 PM - 1:00 AM</p>
-                <p className="mt-1">Sat - Sun: 3:00 PM - 2:00 AM</p>
+                <p>Monday – Friday: 11 am – 10.30 pm</p>
+                <p className="mt-1">Saturday: 11 am – 3.45 pm | 6:30 pm – 10:30 pm</p>
+                <p className="mt-1">Sunday: 11 am – 3.45 pm | 6:30 pm – 10:30 pm</p>
               </div>
             </li>
           </ul>

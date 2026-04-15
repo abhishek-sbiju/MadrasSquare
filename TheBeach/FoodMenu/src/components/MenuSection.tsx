@@ -49,7 +49,7 @@ const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHe
           {item.name}
         </h4>
         {item.description && (
-          <p className="text-muted-foreground text-[13px] md:text-[15px] font-body mt-2 leading-relaxed max-w-[90%] md:max-w-[85%]">
+          <p className="text-muted-foreground/60 text-[13px] md:text-[15px] font-body mt-2 leading-relaxed max-w-[90%] md:max-w-[85%]">
             {item.description}
           </p>
         )}
