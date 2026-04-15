@@ -10,7 +10,7 @@
     --background: 52 45% 90%; /* #f1eeda */
     --foreground: 0 0% 17%; /* #2b2b2b */
 
-    --card: 51 45% 87%; /* Slightly darker cream for cards */
+    --card: 51 45% 87%;
     --card-foreground: 0 0% 17%;
 
     --popover: 52 45% 90%;
@@ -24,9 +24,9 @@
     --secondary-foreground: 0 0% 17%;
 
     --muted: 51 30% 82%;
-    --muted-foreground: 0 0% 35%; /* Readable dark gray for descriptions */
+    --muted-foreground: 0 0% 35%;
 
-    --accent: 346 43% 46%; /* Maroon */
+    --accent: 346 43% 46%;
     --accent-foreground: 52 45% 90%;
 
     --destructive: 0 84.2% 60.2%;
@@ -38,20 +38,21 @@
 
     --radius: 0.25rem;
 
-    /* ── Section backgrounds ── */
-    --section-green: 96 23% 67%; /* Soft green (#a8c098) */
-    --section-dark: 52 45% 90%; /* Back to cream bg for alternation */
+    /* FoodMenu token */
+    --section-green: 96 23% 67%;
 
-    /* ── Maroon / Red System ── */
-    --gold: 346 43% 46%; /* Replacing gold variable with maroon for layout compatibility */
-    --gold-light: 346 40% 55%;
-    --gold-dark: 346 50% 35%;
+    /* DrinkMenu uses `bg-section-alt` → keep it aligned */
+    --section-alt: var(--section-green);
 
-    /* ── Subtle Accents ── */
-    --green-olive: 96 23% 67%;
-    --green-forest: 96 23% 67%;
-    --green-sage: 96 23% 67%;
-    --cream: 52 45% 90%;
+    /* DrinkMenu components use `amber` color utilities — map to maroon */
+    --amber: 346 43% 46%;
+    --amber-light: 346 40% 55%;
+    --amber-dark: 346 50% 35%;
+
+    /* FoodMenu "gold" token (mapped to same maroon) */
+    --gold: var(--amber);
+    --gold-light: var(--amber-light);
+    --gold-dark: var(--amber-dark);
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
@@ -115,8 +116,9 @@ body {
 .menu-categories::-webkit-scrollbar {
   height: 2px;
 }
+
 .menu-categories::-webkit-scrollbar-thumb {
-  background: hsl(var(--gold) / 0.5);
+  background: hsl(var(--amber) / 0.5);
 }
 
 /* ── Ken Burns continuous zoom for hero carousel ── */
@@ -133,13 +135,5 @@ body {
 
 /* ── Subtle glow effect for headings ── */
 .heading-glow {
-  text-shadow: 0 0 60px hsl(var(--gold) / 0.15), 0 0 120px hsl(var(--gold) / 0.05);
-}
-
-/* ── Section Backgrounds ── */
-.bg-section-even {
-  background: hsl(var(--section-green));
-}
-.bg-section-odd {
-  background: hsl(var(--background));
+  text-shadow: 0 0 60px hsl(var(--amber) / 0.15), 0 0 120px hsl(var(--amber) / 0.05);
 }

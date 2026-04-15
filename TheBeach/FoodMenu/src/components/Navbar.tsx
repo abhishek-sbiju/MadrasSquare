@@ -1,44 +1,33 @@
-import { Phone, Sparkles } from "lucide-react";
+import { Phone } from "lucide-react";
 import MenuSearch from "./MenuSearch";
 import { restaurantInfo } from "@/data/restaurantInfo";
 
 const Navbar = () => {
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 md:h-20 md:px-8">
-        <a href="#hero" className="min-w-0">
-          <p className="font-body text-[9px] uppercase tracking-[0.35em] text-muted-foreground md:text-[10px]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+      <div className="flex h-12 md:h-[57px] items-center justify-between px-3 md:px-8">
+        <a href={restaurantInfo.phoneHref} className="flex items-center gap-1.5 md:gap-2 text-muted-foreground hover:text-foreground transition-colors text-xs md:text-sm font-body">
+          <Phone className="h-[13px] w-[13px] md:h-[14px] md:w-[14px]" />
+          <span className="hidden sm:inline">{restaurantInfo.phoneDisplay}</span>
+        </a>
+        
+        {/* Two-line branded header */}
+        <div className="text-center">
+          <p className="font-body text-[6px] md:text-[8px] tracking-[0.35em] md:tracking-[0.4em] text-muted-foreground uppercase leading-none mb-0.5">
             {restaurantInfo.parentBrand}
           </p>
-          <h1 className="font-heading text-xl font-bold tracking-[0.14em] text-foreground md:text-3xl">
+          <h1 className="font-heading text-base md:text-2xl font-bold tracking-[0.18em] md:tracking-[0.22em] text-foreground leading-none">
             {restaurantInfo.venue}
           </h1>
-        </a>
-
-        <div className="hidden items-center gap-2 rounded-full border border-border/80 bg-card/75 px-4 py-2 font-body text-[11px] uppercase tracking-[0.24em] text-muted-foreground lg:flex">
-          <Sparkles className="h-3.5 w-3.5 text-gold" />
-          <span>{restaurantInfo.menuLabel}</span>
-          <span className="text-border">/</span>
-          <span>Printed Order</span>
         </div>
-
-        <div className="flex items-center gap-2 md:gap-3">
+        
+        <div className="flex items-center gap-2 md:gap-4">
           <a
             href={restaurantInfo.phoneHref}
-            className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/80 px-3 py-2 font-body text-[11px] font-medium tracking-[0.14em] text-foreground transition hover:border-gold/50 hover:text-gold md:px-4"
+            className="hidden md:inline-block px-5 py-2 border border-gold text-gold text-xs tracking-[0.15em] font-body font-medium hover:bg-gold hover:text-primary-foreground transition-all rounded-sm"
           >
-            <Phone className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">{restaurantInfo.phoneDisplay}</span>
-            <span className="sm:hidden">Call</span>
+            RESERVE
           </a>
-
-          <a
-            href={restaurantInfo.phoneHref}
-            className="hidden rounded-full bg-gold px-4 py-2 font-body text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground transition hover:bg-gold-dark md:inline-flex"
-          >
-            Reserve
-          </a>
-
           <MenuSearch />
         </div>
       </div>

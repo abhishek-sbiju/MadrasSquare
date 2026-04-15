@@ -43,27 +43,26 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
-
+    <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
       {/* Background images with smooth crossfade + subtle blur */}
       {heroImages.map((src, i) => (
         <div
-          key={i}
-          className="absolute inset-0"
-          style={{
-            opacity: i === currentIndex ? 1 : 0,
-            transition: `opacity ${FADE_MS}ms ease-in-out`,
-          }}
-        >
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns blur-[1px]"
-            style={{
-              backgroundImage: `url(${src})`,
-              animationDelay: `${-i * 6}s`,
-            }}
-          />
-        </div>
-      ))}
+52:           key={i}
+53:           className="absolute inset-0"
+54:           style={{
+55:             opacity: i === currentIndex ? 1 : 0,
+56:             transition: `opacity ${FADE_MS}ms ease-in-out`,
+57:           }}
+58:         >
+59:           <div
+60:             className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns blur-[1px]"
+61:             style={{
+62:               backgroundImage: `url(${src})`,
+63:               animationDelay: `${-i * 6}s`,
+64:             }}
+65:           />
+66:         </div>
+67:       ))}
 
       {/* 🔥 Cinematic gradient (depth) */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
