@@ -45,7 +45,7 @@ const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHe
   <div className="py-3 md:py-5 border-b border-border/60 last:border-0 hover:bg-foreground/[0.03] transition-colors md:px-2 rounded-md group">
     <div className="flex items-start md:items-baseline justify-between gap-2 md:gap-3">
       <div className="flex-1 min-w-0 flex flex-wrap items-baseline">
-        <h4 className="font-heading text-sm md:text-lg font-semibold text-foreground tracking-[0.08em] md:tracking-[0.12em] uppercase leading-tight md:leading-normal group-hover:text-amber transition-colors duration-300">
+        <h4 className="font-heading text-[15px] md:text-xl font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug group-hover:text-amber transition-colors duration-300 break-words">
           {item.name}
         </h4>
         <span className="hidden md:inline-flex flex-1 border-b border-dotted border-border/80 mx-2 min-w-[20px]" />
@@ -100,7 +100,7 @@ const MenuSection = ({ section, index }: Props) => {
           <div className="flex flex-col gap-10 md:gap-16 w-full">
             <div className="w-full min-w-0">
               <FadeIn delay={100}>
-                <h2 className="font-heading text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2 tracking-wide uppercase">
+                <h2 className="font-heading text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
                   {section.title}
                 </h2>
                 <div className="w-10 md:w-12 h-[2px] bg-amber mb-4 md:mb-6" />
