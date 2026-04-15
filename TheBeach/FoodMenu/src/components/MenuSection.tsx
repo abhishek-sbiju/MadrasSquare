@@ -1,133 +1,149 @@
-import type { MenuCategory, MenuItem } from "@/data/menuData";
+import type { MenuSection as MenuSectionType, MenuItem } from "@/data/menuData";
 import FadeIn from "./FadeIn";
-import { getDietType } from "@/lib/diet";
 
-interface MenuSectionProps {
-  category: MenuCategory;
+interface Props {
+  section: MenuSectionType;
   index: number;
 }
 
-const getDietClasses = (item: MenuItem) => {
-  const type = getDietType(item);
-  const baseClasses = "h-2 w-2 flex-shrink-0 rounded-full md:h-2.5 md:w-2.5";
-
-  if (type === "both") {
-    return `${baseClasses} bg-[linear-gradient(to_right,#16a34a_50%,#dc2626_50%)]`;
-  }
-
-  if (type === "non-veg") {
-    return `${baseClasses} bg-red-600`;
-  }
-
-  return `${baseClasses} bg-green-600`;
-};
-
-const MenuItemRow = ({ item }: { item: MenuItem }) => {
-  return (
-    <div className="border-b border-black/[0.07] py-4 last:border-0 md:py-5">
-      <div className="flex items-start justify-between gap-4 md:gap-6">
-        <div className="flex min-w-0 flex-1 items-start gap-2.5 md:gap-3">
-          <div className="mt-1.5 md:mt-[7px]">
-            <span className={getDietClasses(item)} style={{ display: "block" }} />
-          </div>
-
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-baseline gap-x-2">
-              <h4 className="font-heading text-[15px] font-semibold uppercase leading-snug tracking-[0.06em] text-foreground md:text-lg md:tracking-[0.1em]">
-                {item.name}
-              </h4>
-
-              {item.variants && (
-                <span className="font-body text-[10px] text-muted-foreground md:text-xs">
-                  {item.variants}
-                </span>
-              )}
-
-              {item.tags?.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-sm border border-gold/40 px-1.5 py-[2px] font-body text-[8px] font-semibold uppercase tracking-[0.1em] text-gold md:text-[9px]"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {item.description && (
-              <p className="mt-1.5 font-body text-[13px] leading-relaxed text-muted-foreground md:text-[15px]">
-                {item.description}
-              </p>
-            )}
-          </div>
-        </div>
-
-        <span className="mt-0.5 shrink-0 whitespace-nowrap font-body text-[15px] font-medium tabular-nums text-gold md:text-lg">
-          {item.price}
-        </span>
+const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [string, string] }) => {
+  if (item.priceDom || item.priceImp) {
+    return (
+      <div className="flex gap-6 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
+        <span className="w-12 text-right">{item.priceDom || ""}</span>
+        <span className="w-12 text-right">{item.priceImp || ""}</span>
       </div>
-    </div>
-  );
+    );
+  }
+  if (item.priceGlass || item.priceBottle) {
+    return (
+      <div className="flex gap-6 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
+        <span className="w-12 text-right">{item.priceGlass || ""}</span>
+        <span className="w-12 text-right">{item.priceBottle || ""}</span>
+      </div>
+    );
+  }
+  if (item.price300 || item.price650) {
+    return (
+      <div className="flex gap-6 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
+        <span className="w-12 text-right">{item.price300 || ""}</span>
+        <span className="w-12 text-right">{item.price650 || ""}</span>
+      </div>
+    );
+  }
+  if (item.price) {
+    return (
+      <span className="font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5 whitespace-nowrap min-w-[50px] text-right">
+        {item.price}
+      </span>
+    );
+  }
+  return null;
 };
 
-const SectionDivider = () => (
-  <div className="flex items-center justify-center py-8 md:py-12">
-    <div className="h-px w-16 bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHeaders?: [string, string] }) => (
+  <div className="py-4 md:py-6 border-b border-amber/10 last:border-0 hover:bg-white/[0.03] transition-all duration-300 md:px-2 rounded-sm group">
+    <div className="flex items-start md:items-baseline justify-between gap-4 md:gap-8">
+      <div className="flex-1 min-w-0">
+        <h4 className="font-heading text-[17px] md:text-2xl font-medium text-foreground tracking-[0.04em] md:tracking-[0.06em] uppercase leading-tight group-hover:text-amber transition-colors duration-300 break-words">
+          {item.name}
+        </h4>
+        {item.description && (
+          <p className="text-muted-foreground/60 text-[13px] md:text-[15px] font-body mt-2 leading-relaxed max-w-[90%] md:max-w-[85%]">
+            {item.description}
+          </p>
+        )}
+      </div>
+      <PriceDisplay item={item} priceHeaders={priceHeaders} />
+    </div>
   </div>
 );
 
-const MenuSection = ({ category, index }: MenuSectionProps) => {
+{/* Elegant Minimal Divider */}
+const SectionDivider = () => (
+  <div className="flex items-center justify-center py-12">
+    <div className="w-16 h-[1px] bg-amber/20" />
+    <div className="mx-4 text-amber/40 font-heading text-xl">✦</div>
+    <div className="w-16 h-[1px] bg-amber/20" />
+  </div>
+);
+
+const SubsectionBlock = ({ title, items, priceHeaders }: { title: string; items: MenuItem[]; priceHeaders?: [string, string] }) => (
+  <div className="mb-12 md:mb-16">
+    <FadeIn delay={150}>
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 md:mb-8 border-b border-amber/20 pb-2">
+        <h3 className="font-heading text-2xl md:text-[2rem] font-medium text-amber tracking-[0.12em] uppercase">
+          {title}
+        </h3>
+        {priceHeaders && (
+          <div className="flex justify-end gap-6 font-body text-xs md:text-sm tracking-[0.25em] uppercase text-amber/50 font-medium md:pr-2">
+            <span className="w-12 text-right">{priceHeaders[0]}</span>
+            <span className="w-12 text-right">{priceHeaders[1]}</span>
+          </div>
+        )}
+      </div>
+      {items.map((item, i) => (
+        <ItemRow key={`${item.name}-${i}`} item={item} i={i} priceHeaders={priceHeaders} />
+      ))}
+    </FadeIn>
+  </div>
+);
+
+const MenuSection = ({ section, index }: Props) => {
   const isEven = index % 2 === 0;
-  const bgClass = isEven ? "bg-section-even" : "bg-section-odd";
+  const bgClass = isEven ? "bg-section-alt" : "bg-background";
 
   return (
-    <div className={bgClass}>
-      <SectionDivider />
-
+    <>
+      <div className={bgClass}>
+        <SectionDivider />
+      </div>
       <section
-        id={category.id}
-        className="px-6 pb-12 pt-4 md:px-14 md:pb-20 md:pt-8 lg:px-24"
-        style={{ scrollMarginTop: "160px" }}
+        id={section.id}
+        className={`px-6 md:px-12 lg:px-20 py-12 md:py-24 ${bgClass}`}
+        style={{ scrollMarginTop: "120px" }}
       >
-        <div className="mx-auto w-full max-w-5xl">
-          <FadeIn delay={100}>
-            <div className="mb-8 md:mb-12">
-              <h2 className="font-heading text-2xl font-bold uppercase tracking-[0.08em] text-foreground md:text-3xl md:tracking-[0.12em] lg:text-4xl">
-                {category.title}
-              </h2>
-              <div className="mt-3 h-[2px] w-8 bg-gold md:w-10" />
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="flex flex-col gap-12 md:gap-20 w-full">
+            <div className="w-full min-w-0">
+              <FadeIn delay={100}>
+                <div className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-amber/30 pb-4">
+                  <h2 className="font-heading text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem] font-bold text-foreground tracking-[0.06em] uppercase">
+                    {section.title}
+                  </h2>
+                  {section.priceHeaders && (section.items.length > 0) && (
+                    <div className="flex justify-end gap-6 font-body text-xs md:text-sm tracking-[0.25em] uppercase text-amber/50 font-medium md:pr-2">
+                      <span className="w-12 text-right">{section.priceHeaders[0]}</span>
+                      <span className="w-12 text-right">{section.priceHeaders[1]}</span>
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
 
-              {category.description && (
-                <p className="mt-4 max-w-3xl font-body text-xs italic leading-relaxed text-muted-foreground md:text-sm">
-                  {category.description}
-                </p>
-              )}
-            </div>
-          </FadeIn>
-
-          {category.subCategories ? (
-            category.subCategories.map((sub, subIdx) => (
-              <div key={sub.name} className="mb-10 md:mb-14">
-                <FadeIn delay={150 + subIdx * 50}>
-                  <h3 className="mb-4 font-heading text-lg font-semibold uppercase tracking-[0.1em] text-gold md:mb-5 md:text-2xl md:tracking-[0.14em]">
-                    {sub.name}
-                  </h3>
-
-                  {sub.items.map((item, i) => (
-                    <MenuItemRow key={`${item.name}-${i}`} item={item} />
-                  ))}
+              {section.items.length > 0 && (
+                <FadeIn delay={150}>
+                  <div className="mb-16">
+                    {section.items.map((item, i) => (
+                      <ItemRow key={`${item.name}-${i}`} item={item} i={i} priceHeaders={section.priceHeaders} />
+                    ))}
+                  </div>
                 </FadeIn>
-              </div>
-            ))
-          ) : (
-            <FadeIn delay={150}>
-              {category.items?.map((item, i) => (
-                <MenuItemRow key={`${item.name}-${i}`} item={item} />
-              ))}
-            </FadeIn>
-          )}
+              )}
+
+              {section.subsections?.map((sub) => {
+                const subHasDualSize = sub.items.some(i => i.price300 || i.price650);
+                const currentHeaders = sub.priceHeaders || (subHasDualSize ? (["330ml", "650ml"] as [string, string]) : section.priceHeaders);
+                return (
+                  <div key={sub.title}>
+                    <SubsectionBlock title={sub.title} items={sub.items} priceHeaders={currentHeaders} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

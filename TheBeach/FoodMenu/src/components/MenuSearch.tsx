@@ -8,7 +8,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { menuCategories } from "@/data/menuData";
+import { menuSections } from "@/data/menuData";
 
 const MenuSearch = () => {
   const [open, setOpen] = useState(false);
@@ -24,9 +24,9 @@ const MenuSearch = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleSelect = (categoryId: string) => {
+  const handleSelect = (sectionId: string) => {
     setOpen(false);
-    const el = document.getElementById(categoryId);
+    const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -36,37 +36,39 @@ const MenuSearch = () => {
     <>
       <button 
         onClick={() => setOpen(true)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-card/80 text-muted-foreground transition hover:border-gold/50 hover:text-gold" 
-        aria-label="Search"
+        className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" 
+        aria-label="Search menu"
       >
         <Search className="h-[18px] w-[18px] md:h-5 md:w-5" />
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search dishes or sections... (Cmd+K)" />
+        <CommandInput placeholder="Search the menu... (Ctrl+K)" />
         <CommandList>
-          <CommandEmpty>No dish found.</CommandEmpty>
-          {menuCategories.map((category) => {
-            const items = category.items || [];
-            const subItems = category.subCategories?.flatMap(sub => sub.items) || [];
-            const allItems = [...items, ...subItems];
+          <CommandEmpty>No item found.</CommandEmpty>
+          {menuSections.map((section) => {
+            const mainItems = section.items || [];
+            const subItems = section.subsections?.flatMap(sub => sub.items) || [];
+            const allItems = [...mainItems, ...subItems];
             
             if (allItems.length === 0) return null;
 
             return (
-              <CommandGroup key={category.id} heading={category.title}>
+              <CommandGroup key={section.id} heading={section.title}>
                 {allItems.map((item, i) => (
                   <CommandItem
-                    key={`${category.id}-${i}`}
-                    onSelect={() => handleSelect(category.id)}
+                    key={`${section.id}-${i}`}
+                    onSelect={() => handleSelect(section.id)}
                     className="flex justify-between items-center px-4 py-2 cursor-pointer"
                   >
                     <div>
                       <div className="font-medium text-foreground">{item.name}</div>
-                      {item.variants && (
-                        <div className="text-xs text-muted-foreground">{item.variants}</div>
+                      {item.description && (
+                        <div className="text-xs text-muted-foreground">{item.description}</div>
                       )}
                     </div>
-                    <span className="text-gold text-sm font-medium">{item.price}</span>
+                    <span className="text-amber text-sm font-medium">
+                      {item.price || item.priceDom || item.priceImp || item.priceGlass || ""}
+                    </span>
                   </CommandItem>
                 ))}
               </CommandGroup>

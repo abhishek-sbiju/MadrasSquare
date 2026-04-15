@@ -6,12 +6,10 @@ import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import { menuCategories } from "@/data/menuData";
+import { menuSections } from "@/data/menuData";
 
 const Index = () => {
-  const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
-
-  const filteredCategories = menuCategories;
+  const [activeCategory, setActiveCategory] = useState(menuSections[0].id);
 
   const handleCategoryClick = (id: string) => {
     setActiveCategory(id);
@@ -23,7 +21,7 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = filteredCategories.map(c => document.getElementById(c.id)).filter(Boolean) as HTMLElement[];
+      const sections = menuSections.map(s => document.getElementById(s.id)).filter(Boolean) as HTMLElement[];
       
       let current = "";
       for (const section of sections) {
@@ -44,7 +42,7 @@ const Index = () => {
     handleScroll(); // Initial check
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [filteredCategories]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background overflow-x-clip w-full max-w-[100vw]">
@@ -53,11 +51,11 @@ const Index = () => {
       <MenuCategoryNav 
         activeCategory={activeCategory} 
         onCategoryClick={handleCategoryClick} 
-        categories={filteredCategories.map((c) => ({ id: c.id, label: c.navLabel ?? c.title }))}
+        categories={menuSections.map(s => ({ id: s.id, label: s.title }))}
       />
       
-      {filteredCategories.map((category, index) => (
-        <MenuSection key={category.id} category={category} index={index} />
+      {menuSections.map((section, index) => (
+        <MenuSection key={section.id} section={section} index={index} />
       ))}
       
       <AboutSection />
