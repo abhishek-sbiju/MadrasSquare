@@ -79,8 +79,8 @@ const Footer = () => {
                   </div>
                 </li>
               </ul>
-              <p className="font-body text-[10px] text-white/25 leading-relaxed mt-4">
-                Prices are inclusive of all applicable taxes
+              <p className="font-body text-[10px] text-white/10 leading-relaxed mt-4">
+                © The Beach · Madras Square
               </p>
             </div>
 

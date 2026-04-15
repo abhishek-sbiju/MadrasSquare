@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import MenuCategoryNav from "@/components/MenuCategoryNav";
 import MenuSection from "@/components/MenuSection";
+import MenuNotice from "@/components/MenuNotice";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -58,6 +59,7 @@ const Index = () => {
         <MenuSection key={section.id} section={section} index={index} />
       ))}
       
+      <MenuNotice />
       <AboutSection />
       <Footer />
       <ScrollToTop />

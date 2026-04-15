@@ -53,14 +53,14 @@ const AboutSection = () => {
             <div className="flex flex-col items-center gap-3 p-6">
               <span className="text-amber font-heading text-3xl font-bold">02</span>
               <h3 className="font-heading text-lg font-semibold text-foreground tracking-wide uppercase">Crafted with Care</h3>
-              <p className="text-muted-foreground/70 font-body text-xs leading-relaxed">
+              <p className="text-muted-foreground font-body text-xs leading-relaxed">
                 Every recipe is perfected by our chefs, blending tradition with modern flair.
               </p>
             </div>
             <div className="flex flex-col items-center gap-3 p-6">
               <span className="text-amber font-heading text-3xl font-bold">03</span>
               <h3 className="font-heading text-lg font-semibold text-foreground tracking-wide uppercase">Coastal Soul</h3>
-              <p className="text-muted-foreground/70 font-body text-xs leading-relaxed">
+              <p className="text-muted-foreground font-body text-xs leading-relaxed">
                 The Beach is more than a restaurant — it's a destination where memories are made.
               </p>
             </div>
