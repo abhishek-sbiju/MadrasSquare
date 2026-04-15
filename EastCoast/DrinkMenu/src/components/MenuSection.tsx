@@ -9,7 +9,7 @@ interface Props {
 const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [string, string] }) => {
   if (item.priceDom || item.priceImp) {
     return (
-      <div className="flex gap-4 font-body text-sm text-amber tracking-wider shrink-0">
+      <div className="flex gap-4 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
         <span className="w-10 text-right">{item.priceDom || ""}</span>
         <span className="w-10 text-right">{item.priceImp || ""}</span>
       </div>
@@ -17,7 +17,7 @@ const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [
   }
   if (item.priceGlass || item.priceBottle) {
     return (
-      <div className="flex gap-4 font-body text-sm text-amber tracking-wider shrink-0">
+      <div className="flex gap-4 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
         <span className="w-12 text-right">{item.priceGlass || ""}</span>
         <span className="w-12 text-right">{item.priceBottle || ""}</span>
       </div>
@@ -25,7 +25,7 @@ const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [
   }
   if (item.price300 || item.price650) {
     return (
-      <div className="flex gap-4 font-body text-sm text-amber tracking-wider shrink-0">
+      <div className="flex gap-4 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
         <span className="w-10 text-right">{item.price300 || ""}</span>
         <span className="w-10 text-right">{item.price650 || ""}</span>
       </div>
@@ -33,7 +33,7 @@ const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [
   }
   if (item.price) {
     return (
-      <span className="font-body text-sm text-amber tracking-wider shrink-0">
+      <span className="font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5 whitespace-nowrap">
         {item.price}
       </span>
     );
