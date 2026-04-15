@@ -104,7 +104,7 @@ const HeroSection = () => {
           className="font-heading text-xl md:text-2xl italic text-white/80 tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
-          Drinks Menu
+          Food Menu
         </p>
 
         <div

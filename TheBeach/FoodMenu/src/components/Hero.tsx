@@ -86,7 +86,7 @@ const Hero = () => {
           className="font-heading text-xl md:text-2xl italic text-amber-light tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
-          Drinks Menu
+          Food Menu
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.45s" }}>
