@@ -26,7 +26,7 @@ const Navbar = () => {
             href={restaurantInfo.phoneHref}
             className="hidden md:inline-block px-5 py-2 border border-gold text-gold text-xs tracking-[0.15em] font-body font-medium hover:bg-gold hover:text-primary-foreground transition-all rounded-sm"
           >
-            RESERVE
+            BOOK A TABLE
           </a>
           <MenuSearch />
         </div>

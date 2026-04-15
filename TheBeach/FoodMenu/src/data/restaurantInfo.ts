@@ -1,6 +1,6 @@
 export const restaurantInfo = {
-  parentBrand: "Madras Square",
-  venue: "The Beach",
+  parentBrand: "MADRAS SQUARE",
+  venue: "THE BEACH",
   menuLabel: "Food Menu",
   phoneDisplay: "+91 73056 69696",
   phoneHref: "tel:+917305669696",

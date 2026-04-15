@@ -47,22 +47,22 @@ const HeroSection = () => {
       {/* Background images with smooth crossfade + subtle blur */}
       {heroImages.map((src, i) => (
         <div
-52:           key={i}
-53:           className="absolute inset-0"
-54:           style={{
-55:             opacity: i === currentIndex ? 1 : 0,
-56:             transition: `opacity ${FADE_MS}ms ease-in-out`,
-57:           }}
-58:         >
-59:           <div
-60:             className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns blur-[1px]"
-61:             style={{
-62:               backgroundImage: `url(${src})`,
-63:               animationDelay: `${-i * 6}s`,
-64:             }}
-65:           />
-66:         </div>
-67:       ))}
+          key={i}
+          className="absolute inset-0"
+          style={{
+            opacity: i === currentIndex ? 1 : 0,
+            transition: `opacity ${FADE_MS}ms ease-in-out`,
+          }}
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-kenburns blur-[1px]"
+            style={{
+              backgroundImage: `url(${src})`,
+              animationDelay: `${-i * 6}s`,
+            }}
+          />
+        </div>
+      ))}
 
       {/* 🔥 Cinematic gradient (depth) */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
@@ -123,7 +123,7 @@ const HeroSection = () => {
             href={restaurantInfo.phoneHref}
             className="px-8 py-3 border border-gold/60 text-white/90 text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/20 transition-all duration-300"
           >
-            CALL TO RESERVE
+            BOOK A TABLE
           </a>
         </div>
       </div>
@@ -135,10 +135,9 @@ const HeroSection = () => {
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Show image ${i + 1}`}
-            className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
-                ? "w-6 bg-gold/80"
-                : "w-2 bg-white/25 hover:bg-white/40"
-              }`}
+            className={`h-[3px] rounded-full transition-all duration-500 ${
+              i === currentIndex ? "w-6 bg-gold/80" : "w-2 bg-white/25 hover:bg-white/40"
+            }`}
           />
         ))}
       </div>
