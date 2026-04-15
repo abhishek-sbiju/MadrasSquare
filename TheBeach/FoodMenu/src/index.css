@@ -6,50 +6,47 @@
 
 @layer base {
   :root {
-    /* ── The Beach Printed Menu Base (Warm Cream) ── */
-    --background: 52 45% 90%; /* #f1eeda */
-    --foreground: 0 0% 17%; /* #2b2b2b */
+    /* ── The Beach — Coastal Palette ── */
+    --background: 39 35% 92%;       /* #F2EDE4 sand */
+    --foreground: 211 27% 17%;      /* #1F2A36 navy charcoal */
 
-    --card: 51 45% 87%;
-    --card-foreground: 0 0% 17%;
+    --card: 39 30% 88%;
+    --card-foreground: 211 27% 17%;
 
-    --popover: 52 45% 90%;
-    --popover-foreground: 0 0% 17%;
+    --popover: 39 35% 92%;
+    --popover-foreground: 211 27% 17%;
 
-    /* ── Maroon Accent (#a9445b) ── */
-    --primary: 346 43% 46%;
-    --primary-foreground: 52 45% 90%;
+    /* ── Accent: muted ocean blue (#2E6F95) ── */
+    --primary: 202 53% 38%;
+    --primary-foreground: 39 35% 92%;
 
-    --secondary: 96 23% 67%; /* Soft green (#a8c098) */
-    --secondary-foreground: 0 0% 17%;
+    --secondary: 164 18% 71%;       /* #A8C3BC seafoam */
+    --secondary-foreground: 211 27% 17%;
 
-    --muted: 51 30% 82%;
-    --muted-foreground: 0 0% 35%;
+    --muted: 39 20% 82%;
+    --muted-foreground: 211 20% 40%;
 
-    --accent: 346 43% 46%;
-    --accent-foreground: 52 45% 90%;
+    --accent: 202 53% 38%;
+    --accent-foreground: 39 35% 92%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 51 20% 75%;
-    --input: 51 20% 75%;
-    --ring: 346 43% 46%;
+    --border: 39 15% 78%;
+    --input: 39 15% 78%;
+    --ring: 202 53% 38%;
 
     --radius: 0.25rem;
 
-    /* FoodMenu token */
-    --section-green: 96 23% 67%;
+    /* Section alternating bg (seafoam tint) */
+    --section-green: 164 18% 71%;
+    --section-alt: 164 12% 85%;
 
-    /* DrinkMenu uses `bg-section-alt` → keep it aligned */
-    --section-alt: var(--section-green);
+    /* Gold/amber tokens → Sunset Gold (#D9A441) */
+    --amber: 39 67% 55%;
+    --amber-light: 39 60% 62%;
+    --amber-dark: 39 72% 42%;
 
-    /* DrinkMenu components use `amber` color utilities — map to maroon */
-    --amber: 346 43% 46%;
-    --amber-light: 346 40% 55%;
-    --amber-dark: 346 50% 35%;
-
-    /* FoodMenu "gold" token (mapped to same maroon) */
     --gold: var(--amber);
     --gold-light: var(--amber-light);
     --gold-dark: var(--amber-dark);
@@ -57,14 +54,14 @@
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 52 45% 90%;
-    --sidebar-foreground: 0 0% 17%;
-    --sidebar-primary: 346 43% 46%;
-    --sidebar-primary-foreground: 52 45% 90%;
-    --sidebar-accent: 96 23% 67%;
-    --sidebar-accent-foreground: 0 0% 17%;
-    --sidebar-border: 51 20% 75%;
-    --sidebar-ring: 346 43% 46%;
+    --sidebar-background: 39 35% 92%;
+    --sidebar-foreground: 211 27% 17%;
+    --sidebar-primary: 202 53% 38%;
+    --sidebar-primary-foreground: 39 35% 92%;
+    --sidebar-accent: 164 18% 71%;
+    --sidebar-accent-foreground: 211 27% 17%;
+    --sidebar-border: 39 15% 78%;
+    --sidebar-ring: 202 53% 38%;
   }
 }
 
