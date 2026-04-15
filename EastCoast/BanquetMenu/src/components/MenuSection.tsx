@@ -19,14 +19,20 @@ const getDietClasses = (item: MenuItem) => {
 const MenuItemRow = ({ item, hasAnyPrices }: { item: MenuItem, hasAnyPrices: boolean }) => {
   return (
     <div className="py-5 md:py-6 border-b border-foreground/[0.07] last:border-0">
-      <div className={`flex items-center ${hasAnyPrices ? 'justify-between gap-4 md:gap-6' : 'gap-2.5 md:gap-3'}`}>
+      <div
+        className={[
+          "flex flex-col items-start gap-2",
+          "md:flex-row md:items-center md:gap-6",
+          hasAnyPrices ? "md:justify-between" : "",
+        ].join(" ")}
+      >
         {/* Diet indicator + name */}
         <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
           <div className="mt-1.5 md:mt-[7px]">
             <span className={getDietClasses(item)} style={{ display: 'block' }} />
           </div>
           <div className="flex-1 min-w-0">
-            <h4 className="font-heading text-[15px] md:text-xl font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug">
+            <h4 className="font-heading text-[15px] md:text-xl font-semibold text-foreground tracking-[0.06em] md:tracking-[0.1em] uppercase leading-snug break-words">
               {item.name}
             </h4>
             {item.description && (
@@ -40,9 +46,9 @@ const MenuItemRow = ({ item, hasAnyPrices }: { item: MenuItem, hasAnyPrices: boo
 
         {/* Price — only when present */}
         {item.price && (
-          <span className="font-body text-base md:text-lg font-semibold text-gold whitespace-nowrap tabular-nums shrink-0 mt-0.5 self-start">
+          <div className="font-body text-[14px] md:text-lg font-semibold text-gold tabular-nums w-full md:w-auto md:shrink-0 md:mt-1 md:self-start md:text-right md:max-w-[40%] break-words leading-snug">
             {item.price}
-          </span>
+          </div>
         )}
       </div>
     </div>
