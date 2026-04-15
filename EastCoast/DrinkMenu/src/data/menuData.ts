@@ -19,7 +19,7 @@ export interface MenuSection {
   subsections?: { title: string; items: MenuItem[] }[];
 }
 
-export const menuSections: MenuSection[] = [
+const rawMenuSections: MenuSection[] = [
   {
       id: "cocktails",
       title: "Cocktails",
@@ -756,8 +756,8 @@ export const menuSections: MenuSection[] = [
       ],
     },
   {
-      id: "liqueur",
-      title: "Liqueur",
+      id: "liquor",
+      title: "Liquor",
       priceHeaders: [
         "Peg",
         "Bottle",
@@ -1022,3 +1022,56 @@ export const menuSections: MenuSection[] = [
       ],
     }
 ];
+
+const menuSectionOrder = [
+  "cocktails",
+  "pitchers",
+  "whiskey",
+  "vodka",
+  "gin",
+  "tequila",
+  "rum",
+  "brandy",
+  "liquor",
+  "shooters",
+  "beer",
+  "wine",
+  "mixers",
+  "mocktails",
+  "milkshakes",
+  "cold-beverages",
+  "hot-beverages",
+] as const;
+
+const whiskeySubsectionOrder = [
+  "Single Malt Whiskey",
+  "Blended Scotch Whiskey",
+  "Bourbon Whiskey",
+  "Domestic Whiskey",
+] as const;
+
+const menuSectionOrderMap = new Map(menuSectionOrder.map((id, index) => [id, index]));
+const whiskeySubsectionOrderMap = new Map(
+  whiskeySubsectionOrder.map((title, index) => [title, index]),
+);
+
+export const menuSections: MenuSection[] = rawMenuSections
+  .map((section) => {
+    if (section.id !== "whiskey" || !section.subsections) {
+      return section;
+    }
+
+    return {
+      ...section,
+      subsections: [...section.subsections].sort((a, b) => {
+        const left = whiskeySubsectionOrderMap.get(a.title) ?? Number.MAX_SAFE_INTEGER;
+        const right = whiskeySubsectionOrderMap.get(b.title) ?? Number.MAX_SAFE_INTEGER;
+        return left - right;
+      }),
+    };
+  })
+  .sort((a, b) => {
+    const left = menuSectionOrderMap.get(a.id) ?? Number.MAX_SAFE_INTEGER;
+    const right = menuSectionOrderMap.get(b.id) ?? Number.MAX_SAFE_INTEGER;
+    return left - right;
+  });

@@ -66,20 +66,20 @@ const Hero = () => {
       ))}
 
       {/* 🔥 Cinematic gradient (depth) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/70" />
 
       {/* 🔥 Center light + vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.5) 70%)",
+            "radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.35) 70%)",
         }}
       />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        <p className="font-body text-sm tracking-[0.4em] uppercase text-amber-light mb-4 animate-fade-in">
+        <p className="font-body text-sm tracking-[0.4em] uppercase text-gold-light mb-4 animate-fade-in">
           Madras Square
         </p>
 
@@ -97,13 +97,13 @@ const Hero = () => {
           className="flex items-center justify-center gap-4 mb-4 animate-fade-in"
           style={{ animationDelay: "0.25s" }}
         >
-          <span className="w-16 h-px bg-gradient-to-r from-transparent to-amber" />
-          <span className="w-1.5 h-1.5 rounded-full bg-amber" />
-          <span className="w-16 h-px bg-gradient-to-l from-transparent to-amber" />
+          <span className="w-16 h-px bg-gradient-to-r from-transparent to-gold" />
+          <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+          <span className="w-16 h-px bg-gradient-to-l from-transparent to-gold" />
         </div>
 
         <p
-          className="font-heading text-2xl md:text-3xl italic text-amber-light tracking-widest mb-10 animate-fade-in"
+          className="font-heading text-2xl md:text-3xl italic text-gold-light tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
           Drinks Menu
@@ -115,14 +115,14 @@ const Hero = () => {
         >
           <button
             onClick={scrollToMenu}
-            className="px-8 py-3 bg-amber/90 text-primary-foreground text-xs tracking-[0.2em] font-body font-semibold hover:bg-amber transition-all duration-300"
+            className="px-8 py-3 bg-gold/90 text-white text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold transition-all duration-300"
           >
             VIEW MENU
           </button>
 
           <a
             href="tel:+19999999999"
-            className="px-8 py-3 border border-amber/40 text-amber-light text-xs tracking-[0.2em] font-body font-semibold hover:bg-amber/10 transition-all duration-300"
+            className="px-8 py-3 border border-gold/40 text-gold-light text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/10 transition-all duration-300"
           >
             BOOK A TABLE
           </a>
@@ -137,7 +137,7 @@ const Hero = () => {
             onClick={() => goTo(i)}
             aria-label={`Show image ${i + 1}`}
             className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
-              ? "w-6 bg-amber/80"
+              ? "w-6 bg-gold/80"
               : "w-2 bg-white/25 hover:bg-white/40"
               }`}
           />
@@ -147,7 +147,7 @@ const Hero = () => {
       {/* Scroll */}
       <button
         onClick={scrollToMenu}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-amber transition-colors animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-gold transition-colors animate-bounce"
       >
         <ChevronDown size={28} />
       </button>
