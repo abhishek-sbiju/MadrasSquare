@@ -46,7 +46,7 @@ const AboutSection = () => {
             <div className="flex flex-col items-center gap-3 p-6">
               <span className="text-amber font-heading text-3xl font-bold">01</span>
               <h3 className="font-heading text-lg font-semibold text-foreground tracking-wide uppercase">Fresh & Local</h3>
-              <p className="text-muted-foreground/70 font-body text-xs leading-relaxed">
+              <p className="text-muted-foreground font-body text-xs leading-relaxed">
                 We source the freshest ingredients from local markets and trusted suppliers every day.
               </p>
             </div>
