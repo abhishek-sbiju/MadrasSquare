@@ -8,7 +8,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { menuSections } from "@/data/menuData";
+import { menuSections, MenuItem } from "@/data/menuData";
 
 const MenuSearch = () => {
   const [open, setOpen] = useState(false);
@@ -24,56 +24,100 @@ const MenuSearch = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleSelect = (sectionId: string) => {
+  const handleSelect = (itemId: string) => {
     setOpen(false);
-    const el = document.getElementById(sectionId);
+    const id = `item-${itemId.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+    const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.classList.add("bg-amber/10");
+      setTimeout(() => el.classList.remove("bg-amber/10"), 2000);
     }
+  };
+
+  // Improved item extraction to handle subsections in The Beach Food Menu
+  const getAllItems = () => {
+    const results: { item: MenuItem; categoryName: string; subSectionName?: string }[] = [];
+
+    menuSections.forEach((section) => {
+      if (section.items) {
+        section.items.forEach((item) => {
+          results.push({ item, categoryName: section.title });
+        });
+      }
+      if (section.subsections) {
+        section.subsections.forEach((sub) => {
+          if (sub.items) {
+            sub.items.forEach((item) => {
+              results.push({ item, categoryName: section.title, subSectionName: sub.title });
+            });
+          }
+        });
+      }
+    });
+
+    return results;
+  };
+
+  const allItems = getAllItems();
+
+  const getPriceDisplay = (item: MenuItem) => {
+    return (
+      item.price || 
+      item.priceDom || 
+      item.priceImp || 
+      item.priceGlass || 
+      item.price300 || 
+      item.priceHalf ||
+      ""
+    );
   };
 
   return (
     <>
       <button 
         onClick={() => setOpen(true)}
-        className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" 
-        aria-label="Search menu"
+        className="text-muted-foreground hover:text-amber transition-colors p-2" 
+        aria-label="Search Menu"
       >
         <Search className="h-[18px] w-[18px] md:h-5 md:w-5" />
       </button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search the menu... (Ctrl+K)" />
-        <CommandList>
-          <CommandEmpty>No item found.</CommandEmpty>
-          {menuSections.map((section) => {
-            const mainItems = section.items || [];
-            const subItems = section.subsections?.flatMap(sub => sub.items) || [];
-            const allItems = [...mainItems, ...subItems];
-            
-            if (allItems.length === 0) return null;
 
-            return (
-              <CommandGroup key={section.id} heading={section.title}>
-                {allItems.map((item, i) => (
-                  <CommandItem
-                    key={`${section.id}-${i}`}
-                    onSelect={() => handleSelect(section.id)}
-                    className="flex justify-between items-center px-4 py-2 cursor-pointer"
-                  >
-                    <div>
-                      <div className="font-medium text-foreground">{item.name}</div>
-                      {item.description && (
-                        <div className="text-xs text-muted-foreground">{item.description}</div>
-                      )}
-                    </div>
-                    <span className="text-amber text-sm font-medium">
-                      {item.price || item.priceDom || item.priceImp || item.priceGlass || ""}
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder="Search our coastal flavors..." />
+        <CommandList className="max-h-[70vh] md:max-h-[500px]">
+          <CommandEmpty>No dishes found.</CommandEmpty>
+          <CommandGroup heading="Food Menu">
+            {allItems.map(({ item, categoryName, subSectionName }, i) => (
+              <CommandItem
+                key={`${item.name}-${i}`}
+                onSelect={() => handleSelect(item.name)}
+                className="flex items-center justify-between px-4 py-3 rounded-md cursor-pointer data-[selected=true]:bg-amber/5"
+              >
+                <div className="flex flex-col gap-0.5 min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-foreground truncate uppercase tracking-wide text-xs md:text-sm">
+                      {item.name}
                     </span>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            );
-          })}
+                  </div>
+                  <div className="text-[10px] md:text-xs text-muted-foreground flex items-center gap-1 opacity-80">
+                    <span className="truncate">{categoryName}</span>
+                    {subSectionName && (
+                      <>
+                        <span className="px-1 opacity-40">/</span>
+                        <span className="truncate">{subSectionName}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-col items-end gap-1 ml-4 shrink-0">
+                  <span className="text-amber font-semibold text-xs md:text-sm tabular-nums">
+                    {getPriceDisplay(item)}
+                  </span>
+                </div>
+              </CommandItem>
+            ))}
+          </CommandGroup>
         </CommandList>
       </CommandDialog>
     </>

@@ -49,11 +49,11 @@ const getBeverageEmoji = (categoryId: string, subCategoryName: string = '', item
   return '🍹';
 };
 
-const MenuItemRow = ({ item, categoryId, subCategoryName }: { item: MenuItem, categoryId: string, subCategoryName?: string }) => {
+const MenuItemRow = ({ id, item, categoryId, subCategoryName }: { id: string, item: MenuItem, categoryId: string, subCategoryName?: string }) => {
   const emoji = getBeverageEmoji(categoryId, subCategoryName, item.name);
 
   return (
-  <div className="py-5 md:py-6 border-b border-foreground/[0.07] last:border-0">
+  <div id={id} className="py-5 md:py-6 border-b border-foreground/[0.07] last:border-0 scroll-mt-28 transition-colors duration-500">
     <div className="flex items-start justify-between gap-4 md:gap-6">
       {/* Left side: indicator + name + description */}
       <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
@@ -138,17 +138,19 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
                   <h3 className="font-heading text-xl md:text-[1.65rem] font-semibold text-gold mb-5 md:mb-6 tracking-[0.1em] md:tracking-[0.14em] uppercase">
                     {sub.name}
                   </h3>
-                  {sub.items.map((item, i) => (
-                    <MenuItemRow key={`${item.name}-${i}`} item={item} categoryId={category.id} subCategoryName={sub.name} />
-                  ))}
+                  {sub.items.map((item, i) => {
+                    const itemId = `item-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                    return <MenuItemRow key={`${item.name}-${i}`} id={itemId} item={item} categoryId={category.id} subCategoryName={sub.name} />;
+                  })}
                 </FadeIn>
               </div>
             ))
           ) : (
             <FadeIn delay={150}>
-              {category.items?.map((item, i) => (
-                <MenuItemRow key={`${item.name}-${i}`} item={item} categoryId={category.id} />
-              ))}
+              {category.items?.map((item, i) => {
+                const itemId = `item-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                return <MenuItemRow key={`${item.name}-${i}`} id={itemId} item={item} categoryId={category.id} />;
+              })}
             </FadeIn>
           )}
         </div>

@@ -1,6 +1,7 @@
 export type DietType = "veg" | "non-veg" | "both";
 
 export interface MenuItem {
+  id?: string;
   name: string;
   price: string;
   description?: string;

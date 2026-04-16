@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search } from "lucide-react";
+import { Search, Command as CommandIcon } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -8,7 +8,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { menuCategories } from "@/data/menuData";
+import { banquetMenuData, MenuItem, SubCategory } from "@/data/banquetMenuData";
 
 const MenuSearch = () => {
   const [open, setOpen] = useState(false);
@@ -24,54 +24,97 @@ const MenuSearch = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleSelect = (categoryId: string) => {
+  const handleSelect = (itemId: string) => {
     setOpen(false);
-    const el = document.getElementById(categoryId);
+    const id = `item-${itemId.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+    const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.classList.add("bg-gold/10");
+      setTimeout(() => el.classList.remove("bg-gold/10"), 2000);
     }
   };
+
+  // Improved item extraction to handle nested categories in banquetMenuData
+  const getAllItems = () => {
+    const results: { item: MenuItem; categoryName: string; subCategoryName?: string }[] = [];
+
+    const processCategory = (category: any, catTitle: string) => {
+      if (category.items) {
+        category.items.forEach((item: MenuItem) => {
+          results.push({ item, categoryName: catTitle });
+        });
+      }
+      if (category.categories) {
+        category.categories.forEach((sub: SubCategory) => {
+          if (sub.items) {
+            sub.items.forEach((item: MenuItem) => {
+              results.push({ item, categoryName: catTitle, subCategoryName: sub.name });
+            });
+          }
+          // Handle deeper nesting if it ever occurs
+          if (sub.subCategories) {
+            sub.subCategories.forEach((ss: SubCategory) => {
+               ss.items.forEach((item: MenuItem) => {
+                 results.push({ item, categoryName: catTitle, subCategoryName: `${sub.name} > ${ss.name}` });
+               });
+            });
+          }
+        });
+      }
+    };
+
+    banquetMenuData.forEach((cat) => processCategory(cat, cat.title));
+    return results;
+  };
+
+  const allItems = getAllItems();
 
   return (
     <>
       <button 
         onClick={() => setOpen(true)}
-        className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1" 
-        aria-label="Search"
+        className="text-muted-foreground hover:text-gold transition-colors p-2" 
+        aria-label="Search Menu"
       >
         <Search className="h-[18px] w-[18px] md:h-5 md:w-5" />
       </button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search the menu... (Cmd+K)" />
-        <CommandList>
-          <CommandEmpty>No dish found.</CommandEmpty>
-          {menuCategories.map((category) => {
-            const items = category.items || [];
-            const subItems = category.subCategories?.flatMap(sub => sub.items) || [];
-            const allItems = [...items, ...subItems];
-            
-            if (allItems.length === 0) return null;
 
-            return (
-              <CommandGroup key={category.id} heading={category.title}>
-                {allItems.map((item, i) => (
-                  <CommandItem
-                    key={`${category.id}-${i}`}
-                    onSelect={() => handleSelect(category.id)}
-                    className="flex justify-between items-center px-4 py-2 cursor-pointer"
-                  >
-                    <div>
-                      <div className="font-medium text-foreground">{item.name}</div>
-                      {item.variants && (
-                        <div className="text-xs text-muted-foreground">{item.variants}</div>
-                      )}
-                    </div>
-                    <span className="text-gold text-sm font-medium">{item.price}</span>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            );
-          })}
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder="Search for a dish... (e.g. Mutton, Soup)" />
+        <CommandList className="max-h-[300px] md:max-h-[450px] overflow-y-auto">
+          <CommandEmpty className="py-6 text-center text-sm">No dishes found.</CommandEmpty>
+          
+          <CommandGroup heading="Menu Items">
+            {allItems.map(({ item, categoryName, subCategoryName }, i) => (
+              <CommandItem
+                key={`${item.name}-${i}`}
+                onSelect={() => handleSelect(item.name)}
+                className="flex items-center justify-between px-4 py-3 rounded-md cursor-pointer data-[selected=true]:bg-gold/5"
+              >
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-2">
+                    {item.diet && (
+                      <span className={`w-2 h-2 rounded-full ${item.diet === 'non-veg' ? 'bg-red-500' : 'bg-green-500'}`} />
+                    )}
+                    <span className="font-medium text-foreground text-sm md:text-base">{item.name}</span>
+                  </div>
+                  <div className="text-[10px] md:text-xs text-muted-foreground font-body flex items-center gap-1 opacity-70">
+                    <span className="uppercase tracking-wider">{categoryName}</span>
+                    {subCategoryName && (
+                      <>
+                        <span className="mx-1">•</span>
+                        <span className="uppercase tracking-wider">{subCategoryName}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+                {item.price && (
+                  <span className="text-gold text-xs font-semibold tabular-nums ml-4 shrink-0">{item.price}</span>
+                )}
+              </CommandItem>
+            ))}
+          </CommandGroup>
         </CommandList>
       </CommandDialog>
     </>

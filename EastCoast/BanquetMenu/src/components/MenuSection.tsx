@@ -16,9 +16,9 @@ const getDietClasses = (item: MenuItem) => {
   return `${baseClasses} bg-green-600`;
 };
 
-const MenuItemRow = ({ item, hasAnyPrices }: { item: MenuItem, hasAnyPrices: boolean }) => {
+const MenuItemRow = ({ id, item, hasAnyPrices }: { id: string, item: MenuItem, hasAnyPrices: boolean }) => {
   return (
-    <div className="py-5 md:py-6 border-b border-foreground/[0.07] last:border-0">
+    <div id={id} className="py-5 md:py-6 border-b border-foreground/[0.07] last:border-0 scroll-mt-28 transition-colors duration-500">
       <div
         className={[
           "flex flex-col items-start gap-2",
@@ -153,17 +153,19 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
                   <h3 className="font-heading text-xl md:text-[1.65rem] font-semibold text-gold mb-5 md:mb-6 tracking-[0.1em] md:tracking-[0.14em] uppercase">
                     {sub.name}
                   </h3>
-                  {sub.items.map((item, i) => (
-                    <MenuItemRow key={`${item.name}-${i}`} item={item} hasAnyPrices={hasAnyPrices} />
-                  ))}
+                  {sub.items.map((item, i) => {
+                    const itemId = `item-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                    return <MenuItemRow key={`${item.name}-${i}`} id={itemId} item={item} hasAnyPrices={hasAnyPrices} />;
+                  })}
                 </FadeIn>
               </div>
             ))
           ) : (
             <FadeIn delay={150}>
-              {category.items?.map((item, i) => (
-                <MenuItemRow key={`${item.name}-${i}`} item={item} hasAnyPrices={hasAnyPrices} />
-              ))}
+              {category.items?.map((item, i) => {
+                const itemId = `item-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                return <MenuItemRow key={`${item.name}-${i}`} id={itemId} item={item} hasAnyPrices={hasAnyPrices} />;
+              })}
             </FadeIn>
           )}
         </div>

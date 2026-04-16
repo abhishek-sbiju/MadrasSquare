@@ -41,8 +41,8 @@ const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [
   return null;
 };
 
-const ItemRow = ({ item, i, priceHeaders }: { item: MenuItem; i: number; priceHeaders?: [string, string] }) => (
-  <div className="py-4 md:py-6 border-b border-amber/10 last:border-0 hover:bg-white/[0.03] transition-all duration-300 md:px-2 rounded-sm group">
+const ItemRow = ({ id, item, i, priceHeaders }: { id: string; item: MenuItem; i: number; priceHeaders?: [string, string] }) => (
+  <div id={id} className="py-4 md:py-6 border-b border-amber/10 last:border-0 hover:bg-white/[0.03] transition-all duration-300 md:px-2 rounded-sm group scroll-mt-28 transition-colors duration-500">
     <div className="flex items-start md:items-baseline justify-between gap-4 md:gap-8">
       <div className="flex-1 min-w-0">
         <h4 className="font-heading text-[17px] md:text-2xl font-medium text-foreground tracking-[0.04em] md:tracking-[0.06em] uppercase leading-tight group-hover:text-amber transition-colors duration-300 break-words">
@@ -82,9 +82,10 @@ const SubsectionBlock = ({ title, items, priceHeaders }: { title: string; items:
           </div>
         )}
       </div>
-      {items.map((item, i) => (
-        <ItemRow key={`${item.name}-${i}`} item={item} i={i} priceHeaders={priceHeaders} />
-      ))}
+      {items.map((item, i) => {
+        const itemId = `item-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+        return <ItemRow key={`${item.name}-${i}`} id={itemId} item={item} i={i} priceHeaders={priceHeaders} />;
+      })}
     </FadeIn>
   </div>
 );
@@ -123,9 +124,10 @@ const MenuSection = ({ section, index }: Props) => {
               {section.items.length > 0 && (
                 <FadeIn delay={150}>
                   <div className="mb-16">
-                    {section.items.map((item, i) => (
-                      <ItemRow key={`${item.name}-${i}`} item={item} i={i} priceHeaders={section.priceHeaders} />
-                    ))}
+                    {section.items.map((item, i) => {
+                      const itemId = `item-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                      return <ItemRow key={`${item.name}-${i}`} id={itemId} item={item} i={i} priceHeaders={section.priceHeaders} />;
+                    })}
                   </div>
                 </FadeIn>
               )}
