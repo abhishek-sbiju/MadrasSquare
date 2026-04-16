@@ -6,35 +6,50 @@ interface Props {
   index: number;
 }
 
+const FormattedPrice = ({ price }: { price?: string }) => {
+  if (!price) return null;
+  const volumeMatch = price.match(/\((.*?)\)/);
+  if (volumeMatch) {
+    const mainPrice = price.replace(volumeMatch[0], "").trim();
+    return (
+      <span className="flex items-baseline gap-1 justify-end">
+        <span>{mainPrice}</span>
+        <span className="text-[9px] md:text-xs font-medium opacity-60 tracking-tight whitespace-nowrap">{volumeMatch[0]}</span>
+      </span>
+    );
+  }
+  return <span>{price}</span>;
+};
+
 const PriceDisplay = ({ item, priceHeaders }: { item: MenuItem; priceHeaders?: [string, string] }) => {
   if (item.priceDom || item.priceImp) {
     return (
       <div className="flex gap-6 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
-        <span className="w-12 text-right">{item.priceDom || ""}</span>
-        <span className="w-12 text-right">{item.priceImp || ""}</span>
+        <div className="min-w-[45px] md:min-w-[60px] text-right"><FormattedPrice price={item.priceDom} /></div>
+        <div className="min-w-[45px] md:min-w-[60px] text-right"><FormattedPrice price={item.priceImp} /></div>
       </div>
     );
   }
   if (item.priceGlass || item.priceBottle) {
     return (
       <div className="flex gap-6 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
-        <span className="w-12 text-right">{item.priceGlass || ""}</span>
-        <span className="w-12 text-right">{item.priceBottle || ""}</span>
+        <div className="min-w-[45px] md:min-w-[60px] text-right"><FormattedPrice price={item.priceGlass} /></div>
+        <div className="min-w-[75px] md:min-w-[100px] text-right"><FormattedPrice price={item.priceBottle} /></div>
       </div>
     );
   }
   if (item.price300 || item.price650) {
     return (
       <div className="flex gap-6 font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5">
-        <span className="w-12 text-right">{item.price300 || ""}</span>
-        <span className="w-12 text-right">{item.price650 || ""}</span>
+        <div className="min-w-[45px] md:min-w-[60px] text-right"><FormattedPrice price={item.price300} /></div>
+        <div className="min-w-[45px] md:min-w-[60px] text-right"><FormattedPrice price={item.price650} /></div>
       </div>
     );
   }
   if (item.price) {
     return (
       <span className="font-body text-base md:text-lg font-semibold text-amber tabular-nums shrink-0 mt-0.5 whitespace-nowrap min-w-[50px] text-right">
-        {item.price}
+        <FormattedPrice price={item.price} />
       </span>
     );
   }
