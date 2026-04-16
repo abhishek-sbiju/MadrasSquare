@@ -53,12 +53,12 @@ const Footer = () => {
               <ul className="space-y-4 font-body text-sm text-white/50 flex flex-col items-center md:items-start">
                 <li className="flex items-start gap-3 text-left">
                   <MapPin size={16} className="text-amber/70 shrink-0 mt-0.5" />
-                  <span>East Coast at Madras Square , 2/520, Sundeep Ave,<br />Sakthimoorthiamman Nagar, Neelankarai, Chennai,<br />Tamil Nadu 600041</span>
+                  <span>The Beach by Madras Square Restaurant & Bar ECR,<br />1st Main Rd, Uthandi, Chennai,<br />Tamil Nadu 600119</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={16} className="text-amber/70 shrink-0" />
                   <div className="flex flex-col text-left">
-                    <a href="tel:+917299440000" className="hover:text-amber transition-colors duration-300">+91 72994 40000</a>
+                    <a href="tel:+917305669696" className="hover:text-amber transition-colors duration-300">+91 73056 69696</a>
                   </div>
                 </li>
               </ul>
@@ -73,9 +73,9 @@ const Footer = () => {
                 <li className="flex items-start gap-3 text-left">
                   <Clock size={16} className="text-amber/70 shrink-0 mt-0.5" />
                   <div>
-                    <p>Mon – Fri: 11:00 AM – 10:30 PM</p>
-                    <p className="mt-1">Saturday: 11:00 AM – 3:45 PM | 6:30 PM – 10:30 PM</p>
-                    <p className="mt-1">Sunday: 11:00 AM – 3:45 PM | 6:30 PM – 10:30 PM</p>
+                    <p>Mon – Fri: 11 am – 10.30 pm</p>
+                    <p className="mt-1">Saturday: 11 am – 3.45 pm | 6:30 pm – 10:30 pm</p>
+                    <p className="mt-1">Sunday: 11 am – 3.45 pm | 6:30 pm – 10:30 pm</p>
                   </div>
                 </li>
               </ul>
