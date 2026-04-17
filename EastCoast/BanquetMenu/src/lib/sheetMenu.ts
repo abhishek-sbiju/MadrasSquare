@@ -10,8 +10,8 @@ import type {
  * See SETUP.md at the repo root.
  */
 export const SHEET_CONFIG = {
-  sheetId: "1AKJj-QUZhjUcpN24otklDiL_UYkTUybJbLGwaim4nUM",
-  gid: "179261080",
+  sheetId: "148GUf4oqPg8FX2D-H0tikJ5POyMxIKzeXqZDQrlgKSg",
+  gid: "1235339567",
 } as const;
 
 const CURRENCY = "₹";
@@ -24,6 +24,9 @@ const CURRENCY = "₹";
 const CATEGORY_ID_OVERRIDES: Record<string, string> = {
   "mains - vegetarian": "mains-veg",
   "mains - non vegetarian": "mains-nonveg",
+  "ram's signature": "rams-signature",
+  "rams signature": "rams-signature",
+  "ram signature": "rams-signature",
 };
 
 interface SheetRow {
@@ -84,7 +87,10 @@ function slugify(s: string): string {
 }
 
 function categoryIdFor(title: string): string {
-  const key = title.toLowerCase().trim();
+  const key = title
+    .toLowerCase()
+    .replace(/[\u2018\u2019\u02BC\u0060]/g, "'")
+    .trim();
   return CATEGORY_ID_OVERRIDES[key] ?? slugify(title);
 }
 
@@ -143,10 +149,34 @@ function mergeRowsToItems(rows: SheetRow[]): MenuItem[] {
 function transformRows(rows: SheetRow[]): MenuCategory[] {
   const available = rows.filter((r) => isAvailable(r.Available));
 
-  const byCat = new Map<string, Map<string, SheetRow[]>>();
+  /*
+   * Category-level metadata rows: any available row where Name is empty is
+   * treated as category metadata (not an item). Its Description becomes one
+   * paragraph of the category's description. Multiple such rows produce
+   * multiple paragraphs, joined with "|" (the RamsSignatureHeader and other
+   * headers split on "|" to render separate <p> blocks).
+   */
+  const descriptions = new Map<string, string[]>();
+  const itemRows: SheetRow[] = [];
   for (const row of available) {
     const cat = row.Category?.trim();
     if (!cat) continue;
+    const name = row.Name?.trim();
+    if (!name) {
+      const desc = row.Description?.trim();
+      if (desc) {
+        const list = descriptions.get(cat) ?? [];
+        list.push(desc);
+        descriptions.set(cat, list);
+      }
+      continue;
+    }
+    itemRows.push(row);
+  }
+
+  const byCat = new Map<string, Map<string, SheetRow[]>>();
+  for (const row of itemRows) {
+    const cat = row.Category.trim();
     const sub = row.SubCategory?.trim() || "";
     if (!byCat.has(cat)) byCat.set(cat, new Map());
     const subMap = byCat.get(cat)!;
@@ -159,6 +189,8 @@ function transformRows(rows: SheetRow[]): MenuCategory[] {
     const hasRealSubs =
       subMap.size > 1 || (subMap.size === 1 && !subMap.has(""));
 
+    const description = descriptions.get(catTitle)?.join("|");
+
     if (hasRealSubs) {
       const subCategories: SubCategory[] = [];
       subMap.forEach((subRows, subName) => {
@@ -170,12 +202,14 @@ function transformRows(rows: SheetRow[]): MenuCategory[] {
       categories.push({
         id: categoryIdFor(catTitle),
         title: catTitle,
+        ...(description ? { description } : {}),
         categories: subCategories,
       });
     } else {
       categories.push({
         id: categoryIdFor(catTitle),
         title: catTitle,
+        ...(description ? { description } : {}),
         items: mergeRowsToItems(subMap.get("") ?? []),
       });
     }

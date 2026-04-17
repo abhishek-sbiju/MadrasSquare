@@ -1,0 +1,276 @@
+Category,SubCategory,Name,Description,Variant,Price,DietType,Tags,Available
+COCKTAILS,,Whiskey Sour,"Whiskey, lemon juice, egg white, simple syrup",DOM,580,,,TRUE
+COCKTAILS,,Whiskey Sour,"Whiskey, lemon juice, egg white, simple syrup",IMP,780,,,TRUE
+COCKTAILS,,Cosmopolitan,"Vodka, lemon juice, triple sec, cranberry juice",DOM,580,,,TRUE
+COCKTAILS,,Cosmopolitan,"Vodka, lemon juice, triple sec, cranberry juice",IMP,780,,,TRUE
+COCKTAILS,,Mojito,"White rum, soda, lime, mint, sugar syrup",DOM,580,,,TRUE
+COCKTAILS,,Mojito,"White rum, soda, lime, mint, sugar syrup",IMP,780,,,TRUE
+COCKTAILS,,Classic Daiquiri,"White rum, lime juice, simple syrup",DOM,580,,,TRUE
+COCKTAILS,,Classic Daiquiri,"White rum, lime juice, simple syrup",IMP,780,,,TRUE
+COCKTAILS,,Pina Colada,"White rum, pineapple juice, coconut cream, simple syrup",DOM,580,,,TRUE
+COCKTAILS,,Pina Colada,"White rum, pineapple juice, coconut cream, simple syrup",IMP,780,,,TRUE
+COCKTAILS,,Bloody Mary,"Vodka, tomato juice, tabasco, worcestershire sauce, lime juice, crushed black pepper mint",DOM,580,,,TRUE
+COCKTAILS,,Bloody Mary,"Vodka, tomato juice, tabasco, worcestershire sauce, lime juice, crushed black pepper mint",IMP,780,,,TRUE
+COCKTAILS,,Strawberry Mojito,"White rum, soda, lime, mint, strawberry, simple syrup",DOM,580,,,TRUE
+COCKTAILS,,Strawberry Mojito,"White rum, soda, lime, mint, strawberry, simple syrup",IMP,780,,,TRUE
+COCKTAILS,,Margarita,"Tequila, triple sec, lime juice",IMP,780,,,TRUE
+COCKTAILS,,Old Fashioned,"Bourbon whiskey, angostura bitters, sugar cubes",IMP,780,,,TRUE
+COCKTAILS,,Tequila Sunrise,"Tequila, orange juice, grenadine syrup",IMP,780,,,TRUE
+COCKTAILS,,Smokey Jack,"Bourbon whiskey, maple syrup, orange skin twist",IMP,780,,,TRUE
+COCKTAILS,,WOW,"Vodka, watermelon chunks, elder flower syrup, lime juice",IMP,780,,,TRUE
+COCKTAILS,,Jewel Set,"Vodka, white rum, gin, lime juice, guava juice, grenadine syrup, lime",IMP,780,,,TRUE
+COCKTAILS,,Moscow Mule,"Vodka, lime juice, ginger beer, ginger syrup",DOM,600,,,TRUE
+COCKTAILS,,Moscow Mule,"Vodka, lime juice, ginger beer, ginger syrup",IMP,780,,,TRUE
+COCKTAILS,,Gimlet,"Gin, lime juice, simple syrup",IMP,780,,,TRUE
+COCKTAILS,,Hot Toddy,"Brandy/whiskey, honey, lime, cloves, cinnamon",DOM,580,,,TRUE
+COCKTAILS,,Hot Toddy,"Brandy/whiskey, honey, lime, cloves, cinnamon",IMP,780,,,TRUE
+COCKTAILS,,Long Island Iced Tea,"White rum, tequila, gin, vodka, triple sec, lime juice, coke",IMP,900,,,TRUE
+COCKTAILS,,Gin Fizz,"Gin, lime wedges, tonic water, basil leaves",IMP,780,,,TRUE
+COCKTAILS,,Penicillin,"Whiskey, lemon juice, honey ginger syrup, lemon peel",DOM,580,,,TRUE
+COCKTAILS,,Penicillin,"Whiskey, lemon juice, honey ginger syrup, lemon peel",IMP,780,,,TRUE
+COCKTAILS,,Passion Fruit Martini,"Vodka, passion fruit syrup, lime, soda",IMP,850,,,TRUE
+COCKTAILS,,Heat Cooler,"Vodka, blood orange, luxardo cherry syrup, lemon juice",IMP,780,,,TRUE
+COCKTAILS,,New York Sour,"Bourbon whiskey, lime juice, simple syrup, red wine",IMP,800,,,TRUE
+COCKTAILS,,Jack Frost,"Vodka, pineapple juice, blue curacao",IMP,780,,,TRUE
+COCKTAILS,,Madras Magic,"Vodka, fresh chilli, cilantro, lime juice, simple syrup",IMP,780,,,TRUE
+PITCHERS,,Whiskey Sour Pitcher,"Whiskey, lemon juice, egg white, simple syrup",DOM,1950,,,TRUE
+PITCHERS,,Cosmopolitan Pitcher,"Vodka, lemon juice, triple sec, cranberry juice",DOM,1950,,,TRUE
+PITCHERS,,Mojito Pitcher,"White rum, soda, lime, mint, sugar syrup",DOM,1950,,,TRUE
+PITCHERS,,Long Island Iced Tea Pitcher,"White rum, tequila, gin, vodka, triple sec, lime juice, coke",DOM,2800,,,TRUE
+WHISKEY,Single Malt Whiskey,The Glenlivet 12 Yrs,,Peg,780,,,TRUE
+WHISKEY,Single Malt Whiskey,The Glenlivet 12 Yrs,,Bottle,16500,,,TRUE
+WHISKEY,Single Malt Whiskey,Glenfiddich 12 Yrs,,Peg,780,,,TRUE
+WHISKEY,Single Malt Whiskey,Glenfiddich 12 Yrs,,Bottle,16500,,,TRUE
+WHISKEY,Single Malt Whiskey,Glenfiddich 15 Yrs,,Peg,880,,,TRUE
+WHISKEY,Single Malt Whiskey,Glenfiddich 15 Yrs,,Bottle,18000,,,TRUE
+WHISKEY,Single Malt Whiskey,Talisker 10 Yrs,,Peg,780,,,TRUE
+WHISKEY,Single Malt Whiskey,Talisker 10 Yrs,,Bottle,16500,,,TRUE
+WHISKEY,Single Malt Whiskey,Laphroaig 10 Yrs,,Peg,780,,,TRUE
+WHISKEY,Single Malt Whiskey,Laphroaig 10 Yrs,,Bottle,16500,,,TRUE
+WHISKEY,Single Malt Whiskey,Bowmore 12 Yrs,,Peg,650,,,TRUE
+WHISKEY,Single Malt Whiskey,Bowmore 12 Yrs,,Bottle,14500,,,TRUE
+WHISKEY,Single Malt Whiskey,Singleton,,Peg,780,,,TRUE
+WHISKEY,Single Malt Whiskey,Singleton,,Bottle,16500,,,TRUE
+WHISKEY,Single Malt Whiskey,Aberfeldy 12 Yrs,,Peg,650,,,TRUE
+WHISKEY,Single Malt Whiskey,Aberfeldy 12 Yrs,,Bottle,14500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Chivas Regal 12 Yrs,,Peg,650,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Chivas Regal 12 Yrs,,Bottle,14000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Chivas Regal 15 Yrs,,Peg,750,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Chivas Regal 15 Yrs,,Bottle,17750,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Chivas Regal 18 Yrs,,Peg,800,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Chivas Regal 18 Yrs,,Bottle,18500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,JW Black Label,,Peg,600,,,TRUE
+WHISKEY,Blended Scotch Whiskey,JW Black Label,,Bottle,11000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,JW Double Black,,Peg,700,,,TRUE
+WHISKEY,Blended Scotch Whiskey,JW Double Black,,Bottle,16000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Ballantine Finest,,Peg,450,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Ballantine Finest,,Bottle,7500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Ballantine 12 Yrs,,Peg,550,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Ballantine 12 Yrs,,Bottle,10000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Monkey Shoulder,,Peg,650,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Monkey Shoulder,,Bottle,14500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Dewars 12 Yrs,,Peg,400,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Dewars 12 Yrs,,Bottle,7500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Dewars 15 Yrs,,Peg,400,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Dewars 15 Yrs,,Bottle,8000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Dewars White Label,,Peg,400,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Dewars White Label,,Bottle,7500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Teachers Highland Cream,,Peg,550,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Teachers Highland Cream,,Bottle 1000ml,9000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Black and White,,Peg,440,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Black and White,,Bottle,6000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,100 Pipers,,Peg,500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,100 Pipers,,Bottle 1000ml,6500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Grants,,Peg,350,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Grants,,Bottle,6000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,J&B Rare,,Peg,400,,,TRUE
+WHISKEY,Blended Scotch Whiskey,J&B Rare,,Bottle,7000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Jameson,,Peg,550,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Jameson,,Bottle,12500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Suntory Toki,,Peg,630,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Suntory Toki,,Bottle,14000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Fort Glen,,Peg,350,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Fort Glen,,Bottle,7500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,VAT 69,,Peg,350,,,TRUE
+WHISKEY,Blended Scotch Whiskey,VAT 69,,Bottle,6000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Jameson Black Barrel,,Peg,550,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Jameson Black Barrel,,Bottle,12500,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Tamerlane,,Peg,350,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Tamerlane,,Bottle,6000,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Iwai,,Peg,550,,,TRUE
+WHISKEY,Blended Scotch Whiskey,Iwai,,Bottle,12000,,,TRUE
+WHISKEY,Bourbon Whiskey,Jack Daniels,,Peg,600,,,TRUE
+WHISKEY,Bourbon Whiskey,Jack Daniels,,Bottle,13000,,,TRUE
+WHISKEY,Bourbon Whiskey,Jim Beam,,Peg,450,,,TRUE
+WHISKEY,Bourbon Whiskey,Jim Beam,,Bottle 1000ml,9000,,,TRUE
+WHISKEY,Bourbon Whiskey,Jim Beam Black,,Peg,500,,,TRUE
+WHISKEY,Bourbon Whiskey,Jim Beam Black,,Bottle,10500,,,TRUE
+WHISKEY,Domestic Whiskey,Signature,,Peg,400,,,TRUE
+WHISKEY,Domestic Whiskey,Signature,,Bottle,4500,,,TRUE
+WHISKEY,Domestic Whiskey,Royal Challenge,,Peg,400,,,TRUE
+WHISKEY,Domestic Whiskey,Royal Challenge,,Bottle 1000ml,4500,,,TRUE
+WHISKEY,Domestic Whiskey,Antiquity Blue,,Peg,350,,,TRUE
+WHISKEY,Domestic Whiskey,Antiquity Blue,,Bottle,4500,,,TRUE
+VODKA,,Grey Goose,,Peg,650,,,TRUE
+VODKA,,Grey Goose,,Bottle,14500,,,TRUE
+VODKA,,Absolut Blue,,Peg,400,,,TRUE
+VODKA,,Absolut Blue,,Bottle,7000,,,TRUE
+VODKA,,Ketel One,,Peg,400,,,TRUE
+VODKA,,Ketel One,,Bottle,7000,,,TRUE
+VODKA,,Smirnoff Red,,Peg,400,,,TRUE
+VODKA,,Smirnoff Red,,Bottle,7000,,,TRUE
+VODKA,Domestic,Juno,,Peg,300,,,TRUE
+VODKA,Domestic,Juno,,Bottle,4000,,,TRUE
+GIN,,Beefeater,,Peg,440,,,TRUE
+GIN,,Beefeater,,Bottle,6500,,,TRUE
+GIN,,Bombay Sapphire,,Peg,500,,,TRUE
+GIN,,Bombay Sapphire,,Bottle,7500,,,TRUE
+GIN,,Gordons,,Peg,440,,,TRUE
+GIN,,Gordons,,Bottle,6500,,,TRUE
+GIN,,Tanqueray,,Peg,500,,,TRUE
+GIN,,Tanqueray,,Bottle,7500,,,TRUE
+GIN,,Hendricks,,Peg,650,,,TRUE
+GIN,,Hendricks,,Bottle,14500,,,TRUE
+GIN,,Roku,,Peg,700,,,TRUE
+GIN,,Roku,,Bottle,16000,,,TRUE
+TEQUILA,,Casco Viejo,,Peg,550,,,TRUE
+TEQUILA,,Casco Viejo,,Bottle,10500,,,TRUE
+TEQUILA,,Castillo,,Peg,500,,,TRUE
+TEQUILA,,Castillo,,Bottle,9500,,,TRUE
+TEQUILA,,Don Angel,,Peg,500,,,TRUE
+TEQUILA,,Don Angel,,Bottle,10500,,,TRUE
+TEQUILA,,Camino Real Blanco,,Peg,550,,,TRUE
+TEQUILA,,Camino Real Blanco,,Bottle,10500,,,TRUE
+RUM,,Bacardi Reserva Ocho,,Peg,600,,,TRUE
+RUM,,Bacardi Reserva Ocho,,Bottle,12000,,,TRUE
+RUM,,Negrita Spiced Rum,,Peg,400,,,TRUE
+RUM,,Negrita Spiced Rum,,Bottle,7000,,,TRUE
+RUM,Domestic Rum,Old Monk,,Peg,350,,,TRUE
+RUM,Domestic Rum,Old Monk,,Bottle,4000,,,TRUE
+RUM,Domestic Rum,Bacardi White,,Peg,350,,,TRUE
+RUM,Domestic Rum,Bacardi White,,Bottle,4000,,,TRUE
+RUM,Domestic Rum,Bacardi Black,,Peg,350,,,TRUE
+RUM,Domestic Rum,Bacardi Black,,Bottle,4000,,,TRUE
+BRANDY,,Martel VS,,Peg,600,,,TRUE
+BRANDY,,Martel VS,,Bottle,13000,,,TRUE
+BRANDY,,Napoleon XO,,Peg,400,,,TRUE
+BRANDY,,Napoleon XO,,Bottle,6000,,,TRUE
+BRANDY,,Meukow VS Cognac,,Peg,500,,,TRUE
+BRANDY,,Meukow VS Cognac,,Bottle,7000,,,TRUE
+BRANDY,,Louis Baron VSOP,,Peg,600,,,TRUE
+BRANDY,,Louis Baron VSOP,,Bottle,9500,,,TRUE
+BRANDY,,VSOP Napoleon Gold,,Peg,400,,,TRUE
+BRANDY,,VSOP Napoleon Gold,,Bottle,6000,,,TRUE
+BRANDY,Domestic Brandy,VSOP Exshaw,,Peg,350,,,TRUE
+BRANDY,Domestic Brandy,VSOP Exshaw,,Bottle,3500,,,TRUE
+BRANDY,Domestic Brandy,Morpheus,,Peg,350,,,TRUE
+BRANDY,Domestic Brandy,Morpheus,,Bottle,4000,,,TRUE
+LIQUOR,,Kahlua,,Peg,500,,,TRUE
+LIQUOR,,Kahlua,,Bottle,9200,,,TRUE
+LIQUOR,,Baileys,,Peg,550,,,TRUE
+LIQUOR,,Baileys,,Bottle,9800,,,TRUE
+LIQUOR,,Jagermeister,,Peg,600,,,TRUE
+LIQUOR,,Jagermeister,,Bottle,12500,,,TRUE
+LIQUOR,,Jack Daniel Honey,,Peg,600,,,TRUE
+LIQUOR,,Jack Daniel Honey,,Bottle,13700,,,TRUE
+LIQUOR,,Cointreau,,Peg,550,,,TRUE
+LIQUOR,,Cointreau,,Bottle,10800,,,TRUE
+LIQUOR,,Zappa Sambuca,,Peg,450,,,TRUE
+LIQUOR,,Zappa Sambuca,,Bottle,9700,,,TRUE
+SHOOTERS,,Blue Kamikaze,"Vodka, blue curacao, lime",DOM,400,,,TRUE
+SHOOTERS,,Blue Kamikaze,"Vodka, blue curacao, lime",IMP,700,,,TRUE
+SHOOTERS,,B52,"Baileys, kahlua, cointreau",IMP,800,,,TRUE
+SHOOTERS,,Jagerbomb,"Jagermeister, red bull",IMP,710,,,TRUE
+SHOOTERS,,Big Bang,"Rum, orange juice, pineapple juice, simple syrup, triple sec, bitters",IMP,710,,,TRUE
+SHOOTERS,,Sugar Daddy,"Sugar cane syrup, dark rum, lime juice",IMP,650,,,TRUE
+BEER,Imported (on availability),Taiwan Beer 500ml,,,700,,,TRUE
+BEER,Imported (on availability),Oettinger 500ml,,,700,,,TRUE
+BEER,Imported (on availability),Heineken,,,700,,,TRUE
+BEER,Imported (on availability),Butanese,,,700,,,TRUE
+BEER,Imported (on availability),Buho,,,700,,,TRUE
+BEER,Domestic,Kingfisher,,330ml,300,,,TRUE
+BEER,Domestic,Kingfisher,,650ml,500,,,TRUE
+BEER,Domestic,Kingfisher Blue,,330ml,300,,,TRUE
+BEER,Domestic,Kingfisher Blue,,650ml,500,,,TRUE
+BEER,Domestic,British Empire,,330ml,300,,,TRUE
+BEER,Domestic,British Empire,,650ml,500,,,TRUE
+BEER,Domestic,Sterren,,330ml,300,,,TRUE
+BEER,Domestic,Sterren,,650ml,500,,,TRUE
+BEER,Domestic,Carlsberg Elephant,,650ml,500,,,TRUE
+BEER,Domestic,Tuborg Super Strong,,650ml,500,,,TRUE
+BEER,Draught,Kingfisher Draught 330ml,,,280,,,TRUE
+BEER,Draught,Kingfisher Draught Pitcher 1.5L,,,1350,,,TRUE
+BEER,Draught,Kingfisher Draught Tower 3L,,,2500,,,TRUE
+WINE,,Jacobs Creek Chardonnay,,Glass,1200,,,TRUE
+WINE,,Jacobs Creek Chardonnay,,Bottle,5500,,,TRUE
+WINE,,Jacobs Creek Shiraz,,Glass,1200,,,TRUE
+WINE,,Jacobs Creek Shiraz,,Bottle,5500,,,TRUE
+WINE,,Jacobs Creek Merlot,,Glass,1200,,,TRUE
+WINE,,Jacobs Creek Merlot,,Bottle,5500,,,TRUE
+WINE,,Just Roberto Merlot,,Glass,850,,,TRUE
+WINE,,Just Roberto Merlot,,Bottle,4000,,,TRUE
+WINE,,Camas Merlot,,Glass,850,,,TRUE
+WINE,,Camas Merlot,,Bottle,4000,,,TRUE
+WINE,,Lindemans Chardonnay,,Glass,1200,,,TRUE
+WINE,,Lindemans Chardonnay,,Bottle,5000,,,TRUE
+WINE,,Camas Chardonnay,,Glass,850,,,TRUE
+WINE,,Camas Chardonnay,,Bottle,4000,,,TRUE
+WINE,,Black Tower Riesling,,Glass,900,,,TRUE
+WINE,,Black Tower Riesling,,Bottle,4500,,,TRUE
+WINE,,Black Tower Pinot Noir,,Glass,900,,,TRUE
+WINE,,Black Tower Pinot Noir,,Bottle,4500,,,TRUE
+WINE,Fratelli,Merlot,,Glass,600,,,TRUE
+WINE,Fratelli,Merlot,,Bottle,3000,,,TRUE
+WINE,Fratelli,Chardonnay,,Glass,600,,,TRUE
+WINE,Fratelli,Chardonnay,,Bottle,3000,,,TRUE
+WINE,Fratelli,Shiraz,,Glass,600,,,TRUE
+WINE,Fratelli,Shiraz,,Bottle,3000,,,TRUE
+WINE,Fratelli,Cabernet Sauvignon,,Glass,600,,,TRUE
+WINE,Fratelli,Cabernet Sauvignon,,Bottle,3000,,,TRUE
+WINE,Fratelli,Chenin Blanc,,Glass,600,,,TRUE
+WINE,Fratelli,Chenin Blanc,,Bottle,3000,,,TRUE
+WINE,Fratelli,Sette,,Glass,800,,,TRUE
+WINE,Fratelli,Sette,,Bottle,4000,,,TRUE
+WINE,Fratelli,Sangiovese,,Glass,580,,,TRUE
+WINE,Fratelli,Sangiovese,,Bottle,2900,,,TRUE
+WINE,Fratelli,Sauvignon Blanc,,Glass,580,,,TRUE
+WINE,Fratelli,Sauvignon Blanc,,Bottle,2900,,,TRUE
+WINE,Fratelli,Sparkling Noi,,Glass,600,,,TRUE
+WINE,Fratelli,Sparkling Noi,,Bottle,3200,,,TRUE
+WINE,Fratelli,Sangria Glass/Pitcher,,Glass,650,,,TRUE
+WINE,Fratelli,Sangria Glass/Pitcher,,Bottle,3250,,,TRUE
+MIXERS,,Coke/Sprite/Fanta,,,140,,,TRUE
+MIXERS,,Soda,,,120,,,TRUE
+MIXERS,,Tonic Water,,,210,,,TRUE
+MIXERS,,Ginger Ale,,,210,,,TRUE
+MIXERS,,Red Bull,,,290,,,TRUE
+MIXERS,,Orange/Litchi,,,200,,,TRUE
+MIXERS,,Cranberry/Guava,,,250,,,TRUE
+MIXERS,,Apple/Pineapple,,,200,,,TRUE
+MOCKTAILS,,Floral Shangria,,,450,,,TRUE
+MOCKTAILS,,Minty Lime Spark,,,340,,,TRUE
+MOCKTAILS,,Strawberry Basil Crush,,,340,,,TRUE
+MOCKTAILS,,Tropical Tang,,,340,,,TRUE
+MOCKTAILS,,Litchi Lemonade,,,340,,,TRUE
+MOCKTAILS,,Pomegranate Mojito,,,340,,,TRUE
+MOCKTAILS,,Mango Thunder,,,340,,,TRUE
+MOCKTAILS,,Pink Guava Fizz,,,340,,,TRUE
+MOCKTAILS,,Summer Splash,,,340,,,TRUE
+MOCKTAILS,,Mango Hibiscus Elixir,,,380,,,TRUE
+MILKSHAKES,,Smores,,,400,,,TRUE
+MILKSHAKES,,Salted Caramel,,,420,,,TRUE
+MILKSHAKES,,Nutella,,,440,,,TRUE
+COLD BEVERAGES,,Frappe,hazelnut/french vanilla/irish,,380,,,TRUE
+COLD BEVERAGES,,Iced Tea,lemon/peach,,320,,,TRUE
+COLD BEVERAGES,,Floats,coke/orange,,320,,,TRUE
+COLD BEVERAGES,,Water Bottle 1L,,,20,,,TRUE
+HOT BEVERAGES,,Espresso,,,100,,,TRUE
+HOT BEVERAGES,,Double Espresso,,,160,,,TRUE
+HOT BEVERAGES,,Macchiato,,,140,,,TRUE
+HOT BEVERAGES,,Cappuccino,,,200,,,TRUE
+HOT BEVERAGES,,Latte,,,200,,,TRUE
+HOT BEVERAGES,,Piccolo,,,200,,,TRUE
+HOT BEVERAGES,,Americano,,,180,,,TRUE
+HOT BEVERAGES,,Black Tea/Milk/Lime,,,180,,,TRUE
+HOT BEVERAGES,,Green Tea/Earl Gray,,,180,,,TRUE
+HOT BEVERAGES,,Hot Chocolate,,,320,,,TRUE

@@ -53,7 +53,7 @@ const Footer = () => {
               <ul className="space-y-4 font-body text-sm text-white/50 flex flex-col items-center md:items-start">
                 <li className="flex items-start gap-3 text-left">
                   <MapPin size={16} className="text-gold/70 shrink-0 mt-0.5" />
-                  <span>East Coast at Madras Square , 2/520, Sundeep Ave,<br />Sakthimoorthiamman Nagar, Neelankarai, Chennai,<br />Tamil Nadu 600041</span>
+                  <span>East Coast at Madras Square , 2/520, Sundeep Ave,<br />Sakthimoorthiamman Nagar, Neelankarai, Chennai,<br />Tamil Nadu 600115</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={16} className="text-gold/70 shrink-0" />

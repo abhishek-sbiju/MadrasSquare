@@ -153,6 +153,7 @@ DESSERTS,ICE CREAMS,MILK CHOCOLATE AND BROWNIE,,,,veg,,TRUE
 DESSERTS,ICE CREAMS,MASCARPONE AND RASPBERRY,,,,veg,,TRUE
 DESSERTS,ICE CREAMS,MADAGASCAR CHOCOLATE,,,,veg,,TRUE
 DESSERTS,ICE CREAMS,COFFEE HAZELNUT CRUNCH,,,,veg,,TRUE
+BOTTLE PRICES,,,"Raise Your Glass to Refined Evenings. Enjoy exclusive bottle pricing available only for our banquet guests.",,,,,TRUE
 BOTTLE PRICES,WHISKEY,J & B Rare,,750 ML,8590,,,TRUE
 BOTTLE PRICES,WHISKEY,100 pipers,,1000 ML,9190,,,TRUE
 BOTTLE PRICES,WHISKEY,Black White,,750 ML,8590,,,TRUE
@@ -217,6 +218,9 @@ BOTTLE PRICES,WINE,Sula Sauvignon Blanc,,750 ML,3190,,,TRUE
 BOTTLE PRICES,WINE,Jacob's Creek Chardonnay,,750 ML,6690,,,TRUE
 BOTTLE PRICES,WINE,Jacob's Creek Shiraz,,750 ML,6690,,,TRUE
 BOTTLE PRICES,WINE,Camas Chardonnay,,750 ML,4590,,,TRUE
+RAM'S SIGNATURE,,,"Curated and perfected by Ram, the driving force behind Madras Square, this signature banquet menu reflects his love for bold flavours, generous spreads, and food that truly brings people together.",,,,,TRUE
+RAM'S SIGNATURE,,,"It's a lively mix of crowd favourites and chef-led creations—designed to keep conversations flowing, plates full, and guests smiling.",,,,,TRUE
+RAM'S SIGNATURE,,,"If you're looking for a banquet that feels warm, energetic, and unmistakably Madras Square, this is the one guests remember.",,,,,TRUE
 RAM'S SIGNATURE,MOCKTAILS,Strawberry Basil Crush,,,,veg,,TRUE
 RAM'S SIGNATURE,MOCKTAILS,Litchi Lemonade,,,,veg,,TRUE
 RAM'S SIGNATURE,SOUP,Lemon Coriander Soup,,,,veg,,TRUE

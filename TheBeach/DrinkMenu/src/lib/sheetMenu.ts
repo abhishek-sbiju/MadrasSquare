@@ -6,8 +6,8 @@ import type { MenuItem, MenuSection } from "@/data/menuData";
  * See SETUP.md at the repo root.
  */
 export const SHEET_CONFIG = {
-  sheetId: "1rLzDyEz07Z6_ixDUGjJEESkFT4q6wbXVTPvwPBRPkK0",
-  gid: "834377372",
+  sheetId: "1rtiCkSTJFIAqQmz8TQ8ymvdX6hXcv2iLOwvOv_ETRW8",
+  gid: "1405826352",
 } as const;
 
 const CURRENCY = "₹";
@@ -30,37 +30,60 @@ interface SheetRow {
 }
 
 // ---------------------------------------------------------------------------
-// Fetch + parse gviz response
+// Fetch + parse CSV export
 // ---------------------------------------------------------------------------
+//
+// We intentionally use the CSV export endpoint (not gviz/tq JSON) because
+// gviz types each column (e.g. Price → number) and silently drops any cell
+// whose value doesn't match that type. A cell like "9000 (1000ml)" comes
+// back as null over gviz but is preserved verbatim in CSV export.
+
+function parseCsv(text: string): string[][] {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let cell = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (text[i + 1] === '"') { cell += '"'; i++; }
+        else { inQuotes = false; }
+      } else {
+        cell += ch;
+      }
+    } else {
+      if (ch === '"') inQuotes = true;
+      else if (ch === ",") { row.push(cell); cell = ""; }
+      else if (ch === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+      else if (ch === "\r") { /* skip; \n handles line end */ }
+      else cell += ch;
+    }
+  }
+  if (cell.length > 0 || row.length > 0) { row.push(cell); rows.push(row); }
+  return rows;
+}
 
 async function fetchSheetRows(): Promise<SheetRow[]> {
   const bust = Math.floor(Date.now() / 60000);
   const url =
     `https://docs.google.com/spreadsheets/d/${SHEET_CONFIG.sheetId}` +
-    `/gviz/tq?tqx=out:json&gid=${encodeURIComponent(SHEET_CONFIG.gid)}` +
+    `/export?format=csv&gid=${encodeURIComponent(SHEET_CONFIG.gid)}` +
     `&_=${bust}`;
 
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Sheet fetch failed: ${res.status}`);
   const text = await res.text();
 
-  const json = JSON.parse(
-    text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1),
-  );
+  const rows = parseCsv(text).filter((r) => r.some((c) => c.trim() !== ""));
+  if (rows.length === 0) return [];
 
-  const cols: string[] = json.table.cols.map(
-    (c: { label?: string }, i: number) => (c.label || "").trim() || `col${i}`,
-  );
-
-  type GvizCell = { v: unknown } | null;
-  type GvizRow = { c: GvizCell[] };
-
-  return (json.table.rows as GvizRow[]).map((row) => {
+  const header = rows[0].map((h) => h.trim());
+  return rows.slice(1).map((r) => {
     const obj: Record<string, string> = {};
-    row.c.forEach((cell, i) => {
-      const raw = cell ? cell.v : "";
-      const v = raw === null || raw === undefined ? "" : raw;
-      obj[cols[i]] = typeof v === "string" ? v.trim() : String(v);
+    header.forEach((key, i) => {
+      obj[key || `col${i}`] = (r[i] ?? "").trim();
     });
     return obj as unknown as SheetRow;
   });
@@ -103,16 +126,60 @@ type PriceField =
   | "price650";
 
 function variantToField(variant: string): PriceField {
-  const v = variant.toLowerCase().trim();
+  const v = canonicalVariant(variant);
   if (!v) return "price";
   if (v === "domestic" || v === "dom") return "priceDom";
   if (v === "imported" || v === "imp") return "priceImp";
   if (v === "peg" || v === "glass") return "priceGlass";
-  if (v.startsWith("bottle")) return "priceBottle";
+  if (v === "bottle") return "priceBottle";
   if (v === "pitcher") return "priceBottle";
   if (v === "330ml" || v === "300ml") return "price300";
   if (v === "650ml" || v === "1000ml") return "price650";
   return "price";
+}
+
+/**
+ * Strip size annotations from a Variant string so that e.g. "Bottle 1000ml"
+ * and "Bottle" share the same canonical key ("bottle"). Variants that ARE
+ * sizes ("330ml", "650ml") are preserved as-is.
+ */
+function canonicalVariant(variant: string): string {
+  const lower = variant.toLowerCase().trim();
+  if (!lower) return "";
+  const stripped = lower
+    .replace(/\s*\d+(?:\.\d+)?\s*(?:ml|l|ltr|lts)\b/g, "")
+    .trim();
+  return stripped || lower;
+}
+
+/** Default volume assumed for each volumetric price-field. */
+const DEFAULT_VOLUME: Partial<Record<PriceField, string>> = {
+  priceBottle: "750ml",
+};
+
+/**
+ * Extract a non-default volume annotation from a Variant string.
+ * Example: variant="Bottle 1000ml", field="priceBottle" → "1000ml".
+ * Returns undefined when the variant carries no size, or when the size
+ * equals the default for that field.
+ */
+function extractNonDefaultVolume(
+  variant: string,
+  field: PriceField,
+): string | undefined {
+  const defaultSize = DEFAULT_VOLUME[field];
+  if (!defaultSize) return undefined;
+  const m = variant.match(/(\d+(?:\.\d+)?)\s*(ml|l|ltr|lts)\b/i);
+  if (!m) return undefined;
+  const size = `${m[1]}${m[2].toLowerCase()}`;
+  return size === defaultSize ? undefined : size;
+}
+
+/** Append a "(1000ml)"-style volume annotation to a price value. */
+function annotatePriceWithVolume(price: string, size?: string): string {
+  if (!price || !size) return price;
+  if (price.includes("(")) return price;
+  return `${price} (${size})`;
 }
 
 /**
@@ -122,6 +189,7 @@ function variantToField(variant: string): PriceField {
 function deriveHeaders(variants: Set<string>): [string, string] | undefined {
   const has = (v: string) => variants.has(v.toLowerCase());
   if (has("domestic") && has("imported")) return ["DOM", "IMP"];
+  if (has("dom") && has("imp")) return ["DOM", "IMP"];
   if (has("peg") && has("bottle")) return ["Peg", "Bottle"];
   if (has("glass") && has("bottle")) return ["Glass", "Bottle"];
   if (has("glass") && has("pitcher")) return ["Glass", "Pitcher"];
@@ -129,6 +197,32 @@ function deriveHeaders(variants: Set<string>): [string, string] | undefined {
     return ["330ml", "650ml"];
   }
   return undefined;
+}
+
+/**
+ * When a section/subsection has rows with only a SINGLE price variant (e.g.
+ * all pitchers use `Variant=DOM`), collapse the variant-specific price field
+ * onto the generic `price` field and return a single-label header so the UI
+ * renders one column instead of a sparse two-column layout.
+ */
+function collapseSingleVariant(
+  items: MenuItem[],
+  variants: Set<string>,
+): { items: MenuItem[]; headers?: string[] } {
+  if (variants.size !== 1) return { items };
+  const variant = [...variants][0];
+  if (!variant) return { items };
+  const field = variantToField(variant);
+  if (field === "price") return { items };
+  const collapsed: MenuItem[] = items.map((it) => {
+    const obj = { ...it } as Record<string, unknown>;
+    const p = obj[field];
+    if (!p) return it;
+    delete obj[field];
+    obj.price = p;
+    return obj as MenuItem;
+  });
+  return { items: collapsed, headers: [variant.toUpperCase()] };
 }
 
 // ---------------------------------------------------------------------------
@@ -148,11 +242,13 @@ function mergeRowsToItems(rows: SheetRow[]): {
     if (!name) continue;
 
     const description = row.Description?.trim();
-    const variant = row.Variant?.trim();
+    const variant = row.Variant?.trim() || "";
     const field = variantToField(variant);
-    const price = formatPrice(row.Price);
+    const rawPrice = formatPrice(row.Price);
+    const volume = extractNonDefaultVolume(variant, field);
+    const price = annotatePriceWithVolume(rawPrice, volume);
 
-    if (variant) variantsSeen.add(variant.toLowerCase());
+    if (variant) variantsSeen.add(canonicalVariant(variant));
 
     const key = `${name.toLowerCase()}|${(description || "").toLowerCase()}`;
     const existing = index.get(key);
@@ -201,42 +297,57 @@ function transformRows(rows: SheetRow[]): MenuSection[] {
 
   const sections: MenuSection[] = [];
   byCat.forEach((subMap, catTitle) => {
-    const hasRealSubs =
-      subMap.size > 1 || (subMap.size === 1 && !subMap.has(""));
+    const realSubNames = [...subMap.keys()].filter((s) => s !== "");
+    const emptySubRows = subMap.get("") ?? [];
 
-    if (hasRealSubs) {
-      const subsections: NonNullable<MenuSection["subsections"]> = [];
-      let allVariants = new Set<string>();
-      subMap.forEach((subRows, subName) => {
-        const { items, variants } = mergeRowsToItems(subRows);
-        const headers = deriveHeaders(variants);
-        subsections.push({
-          title: subName || catTitle,
-          items,
-          ...(headers ? { priceHeaders: headers } : {}),
-        });
-        allVariants = new Set([...allVariants, ...variants]);
-      });
-
-      // Section-level fallback headers so the nav/render has something sensible
-      const sectionHeaders = deriveHeaders(allVariants);
+    if (realSubNames.length === 0) {
+      const { items, variants } = mergeRowsToItems(emptySubRows);
+      const collapsed = collapseSingleVariant(items, variants);
+      const headers = collapsed.headers ?? deriveHeaders(variants);
       sections.push({
         id: slugify(catTitle),
         title: toTitleCase(catTitle),
-        items: [],
-        subsections,
-        ...(sectionHeaders ? { priceHeaders: sectionHeaders } : {}),
-      });
-    } else {
-      const { items, variants } = mergeRowsToItems(subMap.get("") ?? []);
-      const headers = deriveHeaders(variants);
-      sections.push({
-        id: slugify(catTitle),
-        title: toTitleCase(catTitle),
-        items,
+        items: collapsed.items,
         ...(headers ? { priceHeaders: headers } : {}),
       });
+      return;
     }
+
+    // Category has real subcategories — possibly alongside empty-subcat rows
+    // which we treat as top-level items under the category.
+    const subsections: NonNullable<MenuSection["subsections"]> = [];
+    const allVariants = new Set<string>();
+
+    let topItems: MenuItem[] = [];
+    let topHeaders: string[] | undefined;
+    if (emptySubRows.length > 0) {
+      const { items, variants } = mergeRowsToItems(emptySubRows);
+      const collapsed = collapseSingleVariant(items, variants);
+      topItems = collapsed.items;
+      topHeaders = collapsed.headers ?? deriveHeaders(variants);
+      variants.forEach((v) => allVariants.add(v));
+    }
+
+    for (const subName of realSubNames) {
+      const { items, variants } = mergeRowsToItems(subMap.get(subName)!);
+      const collapsed = collapseSingleVariant(items, variants);
+      const headers = collapsed.headers ?? deriveHeaders(variants);
+      subsections.push({
+        title: subName,
+        items: collapsed.items,
+        ...(headers ? { priceHeaders: headers } : {}),
+      });
+      variants.forEach((v) => allVariants.add(v));
+    }
+
+    const sectionHeaders = topHeaders ?? deriveHeaders(allVariants);
+    sections.push({
+      id: slugify(catTitle),
+      title: toTitleCase(catTitle),
+      items: topItems,
+      subsections,
+      ...(sectionHeaders ? { priceHeaders: sectionHeaders } : {}),
+    });
   });
 
   return sections;

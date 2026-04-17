@@ -9,9 +9,9 @@ There are **5 menus**, each backed by its own Google Sheet:
 | ----------------- | ----------------------------------------------------------------------------------------------------------------- |
 | East Coast Food   | <https://docs.google.com/spreadsheets/d/17ycUvq6m-yyiSAKUcLDqMap0iV2KZCGEmej9nxfybPs/edit?gid=1082101207>          |
 | East Coast Drinks | <https://docs.google.com/spreadsheets/d/1o4U7QJZOOHlYzhmZCmEqbFbv0Zk9mZFW4tKPaze5kjE/edit?gid=769161435>           |
-| East Coast Banquet| <https://docs.google.com/spreadsheets/d/1AKJj-QUZhjUcpN24otklDiL_UYkTUybJbLGwaim4nUM/edit?gid=179261080>           |
+| East Coast Banquet| <https://docs.google.com/spreadsheets/d/148GUf4oqPg8FX2D-H0tikJ5POyMxIKzeXqZDQrlgKSg/edit?gid=1235339567>           |
 | The Beach Food    | <https://docs.google.com/spreadsheets/d/1hF98v8mepLJBwQ0Wy9xO1TcIsq3JN6PWVnpC6ZakQ7g/edit?gid=564329166>           |
-| The Beach Drinks  | <https://docs.google.com/spreadsheets/d/1rLzDyEz07Z6_ixDUGjJEESkFT4q6wbXVTPvwPBRPkK0/edit?gid=834377372>           |
+| Madras Square Liquor | <https://docs.google.com/spreadsheets/d/1rtiCkSTJFIAqQmz8TQ8ymvdX6hXcv2iLOwvOv_ETRW8/edit?gid=1405826352>       |
 
 The IDs are already wired into `shared/config.js` — you don't need to edit
 any code to start using this.

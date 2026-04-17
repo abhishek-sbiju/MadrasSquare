@@ -61,48 +61,63 @@ const SectionDivider = () => (
   </div>
 );
 
-/* ── Ram's Signature description split into shorter paragraphs ── */
-const RamsSignatureHeader = ({ category }: { category: MenuCategory }) => (
-  <div className="mb-10 md:mb-14">
-    {/* Label above heading */}
-    <span className="inline-block font-body text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-gold/70 mb-3">
-      Signature Selection
-    </span>
-    <div className="grid grid-cols-1 md:grid-cols-[1fr,200px] lg:grid-cols-[1fr,260px] gap-8 md:gap-12 items-start">
-      {/* Left content with gold accent border */}
-      <div className="border-l-[3px] border-gold pl-6 md:pl-8">
-        <h2 className="font-heading text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
-          {category.title}
-        </h2>
-        <div className="w-14 md:w-20 h-[3px] bg-gold mb-6" />
+/*
+ * Ram's Signature header. Paragraphs are pulled from `category.description`,
+ * which the sheet adapter composes by joining multiple metadata rows with "|".
+ * That means the client can edit these paragraphs from the Google Sheet by
+ * adding/editing rows where Name is empty. Falls back to the hardcoded intro
+ * if no description is supplied (e.g. during offline fallback).
+ */
+const RAMS_SIGNATURE_FALLBACK: string[] = [
+  "Curated and perfected by Ram, the driving force behind Madras Square, this signature banquet menu reflects his love for bold flavours, generous spreads, and food that truly brings people together.",
+  "It's a lively mix of crowd favourites and chef-led creations—designed to keep conversations flowing, plates full, and guests smiling.",
+  "If you're looking for a banquet that feels warm, energetic, and unmistakably Madras Square, this is the one guests remember.",
+];
 
-        {/* Split description into digestible paragraphs */}
-        <div className="space-y-4">
-          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.8]">
-            Curated and perfected by Ram, the driving force behind Madras Square, this signature banquet menu reflects his love for bold flavours, generous spreads, and food that truly brings people together.
-          </p>
-          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.8]">
-            It's a lively mix of crowd favourites and chef-led creations—designed to keep conversations flowing, plates full, and guests smiling.
-          </p>
-          <p className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.8]">
-            If you're looking for a banquet that feels warm, energetic, and unmistakably Madras Square, this is the one guests remember.
-          </p>
+const RamsSignatureHeader = ({ category }: { category: MenuCategory }) => {
+  const fromSheet = (category.description ?? "")
+    .split("|")
+    .map((p) => p.trim())
+    .filter(Boolean);
+  const paragraphs = fromSheet.length > 0 ? fromSheet : RAMS_SIGNATURE_FALLBACK;
+
+  return (
+    <div className="mb-10 md:mb-14">
+      <span className="inline-block font-body text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-gold/70 mb-3">
+        Signature Selection
+      </span>
+      <div className="grid grid-cols-1 md:grid-cols-[1fr,200px] lg:grid-cols-[1fr,260px] gap-8 md:gap-12 items-start">
+        <div className="border-l-[3px] border-gold pl-6 md:pl-8">
+          <h2 className="font-heading text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground mb-3 tracking-[0.08em] md:tracking-[0.12em] uppercase">
+            {category.title}
+          </h2>
+          <div className="w-14 md:w-20 h-[3px] bg-gold mb-6" />
+
+          <div className="space-y-4">
+            {paragraphs.map((p, i) => (
+              <p
+                key={i}
+                className="text-muted-foreground text-[15px] md:text-[16px] font-body italic leading-[1.8]"
+              >
+                {p}
+              </p>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Image with polished frame */}
-      <div className="flex justify-center md:justify-end">
-        <div className="rounded-lg p-3 bg-white border border-[#E6C79C]/60 shadow-[0_2px_12px_rgba(196,122,44,0.08)]">
-          <img
-            src="/ram-photo.png"
-            alt="Ram — Madras Square"
-            className="max-w-[160px] md:max-w-full w-full object-contain rounded"
-          />
+        <div className="flex justify-center md:justify-end">
+          <div className="rounded-lg p-3 bg-white border border-[#E6C79C]/60 shadow-[0_2px_12px_rgba(196,122,44,0.08)]">
+            <img
+              src="/ram-photo.png"
+              alt="Ram — Madras Square"
+              className="max-w-[160px] md:max-w-full w-full object-contain rounded"
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const MenuSection = ({ category, index }: MenuSectionProps) => {
   const isEven = index % 2 === 0;

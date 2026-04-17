@@ -441,7 +441,11 @@ export const banquetMenuData: MenuCategory[] = [
   {
     id: "rams-signature",
     title: "RAM'S SIGNATURE",
-    description: "Curated and perfected by Ram, the driving force behind Madras Square, this signature banquet menu reflects his love for bold flavours, generous spreads, and food that truly brings people together. It's a lively mix of crowd favourites and chef-led creations—designed to keep conversations flowing, plates full, and guests smiling. If you're looking for a banquet that feels warm, energetic, and unmistakably Madras Square, this is the one guests remember.",
+    description: [
+      "Curated and perfected by Ram, the driving force behind Madras Square, this signature banquet menu reflects his love for bold flavours, generous spreads, and food that truly brings people together.",
+      "It's a lively mix of crowd favourites and chef-led creations—designed to keep conversations flowing, plates full, and guests smiling.",
+      "If you're looking for a banquet that feels warm, energetic, and unmistakably Madras Square, this is the one guests remember.",
+    ].join("|"),
     categories: [
       {
         name: "MOCKTAILS",

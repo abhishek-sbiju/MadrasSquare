@@ -15,9 +15,10 @@ export interface MenuSection {
   id: string;
   title: string;
   subtitle?: string;
-  priceHeaders?: [string, string];
+  /** 1 or 2 price column labels (e.g. ["DOM"] for pitchers, ["Peg","Bottle"] for whiskey). */
+  priceHeaders?: string[];
   items: MenuItem[];
-  subsections?: { title: string; priceHeaders?: [string, string]; items: MenuItem[] }[];
+  subsections?: { title: string; priceHeaders?: string[]; items: MenuItem[] }[];
 }
 
 const rawMenuSections: MenuSection[] = [
@@ -296,6 +297,8 @@ const rawMenuSections: MenuSection[] = [
   {
     id: "pitchers",
     title: "Pitchers",
+    subtitle: "(1.2 LTS)",
+    priceHeaders: ["DOM"],
     items: [
       {
         name: "Whiskey Sour Pitcher",
@@ -370,7 +373,7 @@ const rawMenuSections: MenuSection[] = [
         priceHeaders: ["IMP", "BOTTLE"],
         items: [
           {
-            name: "Glenlivet 12 Yrs",
+            name: "The Glenlivet 12 Yrs",
             priceGlass: "780",
             priceBottle: "16500",
           },
@@ -579,10 +582,7 @@ const rawMenuSections: MenuSection[] = [
   {
     id: "vodka",
     title: "Vodka",
-    priceHeaders: [
-      "Peg",
-      "Bottle",
-    ],
+    priceHeaders: ["IMP", "Bottle"],
     items: [
       {
         name: "Grey Goose",
@@ -604,10 +604,18 @@ const rawMenuSections: MenuSection[] = [
         priceGlass: "400",
         priceBottle: "7000",
       },
+    ],
+    subsections: [
       {
-        name: "Juno",
-        priceGlass: "300",
-        priceBottle: "4000",
+        title: "Domestic",
+        priceHeaders: ["DOM", "Bottle"],
+        items: [
+          {
+            name: "Juno",
+            priceGlass: "300",
+            priceBottle: "4000",
+          },
+        ],
       },
     ],
   },
@@ -684,10 +692,7 @@ const rawMenuSections: MenuSection[] = [
   {
     id: "rum",
     title: "Rum",
-    priceHeaders: [
-      "Peg",
-      "Bottle",
-    ],
+    priceHeaders: ["IMP", "Bottle"],
     items: [
       {
         name: "Bacardi Reserva Ocho",
@@ -699,30 +704,35 @@ const rawMenuSections: MenuSection[] = [
         priceGlass: "400",
         priceBottle: "7000",
       },
+    ],
+    subsections: [
       {
-        name: "Old Monk",
-        priceGlass: "350",
-        priceBottle: "4000",
-      },
-      {
-        name: "Bacardi White",
-        priceGlass: "350",
-        priceBottle: "4000",
-      },
-      {
-        name: "Bacardi Black",
-        priceGlass: "350",
-        priceBottle: "4000",
+        title: "Domestic Rum",
+        priceHeaders: ["DOM", "Bottle"],
+        items: [
+          {
+            name: "Old Monk",
+            priceGlass: "350",
+            priceBottle: "4000",
+          },
+          {
+            name: "Bacardi White",
+            priceGlass: "350",
+            priceBottle: "4000",
+          },
+          {
+            name: "Bacardi Black",
+            priceGlass: "350",
+            priceBottle: "4000",
+          },
+        ],
       },
     ],
   },
   {
     id: "brandy",
     title: "Brandy",
-    priceHeaders: [
-      "Peg",
-      "Bottle",
-    ],
+    priceHeaders: ["IMP", "Bottle"],
     items: [
       {
         name: "Martel VS",
@@ -749,15 +759,23 @@ const rawMenuSections: MenuSection[] = [
         priceGlass: "400",
         priceBottle: "6000",
       },
+    ],
+    subsections: [
       {
-        name: "VSOP Exshaw",
-        priceGlass: "350",
-        priceBottle: "3500",
-      },
-      {
-        name: "Morpheus",
-        priceGlass: "350",
-        priceBottle: "4000",
+        title: "Domestic Brandy",
+        priceHeaders: ["DOM", "Bottle"],
+        items: [
+          {
+            name: "VSOP Exshaw",
+            priceGlass: "350",
+            priceBottle: "3500",
+          },
+          {
+            name: "Morpheus",
+            priceGlass: "350",
+            priceBottle: "4000",
+          },
+        ],
       },
     ],
   },
@@ -804,10 +822,7 @@ const rawMenuSections: MenuSection[] = [
   {
     id: "wine",
     title: "Wine",
-    priceHeaders: [
-      "Glass",
-      "Bottle",
-    ],
+    priceHeaders: ["Glass", "Bottle"],
     items: [
       {
         name: "Jacobs Creek Chardonnay",
@@ -854,66 +869,73 @@ const rawMenuSections: MenuSection[] = [
         priceGlass: "900",
         priceBottle: "4500",
       },
+    ],
+    subsections: [
       {
-        name: "Fratelli Merlot",
-        priceGlass: "600",
-        priceBottle: "3000",
-      },
-      {
-        name: "Fratelli Chardonnay",
-        priceGlass: "600",
-        priceBottle: "3000",
-      },
-      {
-        name: "Fratelli Shiraz",
-        priceGlass: "600",
-        priceBottle: "3000",
-      },
-      {
-        name: "Fratelli Cabernet Sauvignon",
-        priceGlass: "600",
-        priceBottle: "3000",
-      },
-      {
-        name: "Fratelli Chenin Blanc",
-        priceGlass: "600",
-        priceBottle: "3000",
-      },
-      {
-        name: "Fratelli Sette",
-        priceGlass: "800",
-        priceBottle: "4000",
-      },
-      {
-        name: "Fratelli Sangiovese",
-        priceGlass: "580",
-        priceBottle: "2900",
-      },
-      {
-        name: "Fratelli Sauvignon Blanc",
-        priceGlass: "580",
-        priceBottle: "2900",
-      },
-      {
-        name: "Fratelli Sparkling",
-        priceGlass: "600",
-        priceBottle: "3200",
-      },
-      {
-        name: "Sangria Glass/Pitcher",
-        priceGlass: "650",
-        priceBottle: "3250",
+        title: "Fratelli",
+        priceHeaders: ["Glass", "Bottle"],
+        items: [
+          {
+            name: "Merlot",
+            priceGlass: "600",
+            priceBottle: "3000",
+          },
+          {
+            name: "Chardonnay",
+            priceGlass: "600",
+            priceBottle: "3000",
+          },
+          {
+            name: "Shiraz",
+            priceGlass: "600",
+            priceBottle: "3000",
+          },
+          {
+            name: "Cabernet Sauvignon",
+            priceGlass: "600",
+            priceBottle: "3000",
+          },
+          {
+            name: "Chenin Blanc",
+            priceGlass: "600",
+            priceBottle: "3000",
+          },
+          {
+            name: "Sette",
+            priceGlass: "800",
+            priceBottle: "4000",
+          },
+          {
+            name: "Sangiovese",
+            priceGlass: "580",
+            priceBottle: "2900",
+          },
+          {
+            name: "Sauvignon Blanc",
+            priceGlass: "580",
+            priceBottle: "2900",
+          },
+          {
+            name: "Sparkling Noi",
+            priceGlass: "600",
+            priceBottle: "3200",
+          },
+          {
+            name: "Sangria Glass/Pitcher",
+            priceGlass: "650",
+            priceBottle: "3250",
+          },
+        ],
       },
     ],
   },
   {
     id: "beer",
     title: "Beer",
-    items: [
-    ],
+    items: [],
     subsections: [
       {
-        title: "Imported",
+        title: "Imported (on availability)",
         items: [
           {
             name: "Taiwan Beer 500ml",
@@ -932,21 +954,14 @@ const rawMenuSections: MenuSection[] = [
             price: "700",
           },
           {
-            name: "Buhо",
+            name: "Buho",
             price: "700",
-          },
-          {
-            name: "Carlsberg Elephant",
-            price: "500",
-          },
-          {
-            name: "Tuborg Super Strong",
-            price: "500",
           },
         ],
       },
       {
         title: "Domestic",
+        priceHeaders: ["330ml", "650ml"],
         items: [
           {
             name: "Kingfisher",
@@ -966,6 +981,14 @@ const rawMenuSections: MenuSection[] = [
           {
             name: "Sterren",
             price300: "300",
+            price650: "500",
+          },
+          {
+            name: "Carlsberg Elephant",
+            price650: "500",
+          },
+          {
+            name: "Tuborg Super Strong",
             price650: "500",
           },
         ],

@@ -1,6 +1,0 @@
-/* App-level overrides — keep minimal, use index.css for design tokens */
-#root {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-}

@@ -20,21 +20,17 @@ window.MENUS = {
     sheetId: "17ycUvq6m-yyiSAKUcLDqMap0iV2KZCGEmej9nxfybPs",
     gid: "1082101207",
   },
-  "eastcoast-drinks": {
-    sheetId: "1o4U7QJZOOHlYzhmZCmEqbFbv0Zk9mZFW4tKPaze5kjE",
-    gid: "769161435",
-  },
   "eastcoast-banquet": {
-    sheetId: "1AKJj-QUZhjUcpN24otklDiL_UYkTUybJbLGwaim4nUM",
-    gid: "179261080",
+    sheetId: "148GUf4oqPg8FX2D-H0tikJ5POyMxIKzeXqZDQrlgKSg",
+    gid: "1235339567",
   },
   "thebeach-food": {
     sheetId: "1hF98v8mepLJBwQ0Wy9xO1TcIsq3JN6PWVnpC6ZakQ7g",
     gid: "564329166",
   },
-  "thebeach-drinks": {
-    sheetId: "1rLzDyEz07Z6_ixDUGjJEESkFT4q6wbXVTPvwPBRPkK0",
-    gid: "834377372",
+  "madras-square-liquor": {
+    sheetId: "1rtiCkSTJFIAqQmz8TQ8ymvdX6hXcv2iLOwvOv_ETRW8",
+    gid: "1405826352",
   },
 };
 

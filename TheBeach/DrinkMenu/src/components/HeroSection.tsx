@@ -78,7 +78,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4">
         <p className="font-body text-xs tracking-[0.4em] uppercase text-white/80 mb-4 animate-fade-in">
-          Madras Square
+          The Beach · East Coast
         </p>
 
         <h1
@@ -88,7 +88,7 @@ const HeroSection = () => {
             textShadow: "0 2px 20px rgba(0,0,0,0.6)",
           }}
         >
-          THE BEACH
+          MADRAS SQUARE
         </h1>
 
         <div
@@ -104,7 +104,7 @@ const HeroSection = () => {
           className="font-heading text-xl md:text-2xl italic text-white/80 tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
-          Drinks Menu
+          Liquor Menu
         </p>
 
         <div
