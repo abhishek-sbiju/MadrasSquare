@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
+import type { MenuCategory } from "@/data/banquetMenuData";
 
-const navItems = [
+const ALL_NAV_ITEMS = [
   { id: "mocktails", label: "Mocktails" },
   { id: "soups", label: "Soups" },
   { id: "salads", label: "Salads" },
@@ -12,8 +13,22 @@ const navItems = [
   { id: "rams-signature", label: "Ram's Signature" },
 ];
 
-const BanquetNav = () => {
-  const [activeId, setActiveId] = useState(navItems[0].id);
+interface BanquetNavProps {
+  categories?: MenuCategory[];
+}
+
+const BanquetNav = ({ categories }: BanquetNavProps) => {
+  // Only show nav entries for categories that actually appear on the page.
+  // When `categories` is undefined (still loading), fall back to the full list
+  // so the sticky bar doesn't visibly pop in. Once data loads the filter
+  // kicks in and any hidden/unavailable categories drop out of the nav too.
+  const navItems = useMemo(() => {
+    if (!categories || categories.length === 0) return ALL_NAV_ITEMS;
+    const availableIds = new Set(categories.map((c) => c.id));
+    return ALL_NAV_ITEMS.filter((item) => availableIds.has(item.id));
+  }, [categories]);
+
+  const [activeId, setActiveId] = useState(navItems[0]?.id ?? "");
   const navRef = useRef<HTMLDivElement>(null);
   const activeRef = useRef<HTMLButtonElement>(null);
 
@@ -41,7 +56,7 @@ const BanquetNav = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [navItems]);
 
   // Auto-scroll the nav bar to keep the active item centered
   useEffect(() => {

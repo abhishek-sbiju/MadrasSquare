@@ -33,7 +33,7 @@ const Index = () => {
       <HeroSection />
 
       {/* Sticky scroll navigation */}
-      <BanquetNav />
+      <BanquetNav categories={banquetMenuData} />
 
       {banquetMenuData.map((category, index) => (
         <MenuSection key={category.id} category={category} index={index} />

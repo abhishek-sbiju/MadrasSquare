@@ -19,38 +19,62 @@
   const CURRENCY = window.CURRENCY || "₹";
 
   // -----------------------------------------------------------
-  // 1. Fetch sheet via gviz JSON and normalize into plain objects
+  // 1. Fetch sheet via CSV export and normalize into plain objects
   // -----------------------------------------------------------
-  async function fetchSheet(sheetId, { gid, sheetName } = {}) {
-    // Cache-buster: Google caches gviz responses aggressively. Appending a
+  //
+  // We use the CSV export endpoint (not gviz/tq JSON) because gviz types each
+  // column strictly (e.g. boolean Available, numeric Price) and silently
+  // drops cells that don't match that column's inferred type. CSV export
+  // preserves all cell text verbatim, so FALSE values in the Available
+  // column (and odd price strings like "9000 (1000ml)") come through cleanly.
+
+  function parseCsv(text) {
+    const rows = [];
+    let row = [];
+    let cell = "";
+    let inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (inQuotes) {
+        if (ch === '"') {
+          if (text[i + 1] === '"') { cell += '"'; i++; }
+          else { inQuotes = false; }
+        } else {
+          cell += ch;
+        }
+      } else {
+        if (ch === '"') inQuotes = true;
+        else if (ch === ",") { row.push(cell); cell = ""; }
+        else if (ch === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+        else if (ch === "\r") { /* skip; \n handles line end */ }
+        else cell += ch;
+      }
+    }
+    if (cell.length > 0 || row.length > 0) { row.push(cell); rows.push(row); }
+    return rows;
+  }
+
+  async function fetchSheet(sheetId, { gid } = {}) {
+    // Cache-buster: Google caches responses aggressively. Appending a
     // per-minute token keeps edits fresh without hammering the endpoint.
     const bust = Math.floor(Date.now() / 60000);
-    const tabParam = gid
-      ? `gid=${encodeURIComponent(gid)}`
-      : `sheet=${encodeURIComponent(sheetName || "")}`;
+    // CSV export requires a gid. (Older callers passed sheetName, but we
+    // standardized config.js to always supply gid, so this is fine.)
     const url =
       `https://docs.google.com/spreadsheets/d/${sheetId}` +
-      `/gviz/tq?tqx=out:json&${tabParam}&_=${bust}`;
+      `/export?format=csv&gid=${encodeURIComponent(gid || "0")}&_=${bust}`;
 
     const res = await fetch(url);
     const text = await res.text();
 
-    // gviz wraps JSON in a JS callback — strip it
-    const json = JSON.parse(
-      text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1)
-    );
+    const rows = parseCsv(text).filter((r) => r.some((c) => String(c).trim() !== ""));
+    if (rows.length === 0) return [];
 
-    const cols = json.table.cols.map((c, i) => {
-      const label = (c.label || "").trim();
-      return label || `col${i}`;
-    });
-
-    return json.table.rows.map((row) => {
+    const header = rows[0].map((h) => String(h).trim());
+    return rows.slice(1).map((r) => {
       const obj = {};
-      row.c.forEach((cell, i) => {
-        let v = cell ? cell.v : "";
-        if (v === null || v === undefined) v = "";
-        obj[cols[i]] = typeof v === "string" ? v.trim() : v;
+      header.forEach((key, i) => {
+        obj[key || `col${i}`] = (r[i] != null ? String(r[i]) : "").trim();
       });
       return obj;
     });
@@ -220,22 +244,20 @@
 
     // Resolve the sheet. Preferred: window.MENU points at an entry in
     // window.MENUS (from config.js). Fallback kept for any legacy pages
-    // still using window.SHEET_ID + window.SHEET_NAME.
+    // still using window.SHEET_ID.
     let sheetId = "";
     let gid = "";
-    let sheetName = "";
 
     if (window.MENU && window.MENUS && window.MENUS[window.MENU]) {
       const entry = window.MENUS[window.MENU];
       sheetId = entry.sheetId;
       gid = entry.gid;
-      sheetName = entry.sheetName || "";
     } else {
       sheetId = window.SHEET_ID || "";
-      sheetName = window.SHEET_NAME || "";
+      gid = window.SHEET_GID || "";
     }
 
-    if (!sheetId || /^PASTE_.*_HERE$/.test(sheetId) || (!gid && !sheetName)) {
+    if (!sheetId || /^PASTE_.*_HERE$/.test(sheetId)) {
       container.innerHTML =
         `<p class="menu-error">Menu not configured yet. Check <code>shared/config.js</code>.</p>`;
       return;
@@ -244,7 +266,7 @@
     container.innerHTML = `<p class="menu-loading">Loading menu…</p>`;
 
     try {
-      const rows = await fetchSheet(sheetId, { gid, sheetName });
+      const rows = await fetchSheet(sheetId, { gid });
       const available = rows.filter((r) => isAvailable(r.Available));
       const grouped = groupItems(available);
       renderMenu(grouped, container);

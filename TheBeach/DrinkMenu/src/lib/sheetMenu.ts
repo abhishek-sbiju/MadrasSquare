@@ -302,6 +302,7 @@ function transformRows(rows: SheetRow[]): MenuSection[] {
 
     if (realSubNames.length === 0) {
       const { items, variants } = mergeRowsToItems(emptySubRows);
+      if (items.length === 0) return;
       const collapsed = collapseSingleVariant(items, variants);
       const headers = collapsed.headers ?? deriveHeaders(variants);
       sections.push({
@@ -330,6 +331,7 @@ function transformRows(rows: SheetRow[]): MenuSection[] {
 
     for (const subName of realSubNames) {
       const { items, variants } = mergeRowsToItems(subMap.get(subName)!);
+      if (items.length === 0) continue;
       const collapsed = collapseSingleVariant(items, variants);
       const headers = collapsed.headers ?? deriveHeaders(variants);
       subsections.push({
@@ -339,6 +341,8 @@ function transformRows(rows: SheetRow[]): MenuSection[] {
       });
       variants.forEach((v) => allVariants.add(v));
     }
+
+    if (topItems.length === 0 && subsections.length === 0) return;
 
     const sectionHeaders = topHeaders ?? deriveHeaders(allVariants);
     sections.push({

@@ -29,34 +29,56 @@ interface SheetRow {
   Available: string;
 }
 
+// We use the CSV export endpoint (not gviz/tq JSON) because gviz types each
+// column strictly (e.g. boolean Available, numeric Price) and silently drops
+// cells that don't match that inferred type. CSV export preserves all cell
+// text verbatim, so FALSE values in the Available column come through cleanly.
+
+function parseCsv(text: string): string[][] {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let cell = "";
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (text[i + 1] === '"') { cell += '"'; i++; }
+        else { inQuotes = false; }
+      } else {
+        cell += ch;
+      }
+    } else {
+      if (ch === '"') inQuotes = true;
+      else if (ch === ",") { row.push(cell); cell = ""; }
+      else if (ch === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+      else if (ch === "\r") { /* skip; \n handles line end */ }
+      else cell += ch;
+    }
+  }
+  if (cell.length > 0 || row.length > 0) { row.push(cell); rows.push(row); }
+  return rows;
+}
+
 async function fetchSheetRows(): Promise<SheetRow[]> {
   const bust = Math.floor(Date.now() / 60000);
   const url =
     `https://docs.google.com/spreadsheets/d/${SHEET_CONFIG.sheetId}` +
-    `/gviz/tq?tqx=out:json&gid=${encodeURIComponent(SHEET_CONFIG.gid)}` +
+    `/export?format=csv&gid=${encodeURIComponent(SHEET_CONFIG.gid)}` +
     `&_=${bust}`;
 
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Sheet fetch failed: ${res.status}`);
   const text = await res.text();
 
-  const json = JSON.parse(
-    text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1),
-  );
+  const rows = parseCsv(text).filter((r) => r.some((c) => c.trim() !== ""));
+  if (rows.length === 0) return [];
 
-  const cols: string[] = json.table.cols.map(
-    (c: { label?: string }, i: number) => (c.label || "").trim() || `col${i}`,
-  );
-
-  type GvizCell = { v: unknown } | null;
-  type GvizRow = { c: GvizCell[] };
-
-  return (json.table.rows as GvizRow[]).map((row) => {
+  const header = rows[0].map((h) => h.trim());
+  return rows.slice(1).map((r) => {
     const obj: Record<string, string> = {};
-    row.c.forEach((cell, i) => {
-      const raw = cell ? cell.v : "";
-      const v = raw === null || raw === undefined ? "" : raw;
-      obj[cols[i]] = typeof v === "string" ? v.trim() : String(v);
+    header.forEach((key, i) => {
+      obj[key || `col${i}`] = (r[i] ?? "").trim();
     });
     return obj as unknown as SheetRow;
   });
@@ -141,11 +163,11 @@ function transformRows(rows: SheetRow[]): MenuSection[] {
     if (hasRealSubs) {
       const subsections: NonNullable<MenuSection["subsections"]> = [];
       subMap.forEach((subRows, subName) => {
-        subsections.push({
-          title: subName || catTitle,
-          items: mergeRowsToItems(subRows),
-        });
+        const items = mergeRowsToItems(subRows);
+        if (items.length === 0) return;
+        subsections.push({ title: subName || catTitle, items });
       });
+      if (subsections.length === 0) return;
       sections.push({
         id: slugify(catTitle),
         title: toTitleCase(catTitle),
@@ -153,10 +175,12 @@ function transformRows(rows: SheetRow[]): MenuSection[] {
         subsections,
       });
     } else {
+      const items = mergeRowsToItems(subMap.get("") ?? []);
+      if (items.length === 0) return;
       sections.push({
         id: slugify(catTitle),
         title: toTitleCase(catTitle),
-        items: mergeRowsToItems(subMap.get("") ?? []),
+        items,
       });
     }
   });
