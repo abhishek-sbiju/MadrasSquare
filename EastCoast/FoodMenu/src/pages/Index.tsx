@@ -6,11 +6,21 @@ import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import { menuCategories } from "@/data/menuData";
-import { getDietType } from "@/lib/diet";
+import { useMenuCategories } from "@/hooks/useMenuCategories";
 
 const Index = () => {
-  const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
+  const { categories } = useMenuCategories();
+  const [activeCategory, setActiveCategory] = useState(
+    () => categories[0]?.id ?? "",
+  );
+
+  // If the live data resolves to a different first-category than the fallback,
+  // or if categories re-order, keep the active section in sync.
+  useEffect(() => {
+    if (!activeCategory && categories[0]) {
+      setActiveCategory(categories[0].id);
+    }
+  }, [categories, activeCategory]);
 
   const handleCategoryClick = (id: string) => {
     setActiveCategory(id);
@@ -22,7 +32,7 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = menuCategories.map(c => document.getElementById(c.id)).filter(Boolean) as HTMLElement[];
+      const sections = categories.map(c => document.getElementById(c.id)).filter(Boolean) as HTMLElement[];
       
       let current = "";
       for (const section of sections) {
@@ -43,7 +53,7 @@ const Index = () => {
     handleScroll(); // Initial check
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [categories]);
 
   return (
     <div className="min-h-screen bg-background overflow-x-clip w-full max-w-[100vw]">
@@ -52,10 +62,10 @@ const Index = () => {
       <MenuCategoryNav 
         activeCategory={activeCategory} 
         onCategoryClick={handleCategoryClick} 
-        categories={menuCategories.map(c => ({ id: c.id, label: c.title }))}
+        categories={categories.map(c => ({ id: c.id, label: c.title }))}
       />
       
-      {menuCategories.map((category, index) => (
+      {categories.map((category, index) => (
         <MenuSection key={category.id} category={category} index={index} />
       ))}
       

@@ -1,0 +1,176 @@
+Category,SubCategory,Name,Description,Variant,Price,DietType,Tags,Available
+SOUPS,,Zucchini and Coriander Lemon Soup,"Zucchini, chopped coriander and lemon in a vegetable broth",,300,veg,,TRUE
+SOUPS,,Coconut Lemon Grass Symphony,"Coconut milk-based soup with lemon grass, galangal, mushrooms and vegetables",,300,veg,,TRUE
+SOUPS,,Thai Clear,Thai clear broth served with boiled vegetables/chicken/prawns,Veg,300,veg,,TRUE
+SOUPS,,Thai Clear,Thai clear broth served with boiled vegetables/chicken/prawns,Chicken,350,non-veg,,TRUE
+SOUPS,,Thai Clear,Thai clear broth served with boiled vegetables/chicken/prawns,Prawns,380,non-veg,seafood,TRUE
+SOUPS,,Crab Chowder,Mixed seafood and potatoes in a creamy seafood broth,,380,non-veg,seafood,TRUE
+SOUPS,,Thai Prawn Sonata,"Traditional Thai broth soup with lemon grass, kaffir lime leaves, mushrooms and prawns",,380,non-veg,seafood,TRUE
+SOUPS,,Thengaipaal Nandu Saaru,South Indian style crab soup made with coconut milk,,380,non-veg,seafood,TRUE
+SALADS,,Mediterranean Splendour,"Lettuce, cucumber, tomatoes, onions, olives and feta cheese with a vinaigrette dressing",,470,veg,,TRUE
+SALADS,,Poached Pear Overture,"Wine poached pears, strawberries, dragon fruits, peppers, onion, walnuts and raisins with parmesan cheese and a pomegranate dressing",,470,veg,,TRUE
+SALADS,,Som Tam Salad,Shredded papaya served with sweet and chilli dressing,,440,veg,,TRUE
+SALADS,,Creamy Burrata Salad,"Fresh tomatoes, creamy burrata cheese, basil, walnut pesto drizzled with a balsamic dressing",,600,veg,,TRUE
+SALADS,,Curried Chicken Ensemble,"Lettuce, grilled chicken, baby potatoes with curry mayo and a honey balsamic dressing",,560,non-veg,,TRUE
+SALADS,,Seafood Ballet,"Lettuce, grilled prawns, squid, fish, tri-peppers and onions with an orange balsamic dressing",,580,non-veg,seafood,TRUE
+CONTINENTAL STARTERS,,Roasted Pears and Fig Crostini,"Roasted pears and figs with goat cheese spread, drizzled with a pomegranate reduction on a toasted baguette",,420,veg,,TRUE
+CONTINENTAL STARTERS,,Stuffed Cheese Pockets,"Cottage cheese and mozzarella stuffed in thin flour dough, fried and served with a spicy relish",,450,veg,,TRUE
+CONTINENTAL STARTERS,,Tri Chilli Cheese Toast,"Bread topped with tri-peppers, chillies and cheese",,450,veg,,TRUE
+CONTINENTAL STARTERS,,Crispy Cauliflower Tacos,Soft tacos topped with crispy batter fried cauliflower and cheesy jalapeno mayo,,380,veg,,TRUE
+CONTINENTAL STARTERS,,Loaded Nachos,"Crispy nachos topped with sour cream, cheese and Pico de Gallo",Veg,400,veg,,TRUE
+CONTINENTAL STARTERS,,Loaded Nachos,"Crispy nachos topped with sour cream, cheese and Pico de Gallo",Chicken,460,non-veg,,TRUE
+CONTINENTAL STARTERS,,Cherry Tomato Burrata Crostini,"Roasted cherry tomatoes, pesto, burrata and parmesan on a toasted baguette",,480,veg,,TRUE
+CONTINENTAL STARTERS,,Crispy Oyster Mushroom,Fried oyster mushroom tossed with togarashi and served with sweet chilli sauce,,440,veg,,TRUE
+CONTINENTAL STARTERS,,Veg Quesadilla,"Roasted vegetables, jalapenos, olives and cheese stuffed in tortillas and grilled",,450,veg,,TRUE
+CONTINENTAL STARTERS,,Parmesan Prawn Prelude,"Prawns marinated with parmesan cheese, peri peri herbs, crumb fried and served with spicy mayo",,580,non-veg,seafood,TRUE
+CONTINENTAL STARTERS,,Basil Garlic Prawns,"Prawns stir-fried with olives, chilli flakes, garlic and basil, served with garlic bread",,600,non-veg,seafood,TRUE
+CONTINENTAL STARTERS,,Garlic Parmesan Chicken,"Grilled chicken thighs marinated with garlic, parmesan, herbs and spices",,550,non-veg,,TRUE
+CONTINENTAL STARTERS,,BBQ Pork Ribs,Roasted pork ribs in BBQ sauce,,850,non-veg,,TRUE
+CONTINENTAL STARTERS,,Classic Fish & Chips,"Panko fried fish, served with fries, coleslaw and tartare sauce",,690,non-veg,seafood,TRUE
+ASIAN,,Honey Chilli Lotus Stem,"Deep fried lotus stem, tossed in honey and roasted chilli paste",,440,veg,,TRUE
+ASIAN,,Wok Tossed Vegetables,Batter fried vegetables tossed in Asian spicy sauce,,380,veg,,TRUE
+ASIAN,,Spicy Wok Tossed Cottage Cheese,Batter fried paneer tossed with peppers and chilli sauce,,440,veg,,TRUE
+ASIAN,,Mushroom Stir Fry,"Assorted stir fried mushrooms, topped with fried garlic",,480,veg,,TRUE
+ASIAN,,Crispy Fried Corn,"Fried American corn tossed with five spice powder, onion and scallions",,380,veg,,TRUE
+ASIAN,,Crispy Rice Crusted Tiger Prawns,"Prawns coated with rice flakes, fried and served with crying tiger sauce (contains fish sauce)",,600,non-veg,seafood,TRUE
+ASIAN,,Wasabi Prawn,Batter fried tempura prawns sauteed in creamy wasabi mayo,,600,non-veg,seafood,TRUE
+ASIAN,,Butter Garlic Curry Leaf Prawns,Fried prawns tossed in a bold garlic and curry leaf reduction,,600,non-veg,seafood,TRUE
+ASIAN,,Kung Pao Prawn,Batter fried tiger prawns tossed in a sweet and spicy kung pao sauce,,600,non-veg,seafood,TRUE
+ASIAN,,Thai Grilled Fish,Pan grilled fish fillet marinated in Thai style chilli sauce,,560,non-veg,seafood,TRUE
+ASIAN,,Stir Fry Lamb,"Batter fried lamb strips, tossed with a sweet and spicy Asian sauce",,650,non-veg,,TRUE
+ASIAN,,Asian Style Pork Ribs,Slow cooked pork ribs cooked in a char sui sauce,,850,non-veg,,TRUE
+ASIAN,,Crushed Pepper Chicken,"Battered fried chicken tossed with oyster sauce, dark soy and crushed black pepper",,580,non-veg,,TRUE
+ASIAN,,Karaage Chicken,Japanese fried chicken served with Gochujang chilli mayo,,540,non-veg,,TRUE
+ASIAN,,Squid and Prawns in Capers Sauce,"Fresh and tender squid and prawns, cooked with capers and sundried tomatoes",,750,non-veg,seafood,TRUE
+INDIAN,,Achari Aloo,"Small potatoes marinated with green chillies, herbs and spices",,420,veg,,TRUE
+INDIAN,,Hara Bara Sheek Kebab,"Green peas sheekh kebab, grilled in clay pot",,400,veg,,TRUE
+INDIAN,,Achari Paneer Medley,Soft chunks of paneer marinated in tandoori masala and grilled with vegetables,,450,veg,,TRUE
+INDIAN,,Tandoori Stuffed Mushroom,"Cheese stuffed mushrooms, marinated in tandoor masala",,380,veg,,TRUE
+INDIAN,,Malai Broccoli and Pineapple,Grilled broccoli florets and pineapple chunks in creamy malai masala and cheese,,420,veg,,TRUE
+INDIAN,,Malai Badami Chicken Tikka,"Tender cubes of chicken marinated in a nutty, creamy tandoori masala",,540,non-veg,,TRUE
+INDIAN,,Mutton Sheek Kebab,Minced lamb mixed with homemade Indian spice mix and char grilled,,620,non-veg,,TRUE
+INDIAN,,Kandari Prawns,"Kandhari chilli marinated prawns, cooked in a clay pot",,600,non-veg,seafood,TRUE
+INDIAN,,Tandoori Jhinga,"Grilled prawns, marinated in spicy tandoori masala",,600,non-veg,seafood,TRUE
+INDIAN,,Achari Fish Tikka,Fresh fish cubes marinated in achari tandoor masala and chargrilled,,600,non-veg,seafood,TRUE
+INDIAN,,Pepper Chicken Tikka,Soft chunks of chicken marinated in black pepper and charcoal grilled,,520,non-veg,,TRUE
+INDIAN,,Hariyali Chicken Tikka,Soft chunks of chicken marinated in green tandoori masala and charcoal grilled,,520,non-veg,,TRUE
+INDIAN,,Roasted Beef Stir-Fry,"Thinly sliced roasted beef, stir fried with bell peppers, onions and spices",,600,non-veg,,TRUE
+INDIAN,,Kerala Beef Fry,Kerala style beef fry with coconut,,580,non-veg,,TRUE
+INDIAN,,Tandoori Chicken,"Succulent pieces of whole chicken, marinated in tandoor masala and grilled",Half,550,non-veg,,TRUE
+INDIAN,,Tandoori Chicken,"Succulent pieces of whole chicken, marinated in tandoor masala and grilled",Full,900,non-veg,,TRUE
+INDIAN,,Cheese Chilli Chicken Kebab,"Soft chunks of chicken marinated in tandoori masala, topped with cheese and chilli",,540,non-veg,,TRUE
+FRIES,,Peri Peri Fries,Fries dusted with peri peri spice mix,,360,veg,,TRUE
+FRIES,,Masala Fries,Fries dusted with Indian spices served with spicy mayo,,360,veg,,TRUE
+FRIES,,Cheese Fries,Fries with cheese sauce served with honey mustard mayo,,400,veg,,TRUE
+FRIES,,Fried Chicken / Lamb Bolognese Fries,"Crispy fries, mornay cheese sauce and chicken / lamb bolognese",Fried Chicken,460,non-veg,,TRUE
+FRIES,,Fried Chicken / Lamb Bolognese Fries,"Crispy fries, mornay cheese sauce and chicken / lamb bolognese",Lamb Bolognese,500,non-veg,,TRUE
+WINGS,,BBQ Chicken Wings,Fried wings tossed in homemade bbq sauce served with garlic cream,,480,non-veg,,TRUE
+WINGS,,Korean Fried Chicken Wings,Homemade gochujang sauce tossed with crispy chicken wings,,500,non-veg,,TRUE
+WINGS,,Peri Peri Wings,Deep fried wings dusted with peri peri spice mix,,480,non-veg,,TRUE
+WINGS,,Tandoori Wings,Chicken wings marinated with Indian spices cooked in tandoor served with mint chutney,,480,non-veg,,TRUE
+PLATTERS,,Veg Kebab Platter,"Stuffed mushroom, veg sheekh kebab, paneer tikka, achari paneer tikka, gobi tikka",,1100,veg,,TRUE
+PLATTERS,,Non-Veg Kebab Platter,"Chicken tikka, murgh malai kebab, tandoori jhinga, fish tikka, lamb sheekh kebab",,1600,non-veg,,TRUE
+PLATTERS,,Chicken Wings Platter,"Peri peri, bbq, sriracha, Korean",,920,non-veg,,TRUE
+SUSHI,,Kappa Maki,"Sushi rice, cucumber, and cream cheese",,440,veg,,TRUE
+SUSHI,,Avocado Maki,"Sushi rice, avocado and scallion",,460,veg,,TRUE
+SUSHI,,Futo Maki,"Avocado, cucumber, pickled radish, tri capsicum, carrot, lettuce, cream cheese",,500,veg,,TRUE
+SUSHI,,Ebi Tempura Uramaki,"Sushi rice, crispy tempura prawn",,580,non-veg,seafood,TRUE
+SUSHI,,Shake Uramaki,Salmon and cucumber roll,,580,non-veg,seafood,TRUE
+SUSHI,,Boston Roll,"Crab stick, jalapeno mayo, cream cheese, avocado topped with tobiko",,600,non-veg,seafood,TRUE
+SUSHI,,California Uramaki,Crab stick and avocado topped with tobiko,,600,non-veg,seafood,TRUE
+SUSHI,,Spiced Tuna Uramaki,"Tuna, cucumber, sriracha and togarashi",,600,non-veg,seafood,TRUE
+SUSHI,,Orange Blossom Uramaki,"Crab stick, cream cheese, avocado, jalapeno mayo topped with smoked salmon",,600,non-veg,seafood,TRUE
+BURGERS,,Veg Burger,"Breaded vegetable patty layered with lettuce, tomatoes, and cheese",,480,veg,,TRUE
+BURGERS,,Grilled Chicken Burger,"Grilled chicken patty, lettuce, and caramelized onions",,650,non-veg,,TRUE
+BURGERS,,Fried Chicken Burger,Crispy fried chicken with coleslaw and hot sauce,,650,non-veg,,TRUE
+BURGERS,,Korean Fried Chicken Burger,"Crispy fried chicken tossed in gochujang sauce, sesame seeds and coleslaw",,650,non-veg,,TRUE
+BURGERS,,Smashed Beef Burger,"Smashed beef patty, lettuce, and caramelized onions",,700,non-veg,,TRUE
+BURGERS,,Double Cheese Burger,"Cheese loaded beef patty, american mustard, caramelized onions and sauteed mushrooms",,750,non-veg,,TRUE
+WOOD FIRED PIZZAS,,Classic Margherita,"Homemade tomato sauce, basil and mozzarella",,650,veg,,TRUE
+WOOD FIRED PIZZAS,,Truffle Fromaggi,"Mixed cheese, truffle oil, sun-dried tomato & olive oil",,720,veg,,TRUE
+WOOD FIRED PIZZAS,,Grilled Veg Symphony,"Grilled eggplant, zucchini, and olives",,680,veg,,TRUE
+WOOD FIRED PIZZAS,,Pomodoro Serenade,"Cherry and sun-dried tomatoes, basil, parmesan cheese & olive oil",,700,veg,,TRUE
+WOOD FIRED PIZZAS,,Pizza D'Aglio Marinara,"Garlic prawns, fish and squid with chilli flakes and parsley",,780,non-veg,seafood,TRUE
+WOOD FIRED PIZZAS,,Pizza Di Salami,"Homemade tomato sauce, pork pepperoni, bacon, sausage, caramelised onion and mozzarella cheese",,780,non-veg,,TRUE
+WOOD FIRED PIZZAS,,Pizza Hawaiian,"Bacon, pineapple, and mozzarella cheese",,780,non-veg,,TRUE
+WOOD FIRED PIZZAS,,Pollo Alla Basilico,"Homemade basil pesto sauce, grilled chicken and tri peppers",,760,non-veg,,TRUE
+HAND MADE RAVIOLIS,,Spinach and Corn Pesto,"Cream cheese, corn puree and blanched spinach in pesto sauce",,520,veg,,TRUE
+HAND MADE RAVIOLIS,,Shitake and Goat Cheese,"Shitake and button mushroom, goat cheese in mushroom sauce",,520,veg,,TRUE
+HAND MADE RAVIOLIS,,Shrimp and Mascarpone,"Minced shrimp, shallots, garlic, chilli, cilantro and mascarpone in marie rose sauce",,650,non-veg,seafood,TRUE
+HAND MADE RAVIOLIS,,Minced Beef Bolognese,"Beef mince, four cheese blend, demi glaze in brown ragout sauce",,660,non-veg,,TRUE
+ADD ONS,,Mushrooms / Vegetables,,,100,veg,,TRUE
+ADD ONS,,Olives / Jalapenos,,,80,veg,,TRUE
+ADD ONS,,Chicken / Cheese,,,150,,,TRUE
+ADD ONS,,Bacon / Prawn / Pepperoni,,,200,non-veg,,TRUE
+CONTINENTAL MAINS,,Verdure Alla Panna,Pasta tossed with creamy sauce and vegetables,,600,veg,,TRUE
+CONTINENTAL MAINS,,Spaghetti Ala Pesto Basilico,"Pasta tossed with basil pesto sauce, broccoli, olives and parmesan cheese",,600,veg,,TRUE
+CONTINENTAL MAINS,,Spaghetti Ala Pesto Pomodoro,"Pasta tossed with sun-dried tomato pesto sauce, capsicums, olives and parmesan cheese",,600,veg,,TRUE
+CONTINENTAL MAINS,,Spaghetti Aglio E Olio,"Pasta tossed with olive oil, garlic, olives and chilli flakes",,550,veg,,TRUE
+CONTINENTAL MAINS,,Lasagna Di Verdure,"Layered pasta baked with capsicums, zucchini, eggplant mix and mozzarella served with garlic bread",,600,veg,,TRUE
+CONTINENTAL MAINS,,Pasta Napolitana,"Pasta tossed with homemade tomato sauce, vegetables, olives, capers, and basil",,560,veg,,TRUE
+CONTINENTAL MAINS,,Mixed Veg Casserole,"Mixed vegetables, corn, peas baked in a creamy cheese sauce served with garlic herb rice and garlic bread",,600,veg,,TRUE
+CONTINENTAL MAINS,,Seafood Al Rosso Pasta,"Pasta tossed with grilled sea food, cooked with tomato cream sauce and fresh herbs",,680,non-veg,seafood,TRUE
+CONTINENTAL MAINS,,Grilled Beef Masterpiece,"Grilled beef tenderloin served with green pepper sauce, potatoes and buttered vegetables",,895,non-veg,,TRUE
+CONTINENTAL MAINS,,Herb Grilled Chicken Roulade,"Herb marinated chicken breast stuffed with cheese, sun-dried tomatoes and basil served with creamy mushroom sauce, mashed potatoes, buttered broccoli and beans",,680,non-veg,,TRUE
+CONTINENTAL MAINS,,Herb Grilled Fish,Herb marinated fish grilled and served with a creamy lemon butter sauce and herb rice,,700,non-veg,seafood,TRUE
+CONTINENTAL MAINS,,Grilled Chicken Casserole,"Chicken, sun-dried tomatoes, olives, tri peppers and broccoli baked in a creamy sauce gratinate served with garlic herb rice and garlic bread",,580,non-veg,,TRUE
+CONTINENTAL MAINS,,Lasagna Lamb,Layered pasta baked with lamb bolognese and mozzarella served with garlic bread,,750,non-veg,,TRUE
+CONTINENTAL MAINS,,Penne Alfredo Chicken,"Pasta tossed with cream sauce, grilled chicken and fresh herbs",,650,non-veg,,TRUE
+CONTINENTAL MAINS,,Lamb Bolognese Spaghetti,Pasta tossed with slow cooked minced lamb and tomato sauce,,700,non-veg,,TRUE
+CONTINENTAL MAINS,,Prawn Stroganoff,Prawns cooked with vegetables in pink sauce served with herb rice,,700,non-veg,seafood,TRUE
+CONTINENTAL MAINS,,Herb Crusted Salmon,Salmon fillet crusted with herbs and served with sambal sauce,,1600,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Noodles,Pad Thai Noodles,"Rice stick noodles tossed with tamarind juice, palm sugar, peanut and chilli flakes",Veg,440,veg,,TRUE
+PAN ASIAN MAINS,Noodles,Pad Thai Noodles,"Rice stick noodles tossed with tamarind juice, palm sugar, peanut and chilli flakes",Chicken,520,non-veg,,TRUE
+PAN ASIAN MAINS,Noodles,Pad Thai Noodles,"Rice stick noodles tossed with tamarind juice, palm sugar, peanut and chilli flakes",Prawns,560,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Noodles,Schezwan Noodles,Indo-Chinese style noodles made with vegetables,Veg,420,veg,,TRUE
+PAN ASIAN MAINS,Noodles,Schezwan Noodles,Indo-Chinese style noodles made with vegetables,Chicken,480,non-veg,,TRUE
+PAN ASIAN MAINS,Noodles,Schezwan Noodles,Indo-Chinese style noodles made with vegetables,Prawns,520,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Noodles,Thai Stir Fried Noodles,Noodles cooked with bird's eye chilli and basil leaves,Veg,440,veg,,TRUE
+PAN ASIAN MAINS,Noodles,Thai Stir Fried Noodles,Noodles cooked with bird's eye chilli and basil leaves,Chicken,520,non-veg,,TRUE
+PAN ASIAN MAINS,Noodles,Thai Stir Fried Noodles,Noodles cooked with bird's eye chilli and basil leaves,Prawns,560,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Noodles,Pad Krapow,Minced chicken and birds eye chilli tossed with homemade holy basil sauce served with steamed basmati rice topped with fried egg,Chicken,620,non-veg,,TRUE
+PAN ASIAN MAINS,Noodles,Pad Krapow,Minced chicken and birds eye chilli tossed with homemade holy basil sauce served with steamed basmati rice topped with fried egg,Pork,680,non-veg,,TRUE
+PAN ASIAN MAINS,Noodles,Mongolian Beef and Bamboo Shoot,"Tender beef slices sauteed with bamboo shoot, scallions and peppers",,680,non-veg,,TRUE
+PAN ASIAN MAINS,Noodles,Char Kway Teow,"Wok tossed flat rice noodles with shitake mushroom, bok choy and kecap manis sauce",Veg,620,veg,,TRUE
+PAN ASIAN MAINS,Noodles,Char Kway Teow,"Wok tossed flat rice noodles with shitake mushroom, bok choy and kecap manis sauce",Chicken,680,non-veg,,TRUE
+PAN ASIAN MAINS,Noodles,Char Kway Teow,"Wok tossed flat rice noodles with shitake mushroom, bok choy and kecap manis sauce",Prawns,700,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Rice,Cantonese Fried Rice,Cantonese style fried rice tossed with assorted vegetables,Veg,380,veg,,TRUE
+PAN ASIAN MAINS,Rice,Cantonese Fried Rice,Cantonese style fried rice tossed with assorted vegetables,Chicken,420,non-veg,,TRUE
+PAN ASIAN MAINS,Rice,Cantonese Fried Rice,Cantonese style fried rice tossed with assorted vegetables,Prawns,440,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Rice,Thai Basil Fried Rice,Basmati rice cooked with bird's eye chilli and basil leaves,Veg,440,veg,,TRUE
+PAN ASIAN MAINS,Rice,Thai Basil Fried Rice,Basmati rice cooked with bird's eye chilli and basil leaves,Chicken,480,non-veg,,TRUE
+PAN ASIAN MAINS,Rice,Thai Basil Fried Rice,Basmati rice cooked with bird's eye chilli and basil leaves,Prawns,540,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Rice,Thai Green Curry,"Coconut milk-based curry made with baby eggplant, shallots, sweet basil leaves and kaffir lime leaves, served with jasmine rice",Veg,480,veg,,TRUE
+PAN ASIAN MAINS,Rice,Thai Green Curry,"Coconut milk-based curry made with baby eggplant, shallots, sweet basil leaves and kaffir lime leaves, served with jasmine rice",Chicken,520,non-veg,,TRUE
+PAN ASIAN MAINS,Rice,Thai Green Curry,"Coconut milk-based curry made with baby eggplant, shallots, sweet basil leaves and kaffir lime leaves, served with jasmine rice",Prawns,560,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Rice,Thai Red Curry,"Coconut milk based red curry made with baby eggplant, shallots, bamboo shoot, sweet basil leaves and kaffir lime leaves, served with jasmine rice",Veg,480,veg,,TRUE
+PAN ASIAN MAINS,Rice,Thai Red Curry,"Coconut milk based red curry made with baby eggplant, shallots, bamboo shoot, sweet basil leaves and kaffir lime leaves, served with jasmine rice",Chicken,520,non-veg,,TRUE
+PAN ASIAN MAINS,Rice,Thai Red Curry,"Coconut milk based red curry made with baby eggplant, shallots, bamboo shoot, sweet basil leaves and kaffir lime leaves, served with jasmine rice",Prawns,560,non-veg,seafood,TRUE
+PAN ASIAN MAINS,Rice,Truffle Garlic Fried Rice,Sticky jasmine rice cooked in burnt garlic sauce with truffle oil,Veg,620,veg,,TRUE
+PAN ASIAN MAINS,Rice,Truffle Garlic Fried Rice,Sticky jasmine rice cooked in burnt garlic sauce with truffle oil,Chicken,680,non-veg,,TRUE
+PAN ASIAN MAINS,Rice,Truffle Garlic Fried Rice,Sticky jasmine rice cooked in burnt garlic sauce with truffle oil,Prawns,700,non-veg,seafood,TRUE
+INDIAN MAINS,,Mix Veg Curry,"Potatoes, seasonal vegetables and peas, cooked in a spiced tomato curry",,460,veg,,TRUE
+INDIAN MAINS,,Paneer Lababdhar,Chunks of cottage cheese in a rich tomato and onion curry,,540,veg,,TRUE
+INDIAN MAINS,,Dhal Makhani,Slow cooked lentil and red kidney beans curry,,540,veg,,TRUE
+INDIAN MAINS,,Paneer Pasandha,"Paneer stuffed with aromatic nuts & spice, in a creamy tomato curry",,540,veg,,TRUE
+INDIAN MAINS,,Malai Kofta,Kofta dumplings in a cream and yogurt curry,,520,veg,,TRUE
+INDIAN MAINS,,Kadai Chicken,Tender cubes of chicken cooked with kadai masala and homemade spices,,620,non-veg,,TRUE
+INDIAN MAINS,,Fish in Tangy Curry,Slices of fish cooked in a tomato curry with tamarind spices and coconut milk,,640,non-veg,seafood,TRUE
+INDIAN MAINS,,Kerala Prawn Curry,"Prawns cooked with coconut oil, onion and coconut milk",,640,non-veg,seafood,TRUE
+INDIAN MAINS,,Mutton Rogan Josh,"Slow cooked mutton curry, marinated in authentic spices and cooked to perfection",,750,non-veg,,TRUE
+INDIAN MAINS,,Murgh Lahori,Tender chicken cubes in a rich tomato onion curry,,600,non-veg,,TRUE
+INDIAN MAINS,,Keema Chicken,Minced chicken and aromatic spices in onion tomato masala,,600,non-veg,,TRUE
+INDIAN MAINS,,Murgh Jahangiri,Rich and creamy Mughalai chicken curry cooked in peanut and yoghurt base,,600,non-veg,,TRUE
+INDIAN MAINS,,Kadai Mushroom / Paneer,Mushroom or paneer cooked in kadai masala and homemade spices,,540,veg,,TRUE
+ROTIS NAANS & RICE,,Steamed Rice,,,220,veg,,TRUE
+ROTIS NAANS & RICE,,Veg Pulao,,,360,veg,,TRUE
+ROTIS NAANS & RICE,,Curd Rice,,,250,veg,,TRUE
+ROTIS NAANS & RICE,,Tandoori Roti / Naan,,,90,veg,,TRUE
+ROTIS NAANS & RICE,,Butter Roti / Naan,,,120,veg,,TRUE
+ROTIS NAANS & RICE,,Garlic Naan,,,140,veg,,TRUE
+ROTIS NAANS & RICE,,Lachha Paratha,,,140,veg,,TRUE
+ROTIS NAANS & RICE,,Chilli Cheese Naan,,,200,veg,,TRUE
+DESSERTS,,Basque Cheesecake,Served with homemade berry compote,,300,veg,,TRUE
+DESSERTS,,Biscoff Drip Cake,Layers of vanilla sponge sandwiched together with Biscoff spread and whipped vanilla cream,,300,veg,,TRUE
+DESSERTS,,Belgian Chocolate Mousse Cake,"Chocolate cake with layers of dark, milk and white chocolate mousse",,300,veg,,TRUE
+DESSERTS,,Tiramisu,"Espresso soaked Savoiardi, mascarpone cream topped with chocolate shavings and cocoa",,350,veg,,TRUE

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banquet Menu — East Coast</title>
+  <link rel="stylesheet" href="../shared/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>East Coast</h1>
+    <p class="tagline">Banquet — select items for your event</p>
+    <nav class="site-nav">
+      <a href="./food.html">Food</a>
+      <a href="./drinks.html">Drinks</a>
+      <a href="./banquet.html" class="active">Banquet</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="banquet-toolbar">
+      <span>Selected: <span class="count" id="selected-count">0</span></span>
+      <button type="button" onclick="document.getElementById('enquiry').scrollIntoView({behavior:'smooth'})" disabled>
+        Continue
+      </button>
+    </div>
+
+    <section id="menu"></section>
+
+    <section class="enquiry" id="enquiry">
+      <h2>Your Details</h2>
+      <form id="enquiry-form">
+        <label>
+          Name
+          <input type="text" id="name" required />
+        </label>
+        <label>
+          Phone
+          <input type="tel" id="phone" required pattern="[0-9+\-\s]{7,}" />
+        </label>
+        <label>
+          Event Date
+          <input type="date" id="eventDate" required />
+        </label>
+        <button type="submit">Submit Enquiry</button>
+        <p id="form-status" class="form-status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="../shared/config.js"></script>
+  <script>
+    window.MENU = "eastcoast-banquet";
+
+    window.FORM_ID = "REPLACE_WITH_YOUR_GOOGLE_FORM_ID";
+    window.ENTRY_NAME       = "entry.1111111111";
+    window.ENTRY_PHONE      = "entry.2222222222";
+    window.ENTRY_EVENT_DATE = "entry.3333333333";
+    window.ENTRY_ITEMS      = "entry.4444444444";
+  </script>
+  <script src="../shared/menu.js"></script>
+  <script src="../shared/banquet.js"></script>
+</body>
+</html>
