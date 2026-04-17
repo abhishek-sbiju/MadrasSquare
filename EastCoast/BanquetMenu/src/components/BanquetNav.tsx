@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import type { MenuCategory } from "@/data/banquetMenuData";
+import { Sparkles, X } from "lucide-react";
+import { useSelection } from "./SelectionProvider";
 
 const ALL_NAV_ITEMS = [
   { id: "mocktails", label: "Mocktails" },
@@ -18,6 +20,7 @@ interface BanquetNavProps {
 }
 
 const BanquetNav = ({ categories }: BanquetNavProps) => {
+  const { isSelecting, toggleSelecting, selections } = useSelection();
   // Only show nav entries for categories that actually appear on the page.
   // When `categories` is undefined (still loading), fall back to the full list
   // so the sticky bar doesn't visibly pop in. Once data loads the filter
@@ -80,10 +83,39 @@ const BanquetNav = ({ categories }: BanquetNavProps) => {
 
   return (
     <div id="banquet-nav" className="sticky top-12 md:top-[57px] z-40 bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
-      <div className="w-full">
+      <div className="w-full flex items-center gap-2 px-4 md:px-8 py-2 md:py-3">
+        <button
+          type="button"
+          onClick={toggleSelecting}
+          className={`
+            flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 md:px-4 py-1 md:py-1.5 text-[11px] md:text-[12px]
+            tracking-[0.1em] md:tracking-[0.14em] font-body font-semibold uppercase
+            transition-all duration-300 flex-shrink-0 border
+            ${
+              isSelecting
+                ? "bg-gold text-primary-foreground border-gold shadow shadow-gold/20"
+                : "border-gold/40 text-gold hover:bg-gold/10"
+            }
+          `}
+          aria-pressed={isSelecting}
+        >
+          {isSelecting ? <X size={12} /> : <Sparkles size={12} />}
+          {isSelecting ? (
+            <>
+              <span>Selecting</span>
+              {selections.length > 0 && (
+                <span className="ml-0.5 bg-white/25 rounded-full px-1.5 tabular-nums text-[10px]">
+                  {selections.length}
+                </span>
+              )}
+            </>
+          ) : (
+            <span>Customize</span>
+          )}
+        </button>
         <nav
           ref={navRef}
-          className="flex overflow-x-auto md:justify-center gap-2 md:gap-4 px-4 md:px-8 py-2 md:py-3 flex-1 scroll-smooth scrollbar-hide"
+          className="flex overflow-x-auto md:justify-center gap-2 md:gap-4 flex-1 scroll-smooth scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {navItems.map((item) => {
@@ -119,5 +151,7 @@ const BanquetNav = ({ categories }: BanquetNavProps) => {
     </div>
   );
 };
+
+
 
 export default BanquetNav;

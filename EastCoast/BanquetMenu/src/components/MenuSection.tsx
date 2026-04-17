@@ -1,5 +1,11 @@
 import type { MenuCategory, MenuItem } from "@/data/banquetMenuData";
 import FadeIn from "./FadeIn";
+import { Check, Minus, Plus } from "lucide-react";
+import {
+  makeItemId,
+  parsePriceNumber,
+  useSelection,
+} from "./SelectionProvider";
 
 interface MenuSectionProps {
   category: MenuCategory;
@@ -16,18 +22,115 @@ const getDietClasses = (item: MenuItem) => {
   return `${baseClasses} bg-green-600`;
 };
 
-const MenuItemRow = ({ id, item, hasAnyPrices }: { id: string, item: MenuItem, hasAnyPrices: boolean }) => {
+interface MenuItemRowProps {
+  id: string;
+  item: MenuItem;
+  hasAnyPrices: boolean;
+  categoryTitle: string;
+  subCategoryName?: string;
+}
+
+const MenuItemRow = ({
+  id,
+  item,
+  hasAnyPrices,
+  categoryTitle,
+  subCategoryName,
+}: MenuItemRowProps) => {
+  const {
+    isSelecting,
+    isSelected,
+    getQty,
+    toggle,
+    setQty,
+  } = useSelection();
+
+  const selectionId = makeItemId(categoryTitle, subCategoryName, item.name);
+  const unitPrice = parsePriceNumber(item.price);
+  const isPriced = unitPrice > 0;
+  const selected = isSelected(selectionId);
+  const qty = getQty(selectionId);
+
+  const onToggle = () => {
+    toggle({
+      id: selectionId,
+      name: item.name,
+      category: categoryTitle,
+      subCategory: subCategoryName,
+      unitPrice: isPriced ? unitPrice : undefined,
+      priceLabel: item.price,
+    });
+  };
+
+  const onInc = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!selected) {
+      onToggle();
+    } else {
+      setQty(selectionId, qty + 1);
+    }
+  };
+
+  const onDec = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (qty <= 1) {
+      // removes
+      setQty(selectionId, 0);
+    } else {
+      setQty(selectionId, qty - 1);
+    }
+  };
+
+  // When selection mode is on, the entire row is tappable (except steppers).
+  const rowInteractive = isSelecting ? "cursor-pointer hover:bg-gold/[0.05] rounded-md" : "";
+  const rowSelected = selected ? "bg-gold/[0.07]" : "";
+
   return (
-    <div id={id} className="py-5 md:py-6 border-b border-foreground/[0.07] last:border-0 scroll-mt-28 transition-colors duration-500">
+    <div
+      id={id}
+      className={`py-5 md:py-6 border-b border-foreground/[0.07] last:border-0 scroll-mt-28 transition-colors duration-300 ${rowInteractive} ${rowSelected}`}
+      onClick={isSelecting && !isPriced ? onToggle : undefined}
+      role={isSelecting && !isPriced ? "button" : undefined}
+      tabIndex={isSelecting && !isPriced ? 0 : undefined}
+      onKeyDown={
+        isSelecting && !isPriced
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onToggle();
+              }
+            }
+          : undefined
+      }
+    >
       <div
         className={[
           "flex flex-col items-start gap-2",
           "md:flex-row md:items-center md:gap-6",
-          hasAnyPrices ? "md:justify-between" : "",
+          hasAnyPrices || isSelecting ? "md:justify-between" : "",
         ].join(" ")}
       >
-        {/* Diet indicator + name */}
+        {/* Checkbox (left) for unpriced items when selecting */}
         <div className="flex items-start gap-2.5 md:gap-3 flex-1 min-w-0">
+          {isSelecting && !isPriced && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggle();
+              }}
+              aria-pressed={selected}
+              aria-label={selected ? `Remove ${item.name}` : `Add ${item.name}`}
+              className={`mt-1 md:mt-[3px] w-5 h-5 md:w-6 md:h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 ${
+                selected
+                  ? "bg-gold border-gold text-white"
+                  : "border-foreground/30 hover:border-gold"
+              }`}
+            >
+              {selected && <Check size={12} strokeWidth={3} />}
+            </button>
+          )}
+
           <div className="mt-1.5 md:mt-[7px]">
             <span className={getDietClasses(item)} style={{ display: 'block' }} />
           </div>
@@ -44,11 +147,43 @@ const MenuItemRow = ({ id, item, hasAnyPrices }: { id: string, item: MenuItem, h
           </div>
         </div>
 
-        {/* Price — only when present */}
-        {item.price && (
-          <div className="font-body text-[14px] md:text-lg font-semibold text-gold tabular-nums w-full md:w-auto md:shrink-0 md:mt-1 md:self-start md:text-right md:max-w-[40%] break-words leading-snug">
-            {item.price}
+        {/* Price / qty stepper */}
+        {isPriced ? (
+          <div className="flex items-center gap-3 w-full md:w-auto md:shrink-0 md:mt-1 md:self-start justify-between md:justify-end">
+            <div className="font-body text-[14px] md:text-lg font-semibold text-gold tabular-nums break-words leading-snug text-right md:max-w-[40%]">
+              {item.price}
+            </div>
+            {isSelecting && (
+              <div className="flex items-center gap-2 border border-gold/40 rounded-full bg-background/60 px-1 py-0.5">
+                <button
+                  type="button"
+                  onClick={onDec}
+                  aria-label="Decrease quantity"
+                  className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center text-foreground hover:bg-gold/10 disabled:opacity-30"
+                  disabled={qty === 0}
+                >
+                  <Minus size={14} />
+                </button>
+                <span className="font-body font-semibold tabular-nums w-5 text-center text-[13px] md:text-sm">
+                  {qty}
+                </span>
+                <button
+                  type="button"
+                  onClick={onInc}
+                  aria-label="Increase quantity"
+                  className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center text-foreground hover:bg-gold/10"
+                >
+                  <Plus size={14} />
+                </button>
+              </div>
+            )}
           </div>
+        ) : (
+          item.price && (
+            <div className="font-body text-[14px] md:text-lg font-semibold text-gold tabular-nums w-full md:w-auto md:shrink-0 md:mt-1 md:self-start md:text-right md:max-w-[40%] break-words leading-snug">
+              {item.price}
+            </div>
+          )
         )}
       </div>
     </div>
@@ -170,7 +305,16 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
                   </h3>
                   {sub.items.map((item, i) => {
                     const itemId = `item-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-                    return <MenuItemRow key={`${item.name}-${i}`} id={itemId} item={item} hasAnyPrices={hasAnyPrices} />;
+                    return (
+                      <MenuItemRow
+                        key={`${item.name}-${i}`}
+                        id={itemId}
+                        item={item}
+                        hasAnyPrices={hasAnyPrices}
+                        categoryTitle={category.title}
+                        subCategoryName={sub.name}
+                      />
+                    );
                   })}
                 </FadeIn>
               </div>
@@ -179,7 +323,15 @@ const MenuSection = ({ category, index }: MenuSectionProps) => {
             <FadeIn delay={150}>
               {category.items?.map((item, i) => {
                 const itemId = `item-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-                return <MenuItemRow key={`${item.name}-${i}`} id={itemId} item={item} hasAnyPrices={hasAnyPrices} />;
+                return (
+                  <MenuItemRow
+                    key={`${item.name}-${i}`}
+                    id={itemId}
+                    item={item}
+                    hasAnyPrices={hasAnyPrices}
+                    categoryTitle={category.title}
+                  />
+                );
               })}
             </FadeIn>
           )}

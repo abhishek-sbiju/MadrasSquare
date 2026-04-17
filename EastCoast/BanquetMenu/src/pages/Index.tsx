@@ -5,6 +5,8 @@ import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { SelectionProvider } from "@/components/SelectionProvider";
+import SelectionCart from "@/components/SelectionCart";
 import { termsAndConditionsGroups } from "@/data/banquetMenuData";
 import { useBanquetMenu } from "@/hooks/useBanquetMenu";
 
@@ -28,6 +30,7 @@ const Index = () => {
   const { data: banquetMenuData } = useBanquetMenu();
 
   return (
+    <SelectionProvider>
     <div className="min-h-screen bg-background overflow-x-clip w-full max-w-[100vw]">
       <Navbar />
       <HeroSection />
@@ -92,7 +95,9 @@ const Index = () => {
       <AboutSection />
       <Footer />
       <ScrollToTop />
+      <SelectionCart />
     </div>
+    </SelectionProvider>
   );
 };
 

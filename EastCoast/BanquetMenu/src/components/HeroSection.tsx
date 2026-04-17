@@ -1,17 +1,20 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Sparkles } from "lucide-react";
 
+import b1 from "@/assets/b1.jpeg";
+import b2 from "@/assets/b2.jpeg";
 import ec1 from "@/assets/ec1.jpeg";
 import ec2 from "@/assets/ec2.jpeg";
-import ec3 from "@/assets/ec3.jpeg";
+import { useSelection } from "./SelectionProvider";
 
-const heroImages = [ec1, ec2, ec3];
+const heroImages = [ec1, b1, ec2, b2];
 const DISPLAY_MS = 7000;
 const FADE_MS = 2000;
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
+  const { isSelecting, setSelecting, selections } = useSelection();
 
   useEffect(() => {
     heroImages.forEach((src) => {
@@ -37,13 +40,22 @@ const HeroSection = () => {
   };
 
   const scrollToMenu = () => {
-    document.getElementById("menu-nav")?.scrollIntoView({ behavior: "smooth" });
+    const target =
+      document.getElementById("banquet-nav") ??
+      document.getElementById("menu-nav");
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const startCustomize = () => {
+    setSelecting(true);
+    // Give React a tick to render selection-mode UI before we scroll,
+    // otherwise the layout shift can land us past the menu top.
+    setTimeout(scrollToMenu, 80);
   };
 
   return (
     <section className="relative h-screen-safe flex items-center justify-center overflow-hidden bg-black">
-
-      {/* Background images */}
+      {/* Background images with smooth crossfade + subtle blur */}
       {heroImages.map((src, i) => (
         <div
           key={i}
@@ -63,32 +75,32 @@ const HeroSection = () => {
         </div>
       ))}
 
-      {/* 🔥 Clean coastal gradient (lighter than drink) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/70" />
+      {/* Cinematic gradient (depth) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
 
-      {/* 🔥 Subtle center lighting */}
+      {/* Center light + vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.35) 70%)",
+            "radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.5) 70%)",
         }}
       />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        <p className="font-body text-sm tracking-[0.4em] uppercase text-gold-light mb-4 animate-fade-in">
-          Madras Square
+        <p className="font-body text-lg md:text-xl lg:text-2xl tracking-[0.4em] uppercase text-white/85 mb-6 animate-fade-in">
+          East Coast · The Beach
         </p>
 
         <h1
-          className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
+          className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
           style={{
             animationDelay: "0.15s",
             textShadow: "0 2px 20px rgba(0,0,0,0.6)",
           }}
         >
-          EAST COAST
+          MADRAS SQUARE
         </h1>
 
         <div
@@ -101,7 +113,7 @@ const HeroSection = () => {
         </div>
 
         <p
-          className="font-heading text-2xl md:text-3xl italic text-gold-light tracking-widest mb-10 animate-fade-in"
+          className="font-heading text-3xl md:text-5xl italic text-white/85 tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
           Banquet Menu
@@ -112,15 +124,25 @@ const HeroSection = () => {
           style={{ animationDelay: "0.45s" }}
         >
           <button
+            onClick={startCustomize}
+            className="px-8 py-3 bg-gold/90 text-primary-foreground text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold transition-all duration-300 inline-flex items-center gap-2 shadow-lg shadow-gold/20"
+          >
+            <Sparkles size={14} />
+            {isSelecting && selections.length > 0
+              ? `CUSTOMIZING · ${selections.length}`
+              : "CUSTOMIZE YOUR BANQUET"}
+          </button>
+
+          <button
             onClick={scrollToMenu}
-            className="px-8 py-3 bg-gold/90 text-white text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold transition-all duration-300"
+            className="px-8 py-3 border border-gold/60 text-white/90 text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/20 transition-all duration-300"
           >
             VIEW MENU
           </button>
 
           <a
             href="tel:+917299440000"
-            className="px-8 py-3 border border-gold/40 text-gold-light text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/10 transition-all duration-300"
+            className="px-8 py-3 border border-gold/60 text-white/90 text-xs tracking-[0.2em] font-body font-semibold hover:bg-gold/20 transition-all duration-300"
           >
             BOOK A TABLE
           </a>
@@ -133,10 +155,12 @@ const HeroSection = () => {
           <button
             key={i}
             onClick={() => goTo(i)}
-            className={`h-[3px] rounded-full transition-all duration-500 ${i === currentIndex
+            aria-label={`Show image ${i + 1}`}
+            className={`h-[3px] rounded-full transition-all duration-500 ${
+              i === currentIndex
                 ? "w-6 bg-gold/80"
                 : "w-2 bg-white/25 hover:bg-white/40"
-              }`}
+            }`}
           />
         ))}
       </div>
@@ -145,6 +169,7 @@ const HeroSection = () => {
       <button
         onClick={scrollToMenu}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-gold transition-colors animate-bounce"
+        aria-label="Scroll down"
       >
         <ChevronDown size={28} />
       </button>
