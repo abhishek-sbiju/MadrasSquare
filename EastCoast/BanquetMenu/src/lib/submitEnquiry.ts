@@ -51,7 +51,7 @@ export function buildTextSummary(payload: EnquiryPayload): string {
   }
 
   const lines: string[] = [];
-  lines.push("Banquet Enquiry – Madras Square (East Coast)");
+  lines.push("Banquet Enquiry – Madras Square (East Coast & The Beach)");
   lines.push("");
   lines.push(`Name: ${customer.name}`);
   lines.push(`Phone: ${customer.phone}`);

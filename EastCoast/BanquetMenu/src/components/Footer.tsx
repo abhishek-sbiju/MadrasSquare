@@ -31,13 +31,13 @@ const Footer = () => {
               <span className="w-8 h-px bg-gold/40" />
             </div>
             <p className="font-body text-[9px] md:text-[10px] tracking-[0.4em] uppercase text-white/40 mb-1">
-              Madras Square
+              East Coast · The Beach
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-[0.2em] text-white/90 mb-3">
-              EAST COAST
+              MADRAS SQUARE
             </h2>
             <p className="text-white/40 font-body text-xs md:text-sm max-w-md leading-relaxed text-center">
-              Elevating your dining experience with premium cuisine, artisanal plates, and an ambiance that speaks luxury.
+              Banquets and private dining hosted across both our shores — crafted cuisine, warm hospitality, and spaces made for your moments.
             </p>
           </div>
         </FadeIn>
@@ -45,21 +45,34 @@ const Footer = () => {
         {/* Three columns */}
         <FadeIn delay={200}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-            {/* Location */}
+            {/* Locations */}
             <div className="flex flex-col items-center md:items-start">
               <h3 className="font-heading text-sm font-semibold tracking-[0.25em] text-gold mb-5 uppercase">
                 Find Us
               </h3>
-              <ul className="space-y-4 font-body text-sm text-white/50 flex flex-col items-center md:items-start">
+              <ul className="space-y-5 font-body text-sm text-white/50 flex flex-col items-center md:items-start">
                 <li className="flex items-start gap-3 text-left">
                   <MapPin size={16} className="text-gold/70 shrink-0 mt-0.5" />
-                  <span>East Coast at Madras Square , 2/520, Sundeep Ave,<br />Sakthimoorthiamman Nagar, Neelankarai, Chennai,<br />Tamil Nadu 600115</span>
+                  <div>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-gold/70 mb-1">East Coast</p>
+                    <span>2/520, Sundeep Ave, Sakthimoorthiamman Nagar,<br />Neelankarai, Chennai, Tamil Nadu 600115</span>
+                  </div>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={16} className="text-gold/70 shrink-0" />
-                  <div className="flex flex-col text-left">
-                    <a href="tel:+917299440000" className="hover:text-gold transition-colors duration-300">+91 72994 40000</a>
+                  <a href="tel:+917299440000" className="hover:text-gold transition-colors duration-300">+91 72994 40000</a>
+                </li>
+
+                <li className="flex items-start gap-3 text-left">
+                  <MapPin size={16} className="text-gold/70 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-gold/70 mb-1">The Beach</p>
+                    <span>The Beach by Madras Square Restaurant & Bar ECR,<br />1st Main Rd, Uthandi, Chennai, Tamil Nadu 600119</span>
                   </div>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Phone size={16} className="text-gold/70 shrink-0" />
+                  <a href="tel:+917305669696" className="hover:text-gold transition-colors duration-300">+91 73056 69696</a>
                 </li>
               </ul>
             </div>
@@ -109,7 +122,7 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4 font-body text-[11px] text-white/25 tracking-wider">
-          <p>© {new Date().getFullYear()} East Coast · Madras Square</p>
+          <p>© {new Date().getFullYear()} Madras Square · East Coast & The Beach</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-gold/70 transition-colors duration-300">Privacy Policy</a>
             <a href="#" className="hover:text-gold/70 transition-colors duration-300">Terms of Service</a>

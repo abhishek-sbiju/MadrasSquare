@@ -10,13 +10,9 @@ const Navbar = () => {
           <span className="hidden sm:inline">+91 72994 40000</span>
         </a>
         
-        {/* Two-line branded header */}
         <div className="text-center">
-          <p className="font-body text-[7px] md:text-[9px] tracking-[0.35em] md:tracking-[0.4em] text-muted-foreground uppercase leading-none mb-0.5">
-            Madras Square
-          </p>
-          <h1 className="font-heading text-lg md:text-2xl font-bold tracking-[0.18em] md:tracking-[0.22em] text-foreground leading-none">
-            EAST COAST
+          <h1 className="font-heading text-xl md:text-3xl font-bold tracking-[0.18em] md:tracking-[0.22em] text-foreground leading-none">
+            MADRAS SQUARE
           </h1>
         </div>
         

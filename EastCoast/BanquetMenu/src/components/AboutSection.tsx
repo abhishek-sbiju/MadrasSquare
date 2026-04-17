@@ -29,9 +29,10 @@ const AboutSection = () => {
 
         <FadeIn delay={200}>
           <p className="text-muted-foreground font-body text-sm md:text-base leading-[1.8] mb-10 max-w-2xl mx-auto">
-            Set in the heart of Madras Square, East Coast brings together the finest cuisine, 
-            expertly crafted dishes, and an ambiance that speaks to those who appreciate the art of great food. 
-            From comforting Indian favorites to innovative global plates, every dish tells a story of quality and craft.
+            Hosted across our two shores — East Coast and The Beach — Madras Square brings together 
+            the finest cuisine, expertly crafted dishes, and an ambiance that speaks to those who appreciate 
+            the art of great food. From comforting Indian favorites to innovative global plates, every 
+            banquet tells a story of quality and craft.
           </p>
         </FadeIn>
 
