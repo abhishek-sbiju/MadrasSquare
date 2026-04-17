@@ -3,9 +3,10 @@ import { ChevronDown } from "lucide-react";
 
 import b1 from "@/assets/b1.jpeg";
 import b2 from "@/assets/b2.jpeg";
-import b3 from "@/assets/b3.jpeg";
+import ec1 from "@/assets/ec1.jpeg";
+import ec2 from "@/assets/ec2.jpeg";
 
-const heroImages = [b1, b2, b3];
+const heroImages = [ec1, b1, ec2, b2];
 const DISPLAY_MS = 7000;
 const FADE_MS = 2000;
 
@@ -77,12 +78,12 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        <p className="font-body text-sm md:text-base tracking-[0.4em] uppercase text-white/80 mb-4 animate-fade-in">
+        <p className="font-body text-lg md:text-xl lg:text-2xl tracking-[0.4em] uppercase text-white/85 mb-6 animate-fade-in">
           East Coast · The Beach
         </p>
 
         <h1
-          className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
+          className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
           style={{
             animationDelay: "0.15s",
             textShadow: "0 2px 20px rgba(0,0,0,0.6)",
@@ -101,7 +102,7 @@ const HeroSection = () => {
         </div>
 
         <p
-          className="font-heading text-2xl md:text-4xl italic text-white/80 tracking-widest mb-10 animate-fade-in"
+          className="font-heading text-3xl md:text-5xl italic text-white/85 tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
           Liquor Menu
