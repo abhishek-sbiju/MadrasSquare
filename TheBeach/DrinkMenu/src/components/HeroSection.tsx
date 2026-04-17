@@ -77,12 +77,12 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
-        <p className="font-body text-xs tracking-[0.4em] uppercase text-white/80 mb-4 animate-fade-in">
-          The Beach · East Coast
+        <p className="font-body text-sm md:text-base tracking-[0.4em] uppercase text-white/80 mb-4 animate-fade-in">
+          East Coast · The Beach
         </p>
 
         <h1
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
+          className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-[0.12em] text-white mb-4 animate-fade-in"
           style={{
             animationDelay: "0.15s",
             textShadow: "0 2px 20px rgba(0,0,0,0.6)",
@@ -101,7 +101,7 @@ const HeroSection = () => {
         </div>
 
         <p
-          className="font-heading text-xl md:text-2xl italic text-white/80 tracking-widest mb-10 animate-fade-in"
+          className="font-heading text-2xl md:text-4xl italic text-white/80 tracking-widest mb-10 animate-fade-in"
           style={{ animationDelay: "0.35s" }}
         >
           Liquor Menu
