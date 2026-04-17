@@ -5,7 +5,8 @@ import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import { banquetMenuData, termsAndConditionsGroups } from "@/data/banquetMenuData";
+import { termsAndConditionsGroups } from "@/data/banquetMenuData";
+import { useBanquetMenu } from "@/hooks/useBanquetMenu";
 
 const highlightKeyInfo = (text: string) => {
   const parts = text.split(/(\d{1,2}:\d{2}\s?(?:AM|PM)|\d{1,3}%)/gi);
@@ -24,6 +25,8 @@ const highlightKeyInfo = (text: string) => {
 };
 
 const Index = () => {
+  const { data: banquetMenuData } = useBanquetMenu();
+
   return (
     <div className="min-h-screen bg-background overflow-x-clip w-full max-w-[100vw]">
       <Navbar />

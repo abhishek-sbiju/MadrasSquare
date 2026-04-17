@@ -6,10 +6,19 @@ import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import { menuSections } from "@/data/menuData";
+import { useMenuSections } from "@/hooks/useMenuSections";
 
 const Index = () => {
-  const [activeCategory, setActiveCategory] = useState(menuSections[0].id);
+  const { sections } = useMenuSections();
+  const [activeCategory, setActiveCategory] = useState(
+    () => sections[0]?.id ?? "",
+  );
+
+  useEffect(() => {
+    if (!activeCategory && sections[0]) {
+      setActiveCategory(sections[0].id);
+    }
+  }, [sections, activeCategory]);
 
   const handleCategoryClick = (id: string) => {
     setActiveCategory(id);
@@ -21,43 +30,44 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = menuSections.map(s => document.getElementById(s.id)).filter(Boolean) as HTMLElement[];
-      
+      const els = sections
+        .map((s) => document.getElementById(s.id))
+        .filter(Boolean) as HTMLElement[];
+
       let current = "";
-      for (const section of sections) {
+      for (const section of els) {
         const rect = section.getBoundingClientRect();
-        // Trigger area is between 0 and 300px from the top of the viewport
         if (rect.top <= 250 && rect.bottom >= 200) {
-           current = section.id;
-           break;
+          current = section.id;
+          break;
         }
       }
-      
+
       if (current) {
-        setActiveCategory(prev => prev !== current ? current : prev);
+        setActiveCategory((prev) => (prev !== current ? current : prev));
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sections]);
 
   return (
     <div className="min-h-screen bg-background overflow-x-clip w-full max-w-[100vw]">
       <Navbar />
       <HeroSection />
-      <MenuCategoryNav 
-        activeCategory={activeCategory} 
-        onCategoryClick={handleCategoryClick} 
-        categories={menuSections.map(s => ({ id: s.id, label: s.title }))}
+      <MenuCategoryNav
+        activeCategory={activeCategory}
+        onCategoryClick={handleCategoryClick}
+        categories={sections.map((s) => ({ id: s.id, label: s.title }))}
       />
-      
-      {menuSections.map((section, index) => (
+
+      {sections.map((section, index) => (
         <MenuSection key={section.id} section={section} index={index} />
       ))}
-      
+
       <AboutSection />
       <Footer />
       <ScrollToTop />

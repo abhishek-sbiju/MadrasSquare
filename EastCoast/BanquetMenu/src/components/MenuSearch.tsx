@@ -8,10 +8,12 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { banquetMenuData, MenuItem, SubCategory } from "@/data/banquetMenuData";
+import type { MenuItem, SubCategory } from "@/data/banquetMenuData";
+import { useBanquetMenu } from "@/hooks/useBanquetMenu";
 
 const MenuSearch = () => {
   const [open, setOpen] = useState(false);
+  const { data: banquetMenuData } = useBanquetMenu();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {

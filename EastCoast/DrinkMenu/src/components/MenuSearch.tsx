@@ -8,10 +8,12 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { menuSections, MenuItem } from "@/data/menuData";
+import type { MenuItem } from "@/data/menuData";
+import { useMenuSections } from "@/hooks/useMenuSections";
 
 const MenuSearch = () => {
   const [open, setOpen] = useState(false);
+  const { sections: menuSections } = useMenuSections();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
