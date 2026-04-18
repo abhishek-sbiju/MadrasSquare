@@ -124,6 +124,15 @@ const HeroSection = () => {
           >
             BOOK A TABLE
           </a>
+
+          <a
+            href="https://madrassquare-liquor-menu.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-3 border border-white/30 text-white/70 text-xs tracking-[0.2em] font-body font-semibold hover:border-white/60 hover:text-white/90 transition-all duration-300"
+          >
+            VIEW LIQUOR MENU
+          </a>
         </div>
       </div>
 
