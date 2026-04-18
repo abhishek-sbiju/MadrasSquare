@@ -68,8 +68,11 @@ const BanquetNav = ({ categories }: BanquetNavProps) => {
       const btn = activeRef.current;
       const navRect = nav.getBoundingClientRect();
       const btnRect = btn.getBoundingClientRect();
+      // Use screen-space rects so the calculation is always relative to the
+      // nav scroll container, not to an unrelated offsetParent (which would
+      // include the Customize button width and cause items to scroll off-screen).
       const scrollLeft =
-        btn.offsetLeft - nav.offsetWidth / 2 + btnRect.width / 2;
+        nav.scrollLeft + (btnRect.left - navRect.left) - nav.offsetWidth / 2 + btnRect.width / 2;
       nav.scrollTo({ left: scrollLeft, behavior: "smooth" });
     }
   }, [activeId]);
